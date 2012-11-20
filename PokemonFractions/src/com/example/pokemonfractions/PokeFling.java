@@ -30,9 +30,9 @@ public class PokeFling extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_poke_fling);
-//	    FrameLayout frame = (FrameLayout) findViewById(R.id.graphics_holder);
+	    //FrameLayout frame = (FrameLayout) findViewById(R.id.pokeball);
 	    PlayAreaView image = new PlayAreaView(this);
-//	    frame.addView(image);
+	    //frame.addView(image);
 	}
 
 
@@ -120,7 +120,7 @@ public class PokeFling extends Activity {
       
         @Override
         protected void onDraw(Canvas canvas) {
-            // Log.v(DEBUG_TAG, "onDraw");
+            Log.v(DEBUG_TAG, "onDraw");
             canvas.drawBitmap(ball, translate, null);
 //            createLocations(icons,canvas);
            

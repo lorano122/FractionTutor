@@ -6,48 +6,60 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Drag the droid around" />
+        android:text="Fling the Pokeball at the Pokemon!" />
 
     <ImageView
         android:id="@+id/pokeball"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginTop="54dp"
-
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="20dp"
+        android:maxHeight="50dp"
         android:src="@drawable/pokeball" />
+    
+    <ImageView
+        android:id="@+id/gyrados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/pokeball" 
+        android:layout_marginTop="20dp"
+        android:minHeight="58px"
+        android:src="@drawable/gyrados" />
+    
+    <ImageView
+        android:id="@+id/squirtle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/pokeball"
+        android:layout_marginTop="54dp"
+        android:minHeight="58px"
+        android:minWidth="58px"
+        android:src="@drawable/squirtle" />
+    
+        <ImageView
+        android:id="@+id/onix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/pokeball"
+        android:layout_marginTop="54dp"
+        android:minHeight="58px"
+        android:src="@drawable/onix" />
+        
+        <ImageView
+        android:id="@+id/snorlax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/pokeball"
+        android:layout_marginBottom="20dp"
+        android:minHeight="58px"
+        android:minWidth="58px"
+        android:src="@drawable/snorlax" />
 
 </RelativeLayout>
-
-
-
-<!-- <Button -->
-<!-- android:id="@+id/backbutton" -->
-<!-- android:text="Back" -->
-<!-- android:layout_width="wrap_content" -->
-<!-- android:layout_height="wrap_content" /> -->
-<!-- <TextView -->
-<!-- android:id="@+id/firstName" -->
-<!-- android:text="First Name" -->
-<!-- android:layout_width="wrap_content" -->
-<!-- android:layout_height="wrap_content" -->
-<!-- android:layout_below="@id/backbutton" /> -->
-<!-- <EditText -->
-<!-- android:width="100px" -->
-<!-- android:layout_width="wrap_content" -->
-<!-- android:layout_height="wrap_content" -->
-<!-- android:layout_toRightOf="@id/firstName" -->
-<!-- android:layout_alignBaseline="@id/firstName" /> -->
-<!-- <TextView -->
-<!-- android:id="@+id/lastName" -->
-<!-- android:text="Last Name" -->
-<!-- android:layout_width="wrap_content" -->
-<!-- android:layout_height="wrap_content" -->
-<!-- android:layout_below="@id/firstName" /> -->
-<!-- <EditText -->
-<!-- android:width="100px" -->
-<!-- android:layout_width="wrap_content" -->
-<!-- android:layout_height="wrap_content" -->
-<!-- android:layout_toRightOf="@id/lastName" -->
-<!-- android:layout_alignBaseline="@id/lastName" /> -->
-<!-- </RelativeLayout> -->

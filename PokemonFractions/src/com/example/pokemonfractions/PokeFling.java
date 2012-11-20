@@ -31,9 +31,9 @@ public class PokeFling extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_poke_fling);
-//	    FrameLayout frame = (FrameLayout) findViewById(R.id.graphics_holder);
+	    FrameLayout frame = (FrameLayout) findViewById(R.id.graphics_holder);
 	    PlayAreaView image = new PlayAreaView(this);
-//	    frame.addView(image);
+	    frame.addView(image);
 	}
 
 
@@ -51,8 +51,8 @@ public class PokeFling extends Activity {
 
         private GestureDetector gestures;
         private Matrix translate;
-        private Bitmap ball = BitmapFactory.decodeResource(getResources(), R.drawable.pokeball);
-        private Bitmap icon = BitmapFactory.decodeResource(getResources(), R.drawable.pokeball);
+        private Bitmap ball;
+        private Bitmap icon;
 
         private Matrix animateStart;
         private OvershootInterpolator animateInterpolator;
@@ -123,9 +123,10 @@ public class PokeFling extends Activity {
         @Override
         protected void onDraw(Canvas canvas) {
             // Log.v(DEBUG_TAG, "onDraw");
+        	ball = BitmapFactory.decodeResource(getResources(), R.drawable.pokeball);
         	
             canvas.drawBitmap(ball, translate, null);
-            canvas.drawBitmap(icon, 100, 100, null);
+            canvas.drawBitmap(icon, -100, -100, null);
            
 //            createLocations(icons,canvas);
            

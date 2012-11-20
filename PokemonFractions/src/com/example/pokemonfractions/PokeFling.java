@@ -2,8 +2,6 @@ package com.example.pokemonfractions;
 
 import java.util.ArrayList;
 
-import com.example.gesturefunactivity.R;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -53,7 +51,8 @@ public class PokeFling extends Activity {
 
         private GestureDetector gestures;
         private Matrix translate;
-        private Bitmap ball;
+        private Bitmap ball = BitmapFactory.decodeResource(getResources(), R.drawable.pokeball);
+        private Bitmap icon = BitmapFactory.decodeResource(getResources(), R.drawable.pokeball);
 
         private Matrix animateStart;
         private OvershootInterpolator animateInterpolator;
@@ -123,12 +122,12 @@ public class PokeFling extends Activity {
       
         @Override
         protected void onDraw(Canvas canvas) {
-            Log.v(DEBUG_TAG, "onDraw");
             canvas.drawBitmap(ball, translate, null);
+            canvas.drawBitmap(icon, 100, 100, null);
+           
 //            createLocations(icons,canvas);
-            Matrix m = canvas.getMatrix();
-            Log.d(DEBUG_TAG, "Matrix: " + translate.toShortString());
-            Log.d(DEBUG_TAG, "Canvas: " + m.toShortString());
+            //Log.d(DEBUG_TAG, "Matrix: " + translate.toShortString());
+            //Log.d(DEBUG_TAG, "Canvas: " + m.toShortString());
         }
 
         @Override
@@ -170,11 +169,12 @@ public class PokeFling extends Activity {
 		}
 
 		public boolean onSingleTapConfirmed(MotionEvent e) {
-			Log.v( DEBUG_TAG, "singleTap" ); 
-			final float dx = getX();
-			final float dy = getY();
-			view.onMove( -dx, -dy );
-			return true;
+			//Log.v( DEBUG_TAG, "singleTap" ); 
+			//final float dx = getX();
+			//final float dy = getY();
+			//view.onMove( -dx, -dy );
+			//return true;
+			return false;
 		}
 
 

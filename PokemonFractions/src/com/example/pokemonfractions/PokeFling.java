@@ -116,14 +116,12 @@ public class PokeFling extends Activity {
             translate = new Matrix();
             gestures = new GestureDetector(PokeFling.this,
                     new GestureListener(this));
-            ball = BitmapFactory.decodeResource( getResources(), R.drawable.pokeball );
         }
 
       
         @Override
         protected void onDraw(Canvas canvas) {
             canvas.drawBitmap(ball, translate, null);
-            canvas.drawBitmap(icon, 100, 100, null);
            
 //            createLocations(icons,canvas);
             //Log.d(DEBUG_TAG, "Matrix: " + translate.toShortString());
@@ -169,12 +167,12 @@ public class PokeFling extends Activity {
 		}
 
 		public boolean onSingleTapConfirmed(MotionEvent e) {
-			//Log.v( DEBUG_TAG, "singleTap" ); 
-			//final float dx = getX();
-			//final float dy = getY();
-			//view.onMove( -dx, -dy );
-			//return true;
-			return false;
+			Log.v( DEBUG_TAG, "singleTap" ); 
+			final float dx = getX();
+			final float dy = getY();
+			view.onMove( -dx, -dy );
+			return true;
+			//return false;
 		}
 
 

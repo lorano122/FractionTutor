@@ -43,16 +43,13 @@ public class PokeFling extends Activity {
         return true;
     }
     
-
-
-    
-    
+ 
     private class PlayAreaView extends View {
 
         private GestureDetector gestures;
         private Matrix translate;
-        private Bitmap ball = BitmapFactory.decodeResource(getResources(), R.drawable.pokeball);
-        private Bitmap icon = BitmapFactory.decodeResource(getResources(), R.drawable.pokeball);
+        private Bitmap ball;
+        private Bitmap icon;
 
         private Matrix animateStart;
         private OvershootInterpolator animateInterpolator;
@@ -121,7 +118,12 @@ public class PokeFling extends Activity {
       
         @Override
         protected void onDraw(Canvas canvas) {
-            canvas.drawBitmap(ball, translate, null);
+            // Log.v(DEBUG_TAG, "onDraw");
+        	ball = BitmapFactory.decodeResource(getResources(), R.drawable.pokeball);
+//        	icon = BitmapFactory.decodeResource(getResources(), R.drawable.squirtle);
+        	
+            canvas.drawBitmap(ball, 360, 520, null);
+//            canvas.drawBitmap(icon, 100, 100, null);
            
 //            createLocations(icons,canvas);
             //Log.d(DEBUG_TAG, "Matrix: " + translate.toShortString());
@@ -168,11 +170,11 @@ public class PokeFling extends Activity {
 
 		public boolean onSingleTapConfirmed(MotionEvent e) {
 			Log.v( DEBUG_TAG, "singleTap" ); 
-			final float dx = getX();
-			final float dy = getY();
-			view.onMove( -dx, -dy );
-			return true;
-			//return false;
+			//final float dx = getX();
+			//final float dy = getY();
+			//view.onMove( -dx, -dy );
+			//return true;
+			return false;
 		}
 
 

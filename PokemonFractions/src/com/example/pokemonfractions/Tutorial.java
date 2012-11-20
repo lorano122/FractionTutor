@@ -17,12 +17,27 @@ public class Tutorial extends Activity {
         
         Button resetButton = ( Button )findViewById( R.id.reset );
         resetButton.setOnClickListener( startOver );
+        Button battleButton = ( Button )findViewById( R.id.start );
+        battleButton.setOnClickListener( battle );
     }
 	
 	View.OnClickListener startOver = new View.OnClickListener() {
 		
 		public void onClick( View v ) {
 			Intent i = new Intent( Tutorial.this, MainActivity.class );
+			startActivity( i );
+		}
+
+		public void onClick(DialogInterface dialog, int which) {
+			// TODO Auto-generated method stub
+			
+		}
+	};
+	
+	View.OnClickListener battle = new View.OnClickListener() {
+		
+		public void onClick( View v ) {
+			Intent i = new Intent( Tutorial.this, PokeFling.class );
 			startActivity( i );
 		}
 

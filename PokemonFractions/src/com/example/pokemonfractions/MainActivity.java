@@ -20,12 +20,6 @@ public class MainActivity extends Activity {
         maleButton.setOnClickListener( tutorial );
         femaleButton.setOnClickListener( tutorial );
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_main, menu);
-        return true;
-    }
     
     View.OnClickListener tutorial = new View.OnClickListener() {
 		
@@ -39,5 +33,12 @@ public class MainActivity extends Activity {
 			
 		}
 	};
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_main, menu);
+        return true;
+    }
+    
 	
 }

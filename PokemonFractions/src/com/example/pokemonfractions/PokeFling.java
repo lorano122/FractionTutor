@@ -54,7 +54,7 @@ public class PokeFling extends Activity {
         private GestureDetector gestures;
         private Matrix translate;
         private Bitmap ball;
-        private Bitmap icon;
+//        private Bitmap icon;
 
         private Matrix animateStart;
         private OvershootInterpolator animateInterpolator;
@@ -62,6 +62,14 @@ public class PokeFling extends Activity {
         private long endTime;
         private float totalAnimDx;
         private float totalAnimDy;
+        
+        public PlayAreaView(Context context) {
+            super(context);
+            translate = new Matrix();
+            gestures = new GestureDetector(PokeFling.this,
+                    new GestureListener(this));
+            ball = BitmapFactory.decodeResource(getResources(), R.drawable.pokeball);
+        }
 
         public void onAnimateMove(float dx, float dy, long duration) {
             animateStart = new Matrix(translate);
@@ -110,21 +118,13 @@ public class PokeFling extends Activity {
         public void onSetLocation(float dx, float dy) {
             translate.postTranslate(dx, dy);
         }
-        
-        
-
-        public PlayAreaView(Context context) {
-            super(context);
-            translate = new Matrix();
-            gestures = new GestureDetector(PokeFling.this,
-                    new GestureListener(this));
-        }
+         
 
       
         @Override
         protected void onDraw(Canvas canvas) {
             // Log.v(DEBUG_TAG, "onDraw");
-        	ball = BitmapFactory.decodeResource(getResources(), R.drawable.pokeball);
+        	
 //        	icon = BitmapFactory.decodeResource(getResources(), R.drawable.squirtle);
         	
             canvas.drawBitmap(ball, 360, 520, null);

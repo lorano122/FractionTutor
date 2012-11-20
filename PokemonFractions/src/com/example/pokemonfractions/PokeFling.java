@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.os.Bundle;
@@ -50,7 +51,8 @@ public class PokeFling extends Activity {
 
         private GestureDetector gestures;
         private Matrix translate;
-        private Bitmap ball;
+        private Bitmap ball = BitmapFactory.decodeResource(getResources(), R.drawable.pokeball);
+        private Bitmap icon = BitmapFactory.decodeResource(getResources(), R.drawable.pokeball);
 
         private Matrix animateStart;
         private OvershootInterpolator animateInterpolator;
@@ -121,7 +123,10 @@ public class PokeFling extends Activity {
         @Override
         protected void onDraw(Canvas canvas) {
             // Log.v(DEBUG_TAG, "onDraw");
+        	
             canvas.drawBitmap(ball, translate, null);
+            canvas.drawBitmap(icon, 100, 100, null);
+           
 //            createLocations(icons,canvas);
            
             //Log.d(DEBUG_TAG, "Matrix: " + translate.toShortString());

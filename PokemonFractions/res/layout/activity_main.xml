@@ -3,12 +3,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
+    <Button
+        android:id="@+id/male"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="167dp"
+        android:layout_marginLeft="197dp"
+        android:text="Are you male?" 
+        android:onClick = "true" />
+
+    <Button
+        android:id="@+id/female"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/male"
+        android:layout_alignBottom="@+id/male"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="208dp"
+        android:text="Are you female?" 
+        android:onClick = "true" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/hello_world"
-        tools:context=".MainActivity" />
+        android:layout_marginTop="69dp"
+        android:ems="10"
+        android:hint="Please enter your name" />
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/female"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="90dp"
+        android:text="What is your gender?" />
 
 </RelativeLayout>

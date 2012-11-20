@@ -33,12 +33,23 @@ public final class R {
         public static final int squirtle=0x7f020013;
     }
     public static final class id {
-        public static final int menu_settings=0x7f070001;
-        public static final int pokeball=0x7f070000;
+        public static final int female=0x7f070001;
+        public static final int gyrados=0x7f070005;
+        public static final int male=0x7f070000;
+        public static final int menu_settings=0x7f07000b;
+        public static final int name=0x7f070002;
+        public static final int onix=0x7f070007;
+        public static final int pokeball=0x7f070004;
+        public static final int reset=0x7f070009;
+        public static final int snorlax=0x7f070008;
+        public static final int squirtle=0x7f070006;
+        public static final int start=0x7f07000a;
+        public static final int text1=0x7f070003;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int activity_poke_fling=0x7f030001;
+        public static final int activity_tutorial=0x7f030002;
     }
     public static final class menu {
         public static final int activity_main=0x7f060000;
@@ -50,6 +61,7 @@ public final class R {
         public static final int menu_settings=0x7f040002;
         public static final int title_activity_main=0x7f040003;
         public static final int title_activity_poke_fling=0x7f040004;
+        public static final int title_activity_tutorial=0x7f040005;
     }
     public static final class style {
         public static final int AppTheme=0x7f050000;

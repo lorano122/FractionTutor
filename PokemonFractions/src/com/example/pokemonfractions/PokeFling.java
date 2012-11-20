@@ -43,10 +43,7 @@ public class PokeFling extends Activity {
         return true;
     }
     
-
-
-    
-    
+ 
     private class PlayAreaView extends View {
 
         private GestureDetector gestures;
@@ -124,8 +121,9 @@ public class PokeFling extends Activity {
         protected void onDraw(Canvas canvas) {
             // Log.v(DEBUG_TAG, "onDraw");
         	ball = BitmapFactory.decodeResource(getResources(), R.drawable.pokeball);
+        	icon = BitmapFactory.decodeResource(getResources(), R.drawable.squirtle);
         	
-            canvas.drawBitmap(ball, translate, null);
+            canvas.drawBitmap(ball, 360, 520, null);
             canvas.drawBitmap(icon, -100, -100, null);
            
 //            createLocations(icons,canvas);

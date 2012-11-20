@@ -2,9 +2,12 @@ package com.example.pokemonfractions;
 
 import java.util.ArrayList;
 
+import com.example.gesturefunactivity.R;
+
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.os.Bundle;
@@ -30,9 +33,9 @@ public class PokeFling extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_poke_fling);
-	    //FrameLayout frame = (FrameLayout) findViewById(R.id.pokeball);
+	    FrameLayout frame = (FrameLayout) findViewById(R.id.graphics_holder);
 	    PlayAreaView image = new PlayAreaView(this);
-	    //frame.addView(image);
+	    frame.addView(image);
 	}
 
 
@@ -114,7 +117,7 @@ public class PokeFling extends Activity {
             translate = new Matrix();
             gestures = new GestureDetector(PokeFling.this,
                     new GestureListener(this));
-           
+            ball = BitmapFactory.decodeResource( getResources(), R.drawable.pokeball );
         }
 
       
@@ -123,9 +126,9 @@ public class PokeFling extends Activity {
             Log.v(DEBUG_TAG, "onDraw");
             canvas.drawBitmap(ball, translate, null);
 //            createLocations(icons,canvas);
-           
-            //Log.d(DEBUG_TAG, "Matrix: " + translate.toShortString());
-            //Log.d(DEBUG_TAG, "Canvas: " + m.toShortString());
+            Matrix m = canvas.getMatrix();
+            Log.d(DEBUG_TAG, "Matrix: " + translate.toShortString());
+            Log.d(DEBUG_TAG, "Canvas: " + m.toShortString());
         }
 
         @Override
@@ -167,8 +170,11 @@ public class PokeFling extends Activity {
 		}
 
 		public boolean onSingleTapConfirmed(MotionEvent e) {
-			// TODO Auto-generated method stub
-			return false;
+			Log.v( DEBUG_TAG, "singleTap" ); 
+			final float dx = getX();
+			final float dy = getY();
+			view.onMove( -dx, -dy );
+			return true;
 		}
 
 

@@ -1,8 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" 
-    android:orientation = "horizontal" >
+    android:layout_height="match_parent" >
 
     <Button
         android:id="@+id/male"
@@ -11,7 +10,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="167dp"
-        android:layout_marginLeft="197dp"
+        android:layout_marginLeft="97dp"
         android:text="Are you male?" 
         android:onClick = "true" />
 
@@ -22,7 +21,7 @@
         android:layout_alignBaseline="@+id/male"
         android:layout_alignBottom="@+id/male"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="208dp"
+        android:layout_marginRight="97dp"
         android:text="Are you female?" 
         android:onClick = "true" />
 

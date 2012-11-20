@@ -122,7 +122,7 @@ public class PokeFling extends Activity {
         	ball = BitmapFactory.decodeResource(getResources(), R.drawable.pokeball);
 //        	icon = BitmapFactory.decodeResource(getResources(), R.drawable.squirtle);
         	
-            canvas.drawBitmap(ball, 360, 520, null);
+            //canvas.drawBitmap(ball, 360, 520, null);
 //            canvas.drawBitmap(icon, 100, 100, null);
            
 //            createLocations(icons,canvas);
@@ -154,7 +154,7 @@ public class PokeFling extends Activity {
     	
     	
     	public boolean onDown(MotionEvent e) {
-    		return false;
+    		return true;
     	}
 
     	public boolean onDoubleTap(MotionEvent e) {
@@ -169,11 +169,11 @@ public class PokeFling extends Activity {
 		}
 
 		public boolean onSingleTapConfirmed(MotionEvent e) {
-			Log.v( DEBUG_TAG, "singleTap" ); 
-			//final float dx = getX();
-			//final float dy = getY();
-			//view.onMove( -dx, -dy );
-			//return true;
+			/*Log.v( DEBUG_TAG, "singleTap" ); 
+			final float dx = getX();
+			final float dy = getY();
+			view.onMove( -dx, -dy );
+			return true;*/
 			return false;
 		}
 

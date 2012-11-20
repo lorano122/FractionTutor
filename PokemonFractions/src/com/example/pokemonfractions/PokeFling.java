@@ -62,12 +62,13 @@ public class PokeFling extends Activity {
         private long endTime;
         private float totalAnimDx;
         private float totalAnimDy;
+        private float[] centerArray = { 1, 0, 360, 0, 1, 520, 0, 0, 1 };
         
         public PlayAreaView(Context context) {
             super(context);
             translate = new Matrix();
-            gestures = new GestureDetector(PokeFling.this,
-                    new GestureListener(this));
+            translate.setValues(centerArray);
+            gestures = new GestureDetector(PokeFling.this, new GestureListener(this));
             ball = BitmapFactory.decodeResource(getResources(), R.drawable.pokeball);
         }
 
@@ -111,7 +112,7 @@ public class PokeFling extends Activity {
         }
 
         public void onResetLocation() {
-            translate.reset();
+            translate.setValues(centerArray);
             invalidate();
         }
 
@@ -127,11 +128,14 @@ public class PokeFling extends Activity {
         	
 //        	icon = BitmapFactory.decodeResource(getResources(), R.drawable.squirtle);
         	
-            canvas.drawBitmap(ball, 360, 520, null);
+//            canvas.drawBitmap(ball, 360, 520, null);
+        	canvas.drawBitmap(ball, translate, null);
+            
+            Matrix m = canvas.getMatrix();
 //            canvas.drawBitmap(icon, 100, 100, null);
            
 //            createLocations(icons,canvas);
-            //Log.d(DEBUG_TAG, "Matrix: " + translate.toShortString());
+//            Log.d(DEBUG_TAG, "Matrix: " + translate.toShortString());
             //Log.d(DEBUG_TAG, "Canvas: " + m.toShortString());
         }
 

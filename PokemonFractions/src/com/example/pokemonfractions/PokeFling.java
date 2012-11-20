@@ -35,6 +35,11 @@ public class PokeFling extends Activity {
 	    PlayAreaView image = new PlayAreaView(this);
 	    frame.addView(image);
 	}
+	
+	 protected void onResume()
+     {
+     	super.onResume();
+     }
 
 
     @Override
@@ -135,89 +140,76 @@ public class PokeFling extends Activity {
             return gestures.onTouchEvent(event);
         }
         
-       
-        public void onResume()
-        {
+        private class GestureListener implements GestureDetector.OnGestureListener,GestureDetector.OnDoubleTapListener {
+        	PlayAreaView view;
         	
-        }
+        	public GestureListener(PlayAreaView view)
+        	{
+        		this.view = view;
+        	}
+        	
+        	
+        	public boolean onDown(MotionEvent e) {
+        		return true;
+        	}
+
+        	public boolean onDoubleTap(MotionEvent e) {
+        	    Log.v(DEBUG_TAG, "onDoubleTap");
+        	    view.onResetLocation();
+        	    return true;
+        	}
+
+    		public boolean onDoubleTapEvent(MotionEvent e) {
+    			// TODO Auto-generated method stub
+    			return false;
+    		}
+
+    		public boolean onSingleTapConfirmed(MotionEvent e) {
+    			Log.v( DEBUG_TAG, "singleTap" ); 
+    			final float dx = getX();
+    			final float dy = getY();
+    			view.onMove( -dx, -dy );
+    			return true;
+    			//return false;
+    		}
+
+
+    		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+    		    Log.v(DEBUG_TAG, "onFling");
+    		    final float distanceTimeFactor = 0.4f;
+    		    final float totalDx = (distanceTimeFactor * velocityX/2);
+    		    final float totalDy = (distanceTimeFactor * velocityY/2);
+    		    view.onAnimateMove(totalDx, totalDy,(long) (1000 * distanceTimeFactor));
+    		    return true;
+    		}
+
+
+    		public void onLongPress(MotionEvent e) {
+    			// TODO Auto-generated method stub
+    			
+    		}
+
+    		public boolean onScroll(MotionEvent e1, MotionEvent e2,
+    		    float distanceX, float distanceY) {
+    		    Log.v(DEBUG_TAG, "onScroll");
+    		    view.onMove(-distanceX, -distanceY);
+    		    return true;
+    		}
+
+    		public void onShowPress(MotionEvent e) {
+    			// TODO Auto-generated method stub
+    			
+    		}
+
+    		public boolean onSingleTapUp(MotionEvent e) {
+
+    			return false;
+    		}
+
+    }
 
 
     }
-    
-    private class GestureListener implements GestureDetector.OnGestureListener,GestureDetector.OnDoubleTapListener {
-    	PlayAreaView view;
-    	
-    	public GestureListener(PlayAreaView view)
-    	{
-    		this.view = view;
-    	}
-    	
-    	
-    	public boolean onDown(MotionEvent e) {
-    		return true;
-    	}
-
-    	public boolean onDoubleTap(MotionEvent e) {
-    	    Log.v(DEBUG_TAG, "onDoubleTap");
-    	    view.onResetLocation();
-    	    return true;
-    	}
-
-		public boolean onDoubleTapEvent(MotionEvent e) {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
-		public boolean onSingleTapConfirmed(MotionEvent e) {
-			/*Log.v( DEBUG_TAG, "singleTap" ); 
-			final float dx = getX();
-			final float dy = getY();
-			view.onMove( -dx, -dy );
-			return true;*/
-			return false;
-		}
-
-
-		public boolean onFling(MotionEvent e1, MotionEvent e2,final float velocityX, final float velocityY) {
-		    Log.v(DEBUG_TAG, "onFling");
-		    final float distanceTimeFactor = 0.4f;
-		    final float totalDx = (distanceTimeFactor * velocityX/2);
-		    final float totalDy = (distanceTimeFactor * velocityY/2);
-		    view.onAnimateMove(totalDx, totalDy,(long) (1000 * distanceTimeFactor));
-		    return true;
-		}
-
-
-		public void onLongPress(MotionEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		public boolean onScroll(MotionEvent e1, MotionEvent e2,
-		    float distanceX, float distanceY) {
-		    Log.v(DEBUG_TAG, "onScroll");
-		    view.onMove(-distanceX, -distanceY);
-		    return true;
-		}
-
-		public void onShowPress(MotionEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		public boolean onSingleTapUp(MotionEvent e) {
-
-			return false;
-		}
-		
-		
-	    public void onResume()
-	    {
-	    	
-	    }
-
-
-}
 
 
 }

@@ -25,15 +25,7 @@
         android:text="Are you female?" 
         android:onClick = "true" />
 
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="69dp"
-        android:ems="10"
-        android:hint="Please enter your name" />
+
 
     <TextView
         android:id="@+id/text1"

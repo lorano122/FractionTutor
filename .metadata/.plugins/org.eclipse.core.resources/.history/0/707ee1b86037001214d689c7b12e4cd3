@@ -1,0 +1,51 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="right"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/ans4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="temp4"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/ans2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="80dp"
+        android:layout_toLeftOf="@+id/ans4"
+        android:text="temp2"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/ans3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ans2"
+        android:layout_alignParentTop="true"
+        android:text="temp3"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/ans1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/ans4"
+        android:layout_alignBottom="@+id/ans4"
+        android:layout_marginRight="35dp"
+        android:layout_toLeftOf="@+id/ans2"
+        android:text="temp1"
+        android:textSize="40sp" />
+               <FrameLayout
+        android:id="@+id/graphics_holder"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">        
+    </FrameLayout>
+
+</RelativeLayout>

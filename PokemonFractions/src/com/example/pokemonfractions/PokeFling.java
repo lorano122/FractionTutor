@@ -1,13 +1,20 @@
 package com.example.pokemonfractions;
 
+import helpers.Location;
+
 import java.util.ArrayList;
+
+import mathClasses.GenerateBar;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -26,6 +33,7 @@ public class PokeFling extends Activity {
     private long endTime;
     private float totalAnimDx;
     private float totalAnimDy;
+    private GenerateBar fractions = new GenerateBar(10);
     
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -33,6 +41,7 @@ public class PokeFling extends Activity {
 	    setContentView(R.layout.activity_poke_fling);
 	    FrameLayout frame = (FrameLayout) findViewById(R.id.graphics_holder);
 	    PlayAreaView image = new PlayAreaView(this);
+	    this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 	    frame.addView(image);
 	}
 	
@@ -53,7 +62,7 @@ public class PokeFling extends Activity {
 
         private GestureDetector gestures;
         private Matrix translate;
-        private Bitmap ball;
+        private Bitmap ball,dex;
 //        private Bitmap icon;
 
         private Matrix animateStart;
@@ -62,7 +71,11 @@ public class PokeFling extends Activity {
         private long endTime;
         private float totalAnimDx;
         private float totalAnimDy;
-        private float[] centerArray = { 1, 0, 360, 0, 1, 520, 0, 0, 1 };
+        private float cx,cy;
+        private float[] centerArray = { 1, 0, 400, 0, 1, 250, 0, 0, 1 };
+        private int[] fPics = {R.drawable.f0,R.drawable.f1,R.drawable.f2,R.drawable.f3,R.drawable.f4,R.drawable.f5,R.drawable.f6,
+        		R.drawable.f7,R.drawable.f8,R.drawable.f9,R.drawable.f10};
+        private ArrayList<Location> icons = new ArrayList<Location>();
         
         public PlayAreaView(Context context) {
             super(context);
@@ -70,6 +83,8 @@ public class PokeFling extends Activity {
             translate.setValues(centerArray);
             gestures = new GestureDetector(PokeFling.this, new GestureListener(this));
             ball = BitmapFactory.decodeResource(getResources(), R.drawable.pokeball);
+            dex = BitmapFactory.decodeResource(getResources(), R.drawable.pokedex1);
+            createLocations();
         }
 
         public void onAnimateMove(float dx, float dy, long duration) {
@@ -120,21 +135,38 @@ public class PokeFling extends Activity {
             translate.postTranslate(dx, dy);
         }
          
-
+        public void createLocations()
+        {
+        	int[] icon = {R.drawable.squirtle,R.drawable.gyrados,R.drawable.snorlax,R.drawable.onix};
+        	for(int i = 0; i < 4; i++)
+        	{
+        		Bitmap b = BitmapFactory.decodeResource(getResources(), icon[i]);
+        		Location l = new Location(b,i+1);
+        		Log.d(DEBUG_TAG, "creating locations");
+        		icons.add(l);
+        	}
+        }
       
         @Override
         protected void onDraw(Canvas canvas) {
             // Log.v(DEBUG_TAG, "onDraw");
-        	
-//        	icon = BitmapFactory.decodeResource(getResources(), R.drawable.squirtle);
-        	
-//            canvas.drawBitmap(ball, 360, 520, null);
         	canvas.drawBitmap(ball, translate, null);
             
             Matrix m = canvas.getMatrix();
-//            canvas.drawBitmap(icon, 100, 100, null);
-           
-//            createLocations(icons,canvas);
+            
+            for(Location l : icons)
+            {
+            	l.setLocation(canvas.getWidth(), canvas.getHeight());
+            	l.draw(canvas);
+            }
+            int num = fractions.getAnswer();
+            Log.d(DEBUG_TAG, "fraction" + num);
+            Bitmap b = BitmapFactory.decodeResource(getResources(), fPics[num]);
+            canvas.drawBitmap(b, 10, 10, null);
+            float tempY = canvas.getHeight() - dex.getHeight();
+            
+            //canvas.drawBitmap(dex, 0,tempY, null);
+
 //            Log.d(DEBUG_TAG, "Matrix: " + translate.toShortString());
             //Log.d(DEBUG_TAG, "Canvas: " + m.toShortString());
         }

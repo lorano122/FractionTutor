@@ -12,6 +12,7 @@ public class GenerateBar {
 	public GenerateBar(int total)
 	{
 		this.total = total;
+		randFract();
 	}
 	
 	public void randFract()

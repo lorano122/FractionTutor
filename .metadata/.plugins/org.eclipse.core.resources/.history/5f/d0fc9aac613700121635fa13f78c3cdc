@@ -164,6 +164,8 @@ public class PokeFling extends Activity {
             Bitmap b = BitmapFactory.decodeResource(getResources(), fPics[num]);
             canvas.drawBitmap(b, 10, 10, null);
             float tempY = canvas.getHeight() - dex.getHeight();
+            
+            //canvas.drawBitmap(dex, 0,tempY, null);
 
 //            Log.d(DEBUG_TAG, "Matrix: " + translate.toShortString());
             //Log.d(DEBUG_TAG, "Canvas: " + m.toShortString());

@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
-import mathClasses.PokeFlingMath;
+import mathClasses.GenerateBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
@@ -33,7 +33,7 @@ public class PokeFling extends Activity {
 
 	private static final String DEBUG_TAG = "Fling";
 
-    private PokeFlingMath fractions = new PokeFlingMath(10);
+    private GenerateBar fractions = new GenerateBar(10);
     private ArrayList<Location> icons = new ArrayList<Location>();
     private ArrayList<String> wrongAns = fractions.randomAnswers(3);
     private int num = fractions.getAnswer();
@@ -207,7 +207,11 @@ public class PokeFling extends Activity {
     				i++;
     			}
     			matched.put(l.getIndex(), temp);
+    			
     		}
+//    		p.setColor(Color.rgb(10, 144, 255));
+//    		canvas.drawText(correct + " / " + question, 1100, 600,p);
+//    		
     	}
          
     	public void nextQuestion(String ans)
@@ -237,11 +241,7 @@ public class PokeFling extends Activity {
 			answer = num +" / 10";   			
     		}
     		else
-    		{
-    			makeToast("Done, starting over :)");
-    			correct = 0;
-    			question = 0;
-    		}
+    			makeToast("Done");
 
             final Handler backHandler = new Handler();
             backHandler.postDelayed(new Runnable() {
@@ -253,7 +253,8 @@ public class PokeFling extends Activity {
       
         @Override
         protected void onDraw(Canvas canvas) {           
-            Matrix m = canvas.getMatrix();            
+            Matrix m = canvas.getMatrix();
+            
             for(Location l : icons)
             {
             	l.setLocation(canvas.getWidth(), canvas.getHeight());

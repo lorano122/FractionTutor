@@ -34,16 +34,17 @@ public final class R {
         public static final int onix=0x7f020014;
         public static final int pokeball=0x7f020015;
         public static final int pokedex1=0x7f020016;
-        public static final int sixth1=0x7f020017;
-        public static final int sixth2=0x7f020018;
-        public static final int sixth3=0x7f020019;
-        public static final int sixth4=0x7f02001a;
-        public static final int sixth5=0x7f02001b;
-        public static final int sixth6=0x7f02001c;
-        public static final int sixths_lines=0x7f02001d;
-        public static final int smallball=0x7f02001e;
-        public static final int snorlax=0x7f02001f;
-        public static final int squirtle=0x7f020020;
+        public static final int scoreball=0x7f020017;
+        public static final int sixth1=0x7f020018;
+        public static final int sixth2=0x7f020019;
+        public static final int sixth3=0x7f02001a;
+        public static final int sixth4=0x7f02001b;
+        public static final int sixth5=0x7f02001c;
+        public static final int sixth6=0x7f02001d;
+        public static final int sixths_lines=0x7f02001e;
+        public static final int smallball=0x7f02001f;
+        public static final int snorlax=0x7f020020;
+        public static final int squirtle=0x7f020021;
     }
     public static final class id {
         public static final int female=0x7f070001;

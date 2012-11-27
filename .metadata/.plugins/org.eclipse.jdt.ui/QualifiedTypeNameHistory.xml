@@ -14,9 +14,7 @@
 <fullyQualifiedTypeName name="mathClasses.GenerateBar"/>
 <fullyQualifiedTypeName name="android.content.pm.ActivityInfo"/>
 <fullyQualifiedTypeName name="android.graphics.Paint"/>
-<fullyQualifiedTypeName name="android.graphics.Color"/>
 <fullyQualifiedTypeName name="android.graphics.Rect"/>
-<fullyQualifiedTypeName name="com.example.pokemonfractions.R.drawable"/>
 <fullyQualifiedTypeName name="com.example.pokemonfractions.R.layout"/>
 <fullyQualifiedTypeName name="com.example.pokemonfractions.R.id"/>
 <fullyQualifiedTypeName name="android.widget.TextView"/>
@@ -24,4 +22,10 @@
 <fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="android.widget.Toast"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.concurrent.ScheduledExecutorService"/>
+<fullyQualifiedTypeName name="java.util.concurrent.Executors"/>
+<fullyQualifiedTypeName name="java.util.concurrent.TimeUnit"/>
+<fullyQualifiedTypeName name="android.os.Handler"/>
+<fullyQualifiedTypeName name="android.graphics.Color"/>
+<fullyQualifiedTypeName name="com.example.pokemonfractions.R.drawable"/>
 </qualifiedTypeNameHistroy>

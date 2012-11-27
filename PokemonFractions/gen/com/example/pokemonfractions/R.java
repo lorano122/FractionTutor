@@ -41,8 +41,9 @@ public final class R {
         public static final int sixth5=0x7f02001b;
         public static final int sixth6=0x7f02001c;
         public static final int sixths_lines=0x7f02001d;
-        public static final int snorlax=0x7f02001e;
-        public static final int squirtle=0x7f02001f;
+        public static final int smallball=0x7f02001e;
+        public static final int snorlax=0x7f02001f;
+        public static final int squirtle=0x7f020020;
     }
     public static final class id {
         public static final int female=0x7f070001;

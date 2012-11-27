@@ -169,21 +169,6 @@ public class PokeFling extends Activity {
         }
 
 
-        public void drawAnswers(Canvas canvas)
-        {
-        	Bitmap b = BitmapFactory.decodeResource(getResources(),R.drawable.smallball);
-        	float x = 950;
-        	float y = 550;
-        	float size = 50;
-        	for(int i = 0; i < 6; i++)
-        	{
-        		if(i <= correct)
-        		{
-        			canvas.drawBitmap(b, x, y,p);
-        			x+=size;
-        		}
-        	}
-        }
         
     	public void setTexts(Canvas canvas)
     	{
@@ -209,9 +194,9 @@ public class PokeFling extends Activity {
     			matched.put(l.getIndex(), temp);
     			
     		}
-//    		p.setColor(Color.rgb(10, 144, 255));
-//    		canvas.drawText(correct + " / " + question, 1100, 600,p);
-//    		
+    		p.setColor(Color.rgb(10, 144, 255));
+    		canvas.drawText(correct + " / " + question, 1100, 600,p);
+    		
     	}
          
     	public void nextQuestion(String ans)
@@ -232,7 +217,6 @@ public class PokeFling extends Activity {
 	    			makeToast("incorrect");
 	    		}
     		question++;
-    		
 			fractions.randFract();
 			set = fractions.getRandom();
 			num = fractions.getAnswer();
@@ -264,7 +248,6 @@ public class PokeFling extends Activity {
             Bitmap b = BitmapFactory.decodeResource(getResources(), fPics[num]);
             canvas.drawBitmap(b, 10, 10, null);            
             setTexts(canvas);
-            drawAnswers(canvas);
             canvas.drawBitmap(ball, translate, null);
         }
 

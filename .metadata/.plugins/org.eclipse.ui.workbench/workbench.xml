@@ -41,22 +41,16 @@
 <part id="4"/>
 <part id="5"/>
 <part id="6"/>
-<part id="7"/>
-<part id="8"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
 <editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PokeFling.java" partName="PokeFling.java" path="C:/Users/christina/Documents/GitHub/FractionTutor/PokemonFractions/src/com/example/pokemonfractions/PokeFling.java" title="PokeFling.java" tooltip="PokemonFractions/src/com/example/pokemonfractions/PokeFling.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PokemonFractions/src/com/example/pokemonfractions/PokeFling.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="9051" selectionTopPixel="3675"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="6005" selectionTopPixel="2150"/>
 </editor>
 <editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_poke_fling.xml" partName="activity_poke_fling.xml" path="C:/Users/christina/Documents/GitHub/FractionTutor/PokemonFractions/res/layout-land/activity_poke_fling.xml" title="activity_poke_fling.xml" tooltip="PokemonFractions/res/layout-land/activity_poke_fling.xml" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PokemonFractions/res/layout-land/activity_poke_fling.xml"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Location.java" partName="Location.java" path="C:/Users/christina/Documents/GitHub/FractionTutor/PokemonFractions/src/helpers/Location.java" title="Location.java" tooltip="PokemonFractions/src/helpers/Location.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PokemonFractions/src/helpers/Location.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="5" selectionOffset="1163" selectionTopPixel="645"/>
 </editor>
 <editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_main.xml" partName="activity_main.xml" path="C:/Users/christina/Documents/GitHub/FractionTutor/PokemonFractions/res/layout-land/activity_main.xml" title="activity_main.xml" tooltip="PokemonFractions/res/layout-land/activity_main.xml" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PokemonFractions/res/layout-land/activity_main.xml"/>
@@ -66,7 +60,7 @@
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GenerateBar.java" partName="GenerateBar.java" path="C:/Users/christina/Documents/GitHub/FractionTutor/PokemonFractions/src/mathClasses/GenerateBar.java" title="GenerateBar.java" tooltip="PokemonFractions/src/mathClasses/GenerateBar.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PokemonFractions/src/mathClasses/GenerateBar.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1088" selectionTopPixel="508"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="762" selectionTopPixel="270"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainActivity.java" partName="MainActivity.java" path="C:/Users/christina/Documents/GitHub/FractionTutor/PokemonFractions/src/com/example/pokemonfractions/MainActivity.java" title="MainActivity.java" tooltip="PokemonFractions/src/com/example/pokemonfractions/MainActivity.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PokemonFractions/src/com/example/pokemonfractions/MainActivity.java"/>
@@ -89,7 +83,9 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings (45 items)"/>
+<category IMemento.internal.id="Warnings (55 items)"/>
+<category IMemento.internal.id="Warnings"/>
+<category IMemento.internal.id="Errors"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="75" org.eclipse.ui.ide.markerType="75" org.eclipse.ui.ide.pathField="100" org.eclipse.ui.ide.resourceField="75" org.eclipse.ui.ide.severityAndDescriptionField="250"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -340,158 +336,158 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/PokemonFractions/res/layout-land/activity_poke_fling.xml"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PokemonFractions/src/com/example/pokemonfractions/PokeFling.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PokemonFractions/src/mathClasses/GenerateBar.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PokemonFractions/src/com/example/pokemonfractions/PokeFling.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PokemonFractions/src/helpers/Location.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PokemonFractions/src/mathClasses/GenerateBar.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PokemonFractions/src/helpers/Location.java"/>
 </editors>
-<item historyLabel="PokeFling.java" index="1">
-<position info="not_deleted" x="2560" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="1">
-<position/>
-</item>
-<item historyLabel="GenerateBar.java" index="2">
-<position info="not_deleted" x="851" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="1">
-<position/>
-</item>
-<item historyLabel="PokeFling.java" index="1">
-<position info="not_deleted" x="5443" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="1">
-<position info="not_deleted" x="5609" y="0"/>
-</item>
-<item historyLabel="activity_poke_fling.xml" index="0"/>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="5799" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="5542" y="0"/>
-</item>
-<item historyLabel="Location.java" index="4">
-<position info="not_deleted" x="670" y="0"/>
-</item>
-<item historyLabel="Location.java" index="4">
-<position info="not_deleted" x="1141" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="5740" y="0"/>
-</item>
-<item historyLabel="GenerateBar.java" index="5">
-<position info="not_deleted" x="1024" y="0"/>
-</item>
-<item historyLabel="GenerateBar.java" index="5">
-<position info="not_deleted" x="890" y="0"/>
-</item>
-<item historyLabel="GenerateBar.java" index="5">
-<position info="not_deleted" x="801" y="0"/>
-</item>
-<item historyLabel="GenerateBar.java" index="5">
-<position info="not_deleted" x="669" y="0"/>
-</item>
-<item historyLabel="GenerateBar.java" index="5">
-<position info="not_deleted" x="667" y="0"/>
-</item>
-<item historyLabel="GenerateBar.java" index="5">
-<position info="not_deleted" x="926" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="6195" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="10180" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="9379" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="9366" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="9302" y="0"/>
-</item>
-<item historyLabel="Location.java" index="6">
-<position info="not_deleted" x="1169" y="0"/>
-</item>
-<item historyLabel="Location.java" index="6">
-<position/>
-</item>
-<item historyLabel="Location.java" index="6">
-<position/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="5797" y="0"/>
-</item>
-<item historyLabel="Location.java" index="6">
-<position info="not_deleted" x="1178" y="0"/>
-</item>
-<item historyLabel="GenerateBar.java" index="5">
-<position info="not_deleted" x="1092" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="5797" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="6326" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="6749" y="0"/>
-</item>
-<item historyLabel="GenerateBar.java" index="5">
-<position info="not_deleted" x="906" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="6749" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="2015" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="2056" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="2056" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="9366" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="1561" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="1559" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="6179" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="3959" y="0"/>
-</item>
-<item historyLabel="GenerateBar.java" index="5">
-<position info="not_deleted" x="418" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="3959" y="0"/>
-</item>
-<item historyLabel="Location.java" index="6">
-<position info="not_deleted" x="1163" y="5"/>
-</item>
-<item historyLabel="GenerateBar.java" index="5">
-<position info="not_deleted" x="1088" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="3959" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="3">
-<position info="not_deleted" x="9265" y="0"/>
-</item>
-<item active="true" historyLabel="PokeFling.java" index="3">
+<item historyLabel="PokeFling.java" index="0">
 <position info="not_deleted" x="9326" y="0"/>
+</item>
+<item historyLabel="GenerateBar.java" index="1">
+<position info="not_deleted" x="1098" y="0"/>
+</item>
+<item historyLabel="GenerateBar.java" index="1">
+<position info="not_deleted" x="1191" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="9888" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="5102" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="5255" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="5127" y="0"/>
+</item>
+<item historyLabel="GenerateBar.java" index="1">
+<position info="not_deleted" x="1191" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="5010" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="9299" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="9919" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="6987" y="34"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="6577" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="7294" y="0"/>
+</item>
+<item historyLabel="GenerateBar.java" index="1">
+<position info="not_deleted" x="1191" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="7294" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="6701" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position/>
+</item>
+<item historyLabel="GenerateBar.java" index="1">
+<position info="not_deleted" x="916" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="6977" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="7077" y="37"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position/>
+</item>
+<item historyLabel="GenerateBar.java" index="1">
+<position info="not_deleted" x="916" y="0"/>
+</item>
+<item historyLabel="GenerateBar.java" index="1">
+<position/>
+</item>
+<item historyLabel="GenerateBar.java" index="1">
+<position info="not_deleted" x="272" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="6181" y="0"/>
+</item>
+<item historyLabel="GenerateBar.java" index="1">
+<position info="not_deleted" x="376" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="3759" y="0"/>
+</item>
+<item historyLabel="GenerateBar.java" index="1">
+<position info="not_deleted" x="424" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="3759" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="1434" y="7"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="10537" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="6864" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="4916" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="7155" y="149"/>
+</item>
+<item historyLabel="GenerateBar.java" index="1">
+<position info="not_deleted" x="424" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="7391" y="0"/>
+</item>
+<item historyLabel="GenerateBar.java" index="1">
+<position info="not_deleted" x="762" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="7391" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="5829" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="6184" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="6131" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="6136" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="6172" y="0"/>
+</item>
+<item active="true" historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="8394" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>

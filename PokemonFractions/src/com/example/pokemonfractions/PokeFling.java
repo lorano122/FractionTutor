@@ -4,21 +4,22 @@ import helpers.Location;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 import mathClasses.GenerateBar;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Menu;
@@ -26,24 +27,19 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class PokeFling extends Activity {
 
 	private static final String DEBUG_TAG = "Fling";
-    private Matrix animateStart;
-    private OvershootInterpolator animateInterpolator;
-    private long startTime;
-    private long endTime;
-    private float totalAnimDx;
-    private float totalAnimDy;
+
     private GenerateBar fractions = new GenerateBar(10);
     private ArrayList<Location> icons = new ArrayList<Location>();
     private ArrayList<String> wrongAns = fractions.randomAnswers(3);
     private int num = fractions.getAnswer();
     private String answer = num +" / 10";
-    private int question = 1;
+    private int question = 0,correct = 0;
+    private int set = fractions.getRandom();
     private HashMap<Integer,String> matched = new HashMap<Integer,String>();
     
 	@Override
@@ -60,7 +56,7 @@ public class PokeFling extends Activity {
 	
 	public void makeToast(String toast)
 	{
-		Toast.makeText(this, toast, 1000).show();
+		Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
 	}
 	
 	 protected void onResume()
@@ -80,7 +76,7 @@ public class PokeFling extends Activity {
 
         private GestureDetector gestures;
         private Matrix translate;
-        private Bitmap ball,dex;
+        private Bitmap ball;
 //        private Bitmap icon;
 
         private Matrix animateStart;
@@ -90,7 +86,7 @@ public class PokeFling extends Activity {
         private float totalAnimDx;
         private float totalAnimDy;
         private float cx,cy;
-        private float[] centerArray = { 1, 0, 400, 0, 1, 250, 0, 0, 1 };
+        private float[] centerArray = { 1, 0, 600, 0, 1, 250, 0, 0, 1 };
         private int[] fPics = {R.drawable.f0,R.drawable.f1,R.drawable.f2,R.drawable.f3,R.drawable.f4,R.drawable.f5,R.drawable.f6,
         		R.drawable.f7,R.drawable.f8,R.drawable.f9,R.drawable.f10};
         private Paint p = new Paint();
@@ -112,9 +108,7 @@ public class PokeFling extends Activity {
         		Location l = new Location(b,i+1);
         		Log.d(DEBUG_TAG, "creating locations");
         		icons.add(l);
-        	}
-        	wrongAns.add(answer);
-            
+        	}       
             
         }
 
@@ -140,8 +134,9 @@ public class PokeFling extends Activity {
             float curDy = percentDistance * totalAnimDy;
             translate.set(animateStart);
             onMove(curDx, curDy);
-
+            
             //Log.v(DEBUG_TAG, "We're " + percentDistance + " of the way there!");
+            
             if (percentTime < 1.0f) 
             {
                 post(new Runnable() {
@@ -150,6 +145,7 @@ public class PokeFling extends Activity {
                     }
                 });
             }
+            
         }
 
         public void onMove(float dx, float dy) {        	
@@ -161,16 +157,24 @@ public class PokeFling extends Activity {
             translate.setValues(centerArray);
             invalidate();
         }
+        
+        public void onResetLocation(boolean flag) {
+            if(flag)
+            	translate.reset();
+            invalidate();
+        }
 
         public void onSetLocation(float dx, float dy) {
             translate.postTranslate(dx, dy);
         }
 
-    	
+
+        
     	public void setTexts(Canvas canvas)
     	{
-    		int set = fractions.getRandom();
+    		
     		int i = 0;
+    		p.setColor(Color.BLACK);
     		for(Location l : icons)
     		{
     			float x = l.getX();
@@ -180,7 +184,6 @@ public class PokeFling extends Activity {
     			{
     				canvas.drawText(answer,x , y, p);
     				temp = answer;
-    				
     			}
     			else
     			{
@@ -188,56 +191,64 @@ public class PokeFling extends Activity {
     				temp = wrongAns.get(i);
     				i++;
     			}
-    			//matched.put(l.getIndex(), temp);
+    			matched.put(l.getIndex(), temp);
+    			
     		}
+    		p.setColor(Color.rgb(10, 144, 255));
+    		canvas.drawText(correct + " / " + question, 1100, 600,p);
     		
     	}
          
     	public void nextQuestion(String ans)
     	{
-    		String[] s = ans.split("/");
+    		ans = ans.replaceAll(" / ", "X");
+    		String[] s = ans.split("X");
+    		Log.d(DEBUG_TAG, s[0] + " length: "+s.length);
     		int a = Integer.parseInt(s[0]);
-    		if(a == num)
+    		if(correct < 6)
     		{
-    			makeToast("correct");
-    		}
-    		else
-    		{
-    			makeToast("incorrect");
-    		}
+	    		if(a == num)
+	    		{
+	    			correct++;
+	    			makeToast("correct");
+	    		}
+	    		else
+	    		{
+	    			makeToast("incorrect");
+	    		}
     		question++;
-    		if(question >= 6 )
-    		{
-    			fractions.randFract();
-    			num = fractions.getAnswer();
-    			wrongAns = fractions.randomAnswers(3);
-    			answer = num +" / 10";
-    			
+			fractions.randFract();
+			set = fractions.getRandom();
+			num = fractions.getAnswer();
+			wrongAns.clear();
+			wrongAns = fractions.randomAnswers(3);
+			answer = num +" / 10";   			
     		}
     		else
     			makeToast("Done");
+
+            final Handler backHandler = new Handler();
+            backHandler.postDelayed(new Runnable() {
+                public void run() {
+                	onResetLocation();
+                }
+            }, 500);
     	}
       
         @Override
-        protected void onDraw(Canvas canvas) {
-            // Log.v(DEBUG_TAG, "onDraw");
-        	canvas.drawBitmap(ball, translate, null);
-            
+        protected void onDraw(Canvas canvas) {           
             Matrix m = canvas.getMatrix();
             
             for(Location l : icons)
             {
             	l.setLocation(canvas.getWidth(), canvas.getHeight());
-            	l.draw(canvas);
+            	l.draw(canvas);            	
             }            
             Log.d(DEBUG_TAG, "fraction" + num);
             Bitmap b = BitmapFactory.decodeResource(getResources(), fPics[num]);
-            canvas.drawBitmap(b, 10, 10, null);
-            
+            canvas.drawBitmap(b, 10, 10, null);            
             setTexts(canvas);
-
-//            Log.d(DEBUG_TAG, "Matrix: " + translate.toShortString());
-            //Log.d(DEBUG_TAG, "Canvas: " + m.toShortString());
+            canvas.drawBitmap(ball, translate, null);
         }
 
         @Override
@@ -275,7 +286,6 @@ public class PokeFling extends Activity {
     			final float dy = getY();
     			view.onMove( -dx, -dy );
     			return true;
-    			//return false;
     		}
 
 
@@ -285,39 +295,49 @@ public class PokeFling extends Activity {
     		    final float totalDx = (distanceTimeFactor * velocityX/2);
     		    final float totalDy = (distanceTimeFactor * velocityY/2);
     		    float dx=0,dy=0;
-    		    String ans;
+    		    String ans="11/10";
     		    //view.onAnimateMove(totalDx, totalDy,(long) (1000 * distanceTimeFactor));
-    		    if(velocityX < 0)
+    		    if(fractions.isBigger(velocityX, velocityY))
     		    {
-    		    	dx = icons.get(0).getX() - view.ball.getWidth()*4;
-    		    	dy = icons.get(0).getY() - view.ball.getHeight()*2;
-    		    	//ans = matched.get(0);
-    		    	
+	    		    if(velocityX < 0)
+	    		    {
+	    		    	dx = icons.get(0).getX();
+	    		    	dy = icons.get(0).getY();
+	    		    	ans = matched.get(icons.get(0).getIndex());
+	    		    	
+	    		    }
+	    		    if(velocityX > 0)
+	    		    {
+	    		    	dx = icons.get(3).getX();
+	    		    	dy = icons.get(3).getY();
+	    		    	ans = matched.get(icons.get(3).getIndex());
+	    		    	
+	    		    }
+	    		  
     		    }
-    		    if(velocityX > 0)
-    		    {
-    		    	dx = icons.get(3).getX()- view.ball.getWidth()*4;
-    		    	dy = icons.get(3).getY()- view.ball.getHeight()*2;
-    		    	//ans = matched.get(3);
-    		    	
-    		    }
-    		    if(velocityY > 0)
-    		    {
-    		    	dx = icons.get(1).getX()- view.ball.getWidth()*4;
-    		    	dy = icons.get(1).getY()- view.ball.getHeight()*2;
-    		    	//ans = matched.get(1);
-    		    	
-    		    }
-    		    if(velocityY < 0)
-    		    {
-    		    	dx = icons.get(2).getX()- view.ball.getWidth()*4;
-    		    	dy = icons.get(2).getY()- view.ball.getHeight()*2;
-    		    	//ans = matched.get(2);
-    		    	
-    		    }
-    		    //nextQuestion(ans);
-    		    view.onResetLocation();
-    		    view.onMove(-dx, -dy);
+	    		else
+	    		{
+    			  if(velocityY > 0)
+	    		    {
+    				  	dx = (float) (icons.get(2).getX());
+	    		    	dy = icons.get(2).getY();
+	    		    	ans = matched.get(icons.get(2).getIndex());
+	    		    	
+	    		    }
+	    		    if(velocityY < 0)
+	    		    {
+	    		    	
+	    		    	dx = (float) (icons.get(1).getX());
+	    		    	dy = icons.get(1).getY();
+	    		    	ans = matched.get(icons.get(1).getIndex());
+	    		    }
+
+	    		}
+    		    
+    		    view.onResetLocation(true);
+    		    view.onMove(dx, dy);
+    		    nextQuestion(ans);
+
     		    return true;
     		}
 
@@ -329,8 +349,8 @@ public class PokeFling extends Activity {
 
     		public boolean onScroll(MotionEvent e1, MotionEvent e2,
     		    float distanceX, float distanceY) {
-    		    Log.v(DEBUG_TAG, "onScroll");
-    		    view.onMove(-distanceX, -distanceY);
+//    		    Log.v(DEBUG_TAG, "onScroll");
+    		    //view.onMove(-distanceX, -distanceY);
     		    return true;
     		}
 

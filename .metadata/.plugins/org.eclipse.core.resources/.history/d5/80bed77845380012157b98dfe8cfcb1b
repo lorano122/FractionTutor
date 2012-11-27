@@ -3,7 +3,6 @@ package com.example.pokemonfractions;
 import helpers.Location;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
 
 import mathClasses.GenerateBar;
@@ -27,7 +26,6 @@ import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class PokeFling extends Activity {
 
@@ -40,11 +38,6 @@ public class PokeFling extends Activity {
     private float totalAnimDy;
     private GenerateBar fractions = new GenerateBar(10);
     private ArrayList<Location> icons = new ArrayList<Location>();
-    private ArrayList<String> wrongAns = fractions.randomAnswers(3);
-    private int num = fractions.getAnswer();
-    private String answer = num +" / 10";
-    private int question = 1;
-    private HashMap<Integer,String> matched = new HashMap<Integer,String>();
     
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -54,13 +47,6 @@ public class PokeFling extends Activity {
 	    PlayAreaView image = new PlayAreaView(this);
 	    this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 	    frame.addView(image);
-
-        
-	}
-	
-	public void makeToast(String toast)
-	{
-		Toast.makeText(this, toast, 1000).show();
 	}
 	
 	 protected void onResume()
@@ -94,7 +80,8 @@ public class PokeFling extends Activity {
         private int[] fPics = {R.drawable.f0,R.drawable.f1,R.drawable.f2,R.drawable.f3,R.drawable.f4,R.drawable.f5,R.drawable.f6,
         		R.drawable.f7,R.drawable.f8,R.drawable.f9,R.drawable.f10};
         private Paint p = new Paint();
-       
+        private ArrayList<String> temp = fractions.randomAnswers(3);
+        private int num = fractions.getAnswer();
         
         
         public PlayAreaView(Context context) {
@@ -103,17 +90,10 @@ public class PokeFling extends Activity {
             translate.setValues(centerArray);
             gestures = new GestureDetector(PokeFling.this, new GestureListener(this));
             ball = BitmapFactory.decodeResource(getResources(), R.drawable.pokeball);
+            dex = BitmapFactory.decodeResource(getResources(), R.drawable.pokedex1);
+            createLocations();
             p.setTextSize(40);
             p.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-            int[] icon = {R.drawable.squirtle,R.drawable.gyrados,R.drawable.snorlax,R.drawable.onix};
-        	for(int i = 0; i < 4; i++)
-        	{
-        		Bitmap b = BitmapFactory.decodeResource(getResources(), icon[i]);
-        		Location l = new Location(b,i+1);
-        		Log.d(DEBUG_TAG, "creating locations");
-        		icons.add(l);
-        	}
-        	wrongAns.add(answer);
             
             
         }
@@ -165,58 +145,53 @@ public class PokeFling extends Activity {
         public void onSetLocation(float dx, float dy) {
             translate.postTranslate(dx, dy);
         }
-
+    	public ArrayList<Integer> randomAnswers(int num,int total,int fraction)
+    	{
+    		Random r = new Random();
+    		ArrayList<Integer> ans = new ArrayList<Integer>();
+    		for(int i = 0; i < num; i ++)
+    		{
+    			int temp = (int)(r.nextDouble()*total+1);
+    			while(temp == fraction)
+    				temp = (int)(r.nextDouble()*total+1);
+    			ans.add(temp);
+    		}
+    		return ans;
+    		
+    	}
     	
     	public void setTexts(Canvas canvas)
     	{
-    		int set = fractions.getRandom();
+    		
+    		Random r = new Random();
+    		int set = (int) (r.nextDouble()*4 + 1);
     		int i = 0;
     		for(Location l : icons)
     		{
     			float x = l.getX();
     			float y = l.getY()-30;
-    			String temp;
     			if(set == l.getIndex())
-    			{
-    				canvas.drawText(answer,x , y, p);
-    				temp = answer;
-    				
-    			}
+    				canvas.drawText(fractions.getAnswerString(),x , y, p);
     			else
     			{
-    				canvas.drawText(wrongAns.get(i),x , y, p);    				
-    				temp = wrongAns.get(i);
+    				canvas.drawText(temp.get(i),x , y, p);
     				i++;
     			}
-    			//matched.put(l.getIndex(), temp);
     		}
     		
     	}
          
-    	public void nextQuestion(String ans)
-    	{
-    		String[] s = ans.split("/");
-    		int a = Integer.parseInt(s[0]);
-    		if(a == num)
-    		{
-    			makeToast("correct");
-    		}
-    		else
-    		{
-    			makeToast("incorrect");
-    		}
-    		question++;
-    		if(question >= 6 )
-    		{
-    			fractions.randFract();
-    			num = fractions.getAnswer();
-    			wrongAns = fractions.randomAnswers(3);
-    			answer = num +" / 10";
-    			
-    		}
-    		else
-    			makeToast("Done");
-    	}
+        public void createLocations()
+        {
+        	int[] icon = {R.drawable.squirtle,R.drawable.gyrados,R.drawable.snorlax,R.drawable.onix};
+        	for(int i = 0; i < 4; i++)
+        	{
+        		Bitmap b = BitmapFactory.decodeResource(getResources(), icon[i]);
+        		Location l = new Location(b,i+1);
+        		Log.d(DEBUG_TAG, "creating locations");
+        		icons.add(l);
+        	}
+        }
       
         @Override
         protected void onDraw(Canvas canvas) {
@@ -229,12 +204,15 @@ public class PokeFling extends Activity {
             {
             	l.setLocation(canvas.getWidth(), canvas.getHeight());
             	l.draw(canvas);
-            }            
+            }
+            //setFractions();
+            
             Log.d(DEBUG_TAG, "fraction" + num);
             Bitmap b = BitmapFactory.decodeResource(getResources(), fPics[num]);
             canvas.drawBitmap(b, 10, 10, null);
             
             setTexts(canvas);
+            float tempY = canvas.getHeight() - dex.getHeight();
 
 //            Log.d(DEBUG_TAG, "Matrix: " + translate.toShortString());
             //Log.d(DEBUG_TAG, "Canvas: " + m.toShortString());
@@ -284,40 +262,33 @@ public class PokeFling extends Activity {
     		    final float distanceTimeFactor = 0.4f;
     		    final float totalDx = (distanceTimeFactor * velocityX/2);
     		    final float totalDy = (distanceTimeFactor * velocityY/2);
-    		    float dx=0,dy=0;
-    		    String ans;
+    		    float dx,dy;
+    		    
     		    //view.onAnimateMove(totalDx, totalDy,(long) (1000 * distanceTimeFactor));
     		    if(velocityX < 0)
     		    {
-    		    	dx = icons.get(0).getX() - view.ball.getWidth()*4;
-    		    	dy = icons.get(0).getY() - view.ball.getHeight()*2;
-    		    	//ans = matched.get(0);
-    		    	
+    		    	dx = icons.get(0).getX();
+    		    	dy = icons.get(0).getY();
+    		    	view.onMove(dx, dy);
     		    }
-    		    if(velocityX > 0)
+    		    else if(velocityX > 0)
     		    {
-    		    	dx = icons.get(3).getX()- view.ball.getWidth()*4;
-    		    	dy = icons.get(3).getY()- view.ball.getHeight()*2;
-    		    	//ans = matched.get(3);
-    		    	
+    		    	dx = icons.get(3).getX();
+    		    	dy = icons.get(3).getY();
+    		    	view.onMove(dx, dy);
     		    }
-    		    if(velocityY > 0)
+    		    else if(velocityY > 0)
     		    {
-    		    	dx = icons.get(1).getX()- view.ball.getWidth()*4;
-    		    	dy = icons.get(1).getY()- view.ball.getHeight()*2;
-    		    	//ans = matched.get(1);
-    		    	
+    		    	dx = icons.get(2).getX();
+    		    	dy = icons.get(2).getY();
+    		    	view.onMove(dx, dy);
     		    }
-    		    if(velocityY < 0)
+    		    else if(velocityY < 0)
     		    {
-    		    	dx = icons.get(2).getX()- view.ball.getWidth()*4;
-    		    	dy = icons.get(2).getY()- view.ball.getHeight()*2;
-    		    	//ans = matched.get(2);
-    		    	
+    		    	dx = icons.get(1).getX();
+    		    	dy = icons.get(1).getY();
+    		    	view.onMove(dx, dy);
     		    }
-    		    //nextQuestion(ans);
-    		    view.onResetLocation();
-    		    view.onMove(-dx, -dy);
     		    return true;
     		}
 

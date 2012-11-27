@@ -284,7 +284,7 @@ public class PokeFling extends Activity {
     		    final float distanceTimeFactor = 0.4f;
     		    final float totalDx = (distanceTimeFactor * velocityX/2);
     		    final float totalDy = (distanceTimeFactor * velocityY/2);
-    		    float dx=0,dy=0;
+    		    float dx,dy;
     		    String ans;
     		    //view.onAnimateMove(totalDx, totalDy,(long) (1000 * distanceTimeFactor));
     		    if(velocityX < 0)

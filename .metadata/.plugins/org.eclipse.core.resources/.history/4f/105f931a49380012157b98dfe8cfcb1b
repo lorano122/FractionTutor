@@ -54,7 +54,15 @@ public class PokeFling extends Activity {
 	    PlayAreaView image = new PlayAreaView(this);
 	    this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 	    frame.addView(image);
-
+        	int[] icon = {R.drawable.squirtle,R.drawable.gyrados,R.drawable.snorlax,R.drawable.onix};
+        	for(int i = 0; i < 4; i++)
+        	{
+        		Bitmap b = BitmapFactory.decodeResource(getResources(), icon[i]);
+        		Location l = new Location(b,i+1);
+        		Log.d(DEBUG_TAG, "creating locations");
+        		icons.add(l);
+        	}
+        	wrongAns.add(answer);
         
 	}
 	
@@ -105,15 +113,6 @@ public class PokeFling extends Activity {
             ball = BitmapFactory.decodeResource(getResources(), R.drawable.pokeball);
             p.setTextSize(40);
             p.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-            int[] icon = {R.drawable.squirtle,R.drawable.gyrados,R.drawable.snorlax,R.drawable.onix};
-        	for(int i = 0; i < 4; i++)
-        	{
-        		Bitmap b = BitmapFactory.decodeResource(getResources(), icon[i]);
-        		Location l = new Location(b,i+1);
-        		Log.d(DEBUG_TAG, "creating locations");
-        		icons.add(l);
-        	}
-        	wrongAns.add(answer);
             
             
         }
@@ -188,7 +187,7 @@ public class PokeFling extends Activity {
     				temp = wrongAns.get(i);
     				i++;
     			}
-    			//matched.put(l.getIndex(), temp);
+    			matched.put(l.getIndex(), temp);
     		}
     		
     	}
@@ -229,12 +228,15 @@ public class PokeFling extends Activity {
             {
             	l.setLocation(canvas.getWidth(), canvas.getHeight());
             	l.draw(canvas);
-            }            
+            }
+            //setFractions();
+            
             Log.d(DEBUG_TAG, "fraction" + num);
             Bitmap b = BitmapFactory.decodeResource(getResources(), fPics[num]);
             canvas.drawBitmap(b, 10, 10, null);
             
             setTexts(canvas);
+            float tempY = canvas.getHeight() - dex.getHeight();
 
 //            Log.d(DEBUG_TAG, "Matrix: " + translate.toShortString());
             //Log.d(DEBUG_TAG, "Canvas: " + m.toShortString());
@@ -284,40 +286,38 @@ public class PokeFling extends Activity {
     		    final float distanceTimeFactor = 0.4f;
     		    final float totalDx = (distanceTimeFactor * velocityX/2);
     		    final float totalDy = (distanceTimeFactor * velocityY/2);
-    		    float dx=0,dy=0;
+    		    float dx,dy;
     		    String ans;
     		    //view.onAnimateMove(totalDx, totalDy,(long) (1000 * distanceTimeFactor));
     		    if(velocityX < 0)
     		    {
-    		    	dx = icons.get(0).getX() - view.ball.getWidth()*4;
-    		    	dy = icons.get(0).getY() - view.ball.getHeight()*2;
+    		    	dx = icons.get(0).getX();
+    		    	dy = icons.get(0).getY();
     		    	//ans = matched.get(0);
-    		    	
+    		    	view.onMove(dx, dy);
     		    }
-    		    if(velocityX > 0)
+    		    else if(velocityX > 0)
     		    {
-    		    	dx = icons.get(3).getX()- view.ball.getWidth()*4;
-    		    	dy = icons.get(3).getY()- view.ball.getHeight()*2;
+    		    	dx = icons.get(3).getX();
+    		    	dy = icons.get(3).getY();
     		    	//ans = matched.get(3);
-    		    	
+    		    	view.onMove(dx, dy);
     		    }
-    		    if(velocityY > 0)
+    		    else if(velocityY > 0)
     		    {
-    		    	dx = icons.get(1).getX()- view.ball.getWidth()*4;
-    		    	dy = icons.get(1).getY()- view.ball.getHeight()*2;
+    		    	dx = icons.get(1).getX();
+    		    	dy = icons.get(1).getY();
     		    	//ans = matched.get(1);
-    		    	
+    		    	view.onMove(dx, dy);
     		    }
-    		    if(velocityY < 0)
+    		    else
     		    {
-    		    	dx = icons.get(2).getX()- view.ball.getWidth()*4;
-    		    	dy = icons.get(2).getY()- view.ball.getHeight()*2;
+    		    	dx = icons.get(2).getX();
+    		    	dy = icons.get(2).getY();
     		    	//ans = matched.get(2);
-    		    	
+    		    	view.onMove(dx, dy);
     		    }
     		    //nextQuestion(ans);
-    		    view.onResetLocation();
-    		    view.onMove(-dx, -dy);
     		    return true;
     		}
 

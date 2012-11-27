@@ -65,5 +65,9 @@ public class Location {
 		return index;
 	}
 	
-
+	public int getRandom()
+	{
+		Random r = new Random();
+		return (int) (r.nextDouble()*4 +1);
+	}
 }

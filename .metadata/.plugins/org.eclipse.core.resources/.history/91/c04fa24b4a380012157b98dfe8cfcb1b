@@ -284,40 +284,40 @@ public class PokeFling extends Activity {
     		    final float distanceTimeFactor = 0.4f;
     		    final float totalDx = (distanceTimeFactor * velocityX/2);
     		    final float totalDy = (distanceTimeFactor * velocityY/2);
-    		    float dx=0,dy=0;
+    		    float dx,dy;
     		    String ans;
     		    //view.onAnimateMove(totalDx, totalDy,(long) (1000 * distanceTimeFactor));
     		    if(velocityX < 0)
     		    {
-    		    	dx = icons.get(0).getX() - view.ball.getWidth()*4;
-    		    	dy = icons.get(0).getY() - view.ball.getHeight()*2;
+    		    	dx = icons.get(0).getX();
+    		    	dy = icons.get(0).getY();
     		    	//ans = matched.get(0);
     		    	
     		    }
-    		    if(velocityX > 0)
+    		    else if(velocityX > 0)
     		    {
-    		    	dx = icons.get(3).getX()- view.ball.getWidth()*4;
-    		    	dy = icons.get(3).getY()- view.ball.getHeight()*2;
+    		    	dx = icons.get(3).getX();
+    		    	dy = icons.get(3).getY();
     		    	//ans = matched.get(3);
     		    	
     		    }
-    		    if(velocityY > 0)
+    		    else if(velocityY > 0)
     		    {
-    		    	dx = icons.get(1).getX()- view.ball.getWidth()*4;
-    		    	dy = icons.get(1).getY()- view.ball.getHeight()*2;
+    		    	dx = icons.get(1).getX();
+    		    	dy = icons.get(1).getY();
     		    	//ans = matched.get(1);
     		    	
     		    }
-    		    if(velocityY < 0)
+    		    else
     		    {
-    		    	dx = icons.get(2).getX()- view.ball.getWidth()*4;
-    		    	dy = icons.get(2).getY()- view.ball.getHeight()*2;
+    		    	dx = icons.get(2).getX();
+    		    	dy = icons.get(2).getY();
     		    	//ans = matched.get(2);
     		    	
     		    }
     		    //nextQuestion(ans);
     		    view.onResetLocation();
-    		    view.onMove(-dx, -dy);
+    		    view.onMove(dx, dy);
     		    return true;
     		}
 

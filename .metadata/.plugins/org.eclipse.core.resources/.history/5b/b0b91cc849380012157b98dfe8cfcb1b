@@ -7,7 +7,7 @@ public class GenerateBar {
 	
 	private int fraction;
 	private int total;
-	private int randomAnsIndex;
+	
 	
 	public GenerateBar(int total)
 	{
@@ -19,7 +19,6 @@ public class GenerateBar {
 	{
 		Random r = new Random();
 		fraction = (int)(r.nextDouble()*total+1);
-		randomAnsIndex = (int)(r.nextDouble()*4);
 	}
 
 	public int getAnswer()
@@ -53,6 +52,7 @@ public class GenerateBar {
 	
 	public int getRandom()
 	{
-		return randomAnsIndex;
+		Random r = new Random();
+		return (int) (r.nextDouble()*4 +1);
 	}
 }

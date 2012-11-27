@@ -159,21 +159,11 @@ public class PokeFling extends Activity {
     	
     	public void setTexts(Canvas canvas)
     	{
-    		ArrayList<String> temp = fractions.randomAnswers(3);
-    		Random r = new Random();
-    		int set = (int) (r.nextDouble()*4 + 1);
-    		int i = 0;
     		for(Location l : icons)
     		{
     			float x = l.getX();
     			float y = l.getY()-30;
-    			if(set == l.getIndex())
-    				canvas.drawText(fractions.getAnswerString(),x , y, p);
-    			else
-    			{
-    				canvas.drawText(temp.get(i),x , y, p);
-    				i++;
-    			}
+    			canvas.drawText(fractions.getAnswerString(),x , y, p);
     		}
     		
     	}

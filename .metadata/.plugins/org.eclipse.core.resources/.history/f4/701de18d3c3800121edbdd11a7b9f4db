@@ -58,8 +58,4 @@ public class Location {
 		return y;
 	}
 
-	public int getIndex()
-	{
-		return index;
-	}
 }

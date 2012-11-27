@@ -3,6 +3,7 @@ package com.example.pokemonfractions;
 import helpers.Location;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import mathClasses.GenerateBar;
 
@@ -15,6 +16,7 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -23,6 +25,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 public class PokeFling extends Activity {
 
@@ -75,6 +78,7 @@ public class PokeFling extends Activity {
         private float[] centerArray = { 1, 0, 400, 0, 1, 250, 0, 0, 1 };
         private int[] fPics = {R.drawable.f0,R.drawable.f1,R.drawable.f2,R.drawable.f3,R.drawable.f4,R.drawable.f5,R.drawable.f6,
         		R.drawable.f7,R.drawable.f8,R.drawable.f9,R.drawable.f10};
+        private Paint p = new Paint();
         private ArrayList<Location> icons = new ArrayList<Location>();
         
         public PlayAreaView(Context context) {
@@ -85,6 +89,10 @@ public class PokeFling extends Activity {
             ball = BitmapFactory.decodeResource(getResources(), R.drawable.pokeball);
             dex = BitmapFactory.decodeResource(getResources(), R.drawable.pokedex1);
             createLocations();
+            p.setTextSize(40);
+            p.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+            
+            
         }
 
         public void onAnimateMove(float dx, float dy, long duration) {
@@ -134,6 +142,31 @@ public class PokeFling extends Activity {
         public void onSetLocation(float dx, float dy) {
             translate.postTranslate(dx, dy);
         }
+    	public ArrayList<Integer> randomAnswers(int num,int total,int fraction)
+    	{
+    		Random r = new Random();
+    		ArrayList<Integer> ans = new ArrayList<Integer>();
+    		for(int i = 0; i < num; i ++)
+    		{
+    			int temp = (int)(r.nextDouble()*total+1);
+    			while(temp == fraction)
+    				temp = (int)(r.nextDouble()*total+1);
+    			ans.add(temp);
+    		}
+    		return ans;
+    		
+    	}
+    	
+    	public void setTexts(Canvas canvas)
+    	{
+    		for(Location l : icons)
+    		{
+    			float x = l.getX();
+    			float y = l.getY()-30;
+    			canvas.drawText(fractions.getAnswerString(),x , y, p);
+    		}
+    		
+    	}
          
         public void createLocations()
         {
@@ -159,10 +192,13 @@ public class PokeFling extends Activity {
             	l.setLocation(canvas.getWidth(), canvas.getHeight());
             	l.draw(canvas);
             }
+            //setFractions();
             int num = fractions.getAnswer();
             Log.d(DEBUG_TAG, "fraction" + num);
             Bitmap b = BitmapFactory.decodeResource(getResources(), fPics[num]);
             canvas.drawBitmap(b, 10, 10, null);
+            
+            setTexts(canvas);
             float tempY = canvas.getHeight() - dex.getHeight();
 
 //            Log.d(DEBUG_TAG, "Matrix: " + translate.toShortString());

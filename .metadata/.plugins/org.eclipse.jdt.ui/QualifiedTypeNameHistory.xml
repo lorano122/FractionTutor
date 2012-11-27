@@ -12,10 +12,13 @@
 <fullyQualifiedTypeName name="android.view.MotionEvent"/>
 <fullyQualifiedTypeName name="android.util.Log"/>
 <fullyQualifiedTypeName name="mathClasses.GenerateBar"/>
-<fullyQualifiedTypeName name="com.example.pokemonfractions.R.layout"/>
 <fullyQualifiedTypeName name="android.content.pm.ActivityInfo"/>
 <fullyQualifiedTypeName name="android.graphics.Paint"/>
 <fullyQualifiedTypeName name="android.graphics.Color"/>
 <fullyQualifiedTypeName name="android.graphics.Rect"/>
 <fullyQualifiedTypeName name="com.example.pokemonfractions.R.drawable"/>
+<fullyQualifiedTypeName name="com.example.pokemonfractions.R.layout"/>
+<fullyQualifiedTypeName name="com.example.pokemonfractions.R.id"/>
+<fullyQualifiedTypeName name="android.widget.TextView"/>
+<fullyQualifiedTypeName name="android.graphics.Typeface"/>
 </qualifiedTypeNameHistroy>

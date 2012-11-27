@@ -35,10 +35,15 @@ public class GenerateBar {
 			int temp = (int)(r.nextDouble()*total+1);
 			while(temp == fraction)
 				temp = (int)(r.nextDouble()*total+1);
-			String a = temp + " / " + total;
+			String a = ""+temp + " / " + total;
 			ans.add(a);
 		}
 		return ans;
 		
+	}
+	
+	public String getAnswerString()
+	{
+		return ""+fraction+" / 10";
 	}
 }

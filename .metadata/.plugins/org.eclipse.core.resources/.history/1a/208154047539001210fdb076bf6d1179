@@ -293,7 +293,6 @@ public class PokeFling extends Activity {
 			{
 				//makeToast("done");
 				done = true;
-            	moveOn = true;
     			message = "You have answered 6 questions correctly and you are now ready for the next stage";
 
             }
@@ -327,9 +326,10 @@ public class PokeFling extends Activity {
 		    	start(canvas);
 		    	
         	}
-            if(done && correct == 6)
+            if(done && correct == 6 && !moveOn)
             {
             	canMove = false;
+            	moveOn = true;
             	p.setColor(Color.WHITE);
             	canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), p);
             	p.setColor(Color.BLACK);
@@ -377,10 +377,7 @@ public class PokeFling extends Activity {
 			
         @Override
         public boolean onTouchEvent(MotionEvent event) {
-        	if(moveOn)
-        		return false;
-        	else
-        		return gestures.onTouchEvent(event);
+            return gestures.onTouchEvent(event);
         }
         
         private class GestureListener implements GestureDetector.OnGestureListener,GestureDetector.OnDoubleTapListener {

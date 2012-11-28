@@ -327,7 +327,7 @@ public class PokeFling extends Activity {
 		    	start(canvas);
 		    	
         	}
-            if(done && correct == 6)
+            if(done && correct == 6 && moveOn)
             {
             	canMove = false;
             	p.setColor(Color.WHITE);

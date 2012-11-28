@@ -185,7 +185,6 @@ public class PokeFling extends Activity {
 				{
 					Log.d(DEBUG_TAG, "on target");
 					onResetLocation();
-					canMove = true;
 				}
 			}, 500);        	
         }
@@ -199,12 +198,11 @@ public class PokeFling extends Activity {
 			backHandler.postDelayed(new Runnable() {
              public void run() {
              	onResetLocation();
-             	onMove(-shift*2,0);
+             	onMove(shift,0);
    	          backHandler.postDelayed(new Runnable() {
  	                public void run() {
  	                	onResetLocation();
  	                	onMove(-shift,0); 
- 	                	canMove = true;
  	                }
  	            	}, 150);  	       
              }             
@@ -289,15 +287,22 @@ public class PokeFling extends Activity {
 			wrongAns = fractions.randomAnswers(3);
 			answer = num +" / 10";   
 			
-			if(correct == 6 && !done)
+			if(correct == 6)
 			{
 				//makeToast("done");
 				done = true;
-            	moveOn = true;
     			message = "You have answered 6 questions correctly and you are now ready for the next stage";
 
             }
-			canMove = true;
+			final Handler h1 = new Handler();
+
+			h1.postDelayed(new Runnable() 
+			{
+				public void run() 
+				{
+					onResetLocation();
+				}
+			}, 500);
     	}
       
         @Override
@@ -327,15 +332,17 @@ public class PokeFling extends Activity {
 		    	start(canvas);
 		    	
         	}
-            if(done && correct == 6)
+            if(done && moveOn)
             {
             	canMove = false;
+            	moveOn = done;
             	p.setColor(Color.WHITE);
             	canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), p);
             	p.setColor(Color.BLACK);
     			String results = "It took " + question + " pokeballs for you to catch 6 pokemon!";
     			canvas.drawText(results, canvas.getWidth()/2 - results.length()*7, canvas.getHeight()/2, p);
-     			moveOn(canvas);
+    			done=true;
+    			moveOn(canvas);
             }
   
         }
@@ -361,7 +368,7 @@ public class PokeFling extends Activity {
         {
         	final Intent intent = new Intent(PokeFling.this.getBaseContext(), MainActivity.class);
 			final Handler h1 = new Handler();
-			if(moveOn && done)
+			if(moveOn)
 			{
 				moveOn=false;
 			  	h1.postDelayed(new Runnable() 
@@ -377,10 +384,7 @@ public class PokeFling extends Activity {
 			
         @Override
         public boolean onTouchEvent(MotionEvent event) {
-        	if(moveOn)
-        		return false;
-        	else
-        		return gestures.onTouchEvent(event);
+            return gestures.onTouchEvent(event);
         }
         
         private class GestureListener implements GestureDetector.OnGestureListener,GestureDetector.OnDoubleTapListener {
@@ -409,7 +413,7 @@ public class PokeFling extends Activity {
      				view.onResetLocation();
      				initializing = false;
      			}
-     			else if(!(w1 || w2) && canMove)
+     			else if(!w1 || !w2)
      			{
      				Log.v( DEBUG_TAG, "onDown" );
      				view.wiggle(); 
@@ -482,6 +486,7 @@ public class PokeFling extends Activity {
 
 	    		}
     		    view.stayOnTarget(dx, dy);
+    		    canMove = true;
     		    nextQuestion(ans);
     		    
     		    return true;

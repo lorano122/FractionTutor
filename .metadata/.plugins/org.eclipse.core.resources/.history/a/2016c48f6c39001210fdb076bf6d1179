@@ -44,7 +44,6 @@ public class PokeFling extends Activity {
     private HashMap<Integer,String> matched = new HashMap<Integer,String>();
     private boolean done = false;
     private boolean canMove = true;
-    private boolean moveOn = false;
     private boolean initializing = true;
     
 	@Override
@@ -64,10 +63,7 @@ public class PokeFling extends Activity {
      	super.onResume();
      }
 
-	 public void makeToast(String s)
-	 {
-		 Toast.makeText(this, s, Toast.LENGTH_LONG);
-	 }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_poke_fling, menu);
@@ -185,7 +181,6 @@ public class PokeFling extends Activity {
 				{
 					Log.d(DEBUG_TAG, "on target");
 					onResetLocation();
-					canMove = true;
 				}
 			}, 500);        	
         }
@@ -193,18 +188,17 @@ public class PokeFling extends Activity {
         public void wiggle()
         {			
         	canMove = false;
- 			final float shift = ball.getWidth()/4;
+ 			final float shift = ball.getWidth()/2;
  			onMove(-shift,0);
 			final Handler backHandler = new Handler();
 			backHandler.postDelayed(new Runnable() {
              public void run() {
              	onResetLocation();
-             	onMove(-shift*2,0);
+             	onMove(shift,0);
    	          backHandler.postDelayed(new Runnable() {
  	                public void run() {
  	                	onResetLocation();
  	                	onMove(-shift,0); 
- 	                	canMove = true;
  	                }
  	            	}, 150);  	       
              }             
@@ -289,24 +283,22 @@ public class PokeFling extends Activity {
 			wrongAns = fractions.randomAnswers(3);
 			answer = num +" / 10";   
 			
-			if(correct == 6 && !done)
+			if(correct == 6)
 			{
 				//makeToast("done");
 				done = true;
-            	moveOn = true;
     			message = "You have answered 6 questions correctly and you are now ready for the next stage";
 
             }
-			canMove = true;
+
+			}
     	}
       
         @Override
         protected void onDraw(Canvas canvas) {          
             Matrix m = canvas.getMatrix();      
-            cx = canvas.getWidth()/2 - ball.getWidth()/2;
-            cy = canvas.getHeight()/2 - ball.getHeight();
-            centerArray[2] = cx;
-            centerArray[5] = cy;
+            cx = canvas.getWidth()/2 - ball.getWidth();
+            cy = canvas.getHeight()/2 - ball.getHeight()*2;
             Log.v( DEBUG_TAG, "canvas y: " + canvas.getHeight()); 
             for(Location l : icons)
             {
@@ -327,17 +319,12 @@ public class PokeFling extends Activity {
 		    	start(canvas);
 		    	
         	}
-            if(done && correct == 6)
+            if(correct == 6)
             {
+            	done = true;
             	canMove = false;
-            	p.setColor(Color.WHITE);
-            	canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), p);
-            	p.setColor(Color.BLACK);
-    			String results = "It took " + question + " pokeballs for you to catch 6 pokemon!";
-    			canvas.drawText(results, canvas.getWidth()/2 - results.length()*7, canvas.getHeight()/2, p);
-     			moveOn(canvas);
+    			moveOn(canvas);    				            	
             }
-  
         }
         
         public void start(Canvas canvas)
@@ -354,33 +341,18 @@ public class PokeFling extends Activity {
 			canvas.drawText(con, canvas.getWidth()/2 - con.length()*(7),450,  p);
 			canvas.drawText(begin, canvas.getWidth()/2 - begin.length()*(7),490,  p);
 			canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.pokeball), canvas.getWidth()/2 - 25 ,550, null);
-			
         }
         
         public void moveOn(Canvas canvas)
         {
-        	final Intent intent = new Intent(PokeFling.this.getBaseContext(), MainActivity.class);
-			final Handler h1 = new Handler();
-			if(moveOn && done)
-			{
-				moveOn=false;
-			  	h1.postDelayed(new Runnable() 
-				{
-					public void run() 
-					{
-						Log.d(DEBUG_TAG, "moving on");
-						startActivity(intent);
-					}
-				}, 5000);
-			}
-        }
+        	
+        	canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.flingwin), 0, 0, null);
+        	p.setTextSize(30);
+        	p.setColor(Color.BLACK);
 			
         @Override
         public boolean onTouchEvent(MotionEvent event) {
-        	if(moveOn)
-        		return false;
-        	else
-        		return gestures.onTouchEvent(event);
+            return gestures.onTouchEvent(event);
         }
         
         private class GestureListener implements GestureDetector.OnGestureListener,GestureDetector.OnDoubleTapListener {
@@ -409,7 +381,7 @@ public class PokeFling extends Activity {
      				view.onResetLocation();
      				initializing = false;
      			}
-     			else if(!(w1 || w2) && canMove)
+     			else if(!(w1 || w2 ))
      			{
      				Log.v( DEBUG_TAG, "onDown" );
      				view.wiggle(); 
@@ -442,6 +414,7 @@ public class PokeFling extends Activity {
 
     		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
     			Log.v(DEBUG_TAG, "fling");
+    		    final float distanceTimeFactor = 0.4f;
     		    float dx=0,dy=0;
     		    String ans="11/10";
     		    if(fractions.isBigger(velocityX, velocityY))
@@ -482,6 +455,7 @@ public class PokeFling extends Activity {
 
 	    		}
     		    view.stayOnTarget(dx, dy);
+    		    canMove = true;
     		    nextQuestion(ans);
     		    
     		    return true;

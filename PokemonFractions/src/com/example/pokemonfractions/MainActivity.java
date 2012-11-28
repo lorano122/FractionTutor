@@ -15,30 +15,19 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        Button maleButton = ( Button )findViewById( R.id.male );
-        Button femaleButton = ( Button )findViewById( R.id.female );
-        maleButton.setOnClickListener( tutorial );
-        femaleButton.setOnClickListener( tutorial );
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE);
     }
     
-    View.OnClickListener tutorial = new View.OnClickListener() {
-		
-		public void onClick( View v ) {
-			Intent i = new Intent( MainActivity.this, Tutorial.class );
-			startActivity( i );
-		}
-
-		public void onClick(DialogInterface dialog, int which) {
-			// TODO Auto-generated method stub
-			
-		}
-	};
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
+    }
+    
+    public void moveOn(View view)
+    {
+    	Intent fling = new Intent(this, PokeFling.class);
+    	startActivity(fling);
     }
     
 	

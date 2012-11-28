@@ -3,37 +3,5 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <Button
-        android:id="@+id/male"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="167dp"
-        android:layout_marginLeft="97dp"
-        android:text="Are you male?" 
-        android:onClick = "true" />
-
-    <Button
-        android:id="@+id/female"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/male"
-        android:layout_alignBottom="@+id/male"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="97dp"
-        android:text="Are you female?" 
-        android:onClick = "true" />
-
-
-
-    <TextView
-        android:id="@+id/text1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/female"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="90dp"
-        android:text="What is your gender?" />
-
+   
 </RelativeLayout>

@@ -34,7 +34,7 @@ public class Tutorial extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial);
         Button resetButton = ( Button )findViewById( R.id.reset );
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE);
         resetButton.setOnClickListener( startOver );
         Button battleButton = ( Button )findViewById( R.id.start );
         battleButton.setOnClickListener( battle );

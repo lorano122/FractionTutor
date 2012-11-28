@@ -29,7 +29,7 @@ public class MasterAddition extends Activity {
         setContentView(R.layout.activity_master_addition);
 	    FrameLayout frame = (FrameLayout) findViewById(R.id.graphics_holder);
 	    PlayAreaView image = new PlayAreaView(this);
-	    this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+	    this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE);
 	    frame.addView(image);
     }
 

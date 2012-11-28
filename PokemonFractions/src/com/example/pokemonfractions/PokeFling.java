@@ -41,8 +41,7 @@ public class PokeFling extends Activity {
     private int question = 0,correct = 0;
     private int set = fractions.getRandom();
     private HashMap<Integer,String> matched = new HashMap<Integer,String>();
-    private boolean flinging = false;
-    private boolean wiggle = false;
+    private boolean initializing = true;
     
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -54,11 +53,6 @@ public class PokeFling extends Activity {
 	    frame.addView(image);
 
         
-	}
-	
-	public void makeToast(String toast)
-	{
-		Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
 	}
 	
 	 protected void onResume()
@@ -92,10 +86,9 @@ public class PokeFling extends Activity {
         private int[] fPics = {R.drawable.f0,R.drawable.f1,R.drawable.f2,R.drawable.f3,R.drawable.f4,R.drawable.f5,R.drawable.f6,
         		R.drawable.f7,R.drawable.f8,R.drawable.f9,R.drawable.f10};
         private Paint p = new Paint();
-       
+        private String message = "";
         
-        
-        public PlayAreaView(Context context) {
+       public PlayAreaView(Context context) {
             super(context);
             translate = new Matrix();
             translate.setValues(centerArray);
@@ -173,18 +166,24 @@ public class PokeFling extends Activity {
             invalidate();
         }
 
-        public void pause()
+        public void stayOnTarget(float dx, float dy)
         {
+
+		    onResetLocation(true);
+		    onMove(dx,dy);
         	final Handler h1 = new Handler();
         	h1.postDelayed(new Runnable() 
 			{
 				public void run() 
 				{
-					Log.d(DEBUG_TAG, "UNPAUSEING");
+					Log.d(DEBUG_TAG, "on target");
 					onResetLocation();
 				}
-			}, 1500);
+			}, 1000);
+        	
         }
+        
+
         
         public void wiggle()
         {			
@@ -198,23 +197,14 @@ public class PokeFling extends Activity {
    	          backHandler.postDelayed(new Runnable() {
  	                public void run() {
  	                	onResetLocation();
- 	                	onMove(-shift,0);
- 	                	backHandler.postDelayed(new Runnable() {
-  	    	                public void run() {
-  	    	                	onResetLocation();
-  	    	                	onMove(shift,0);
-  	    	                	backHandler.postDelayed(new Runnable() {
-  	     	    	                public void run() {
-  	     	    	                	onResetLocation();
-  	     	    	                	wiggle = false;
-  	     	    	                }
-  	     	    	            	}, 250);
-  	    	                }
-  	    	            	}, 250);
+ 	                	onMove(-shift,0); 
  	                }
  	            	}, 250);
+   	       
              }
+             
          }, 250);
+			
          
         }
 
@@ -236,12 +226,13 @@ public class PokeFling extends Activity {
         
     	public void setTexts(Canvas canvas)
     	{
-    		
+            p.setTextSize(40);
+            p.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
     		int i = 0;
     		p.setColor(Color.BLACK);
     		for(Location l : icons)
     		{
-    			float x = l.getX();
+    			float x = l.getX()-25;
     			float y = l.getY()-30;
     			String temp;
     			if(set == l.getIndex())
@@ -257,24 +248,32 @@ public class PokeFling extends Activity {
     			}
     			matched.put(l.getIndex(), temp);
     		}
+    		if(question == 0)
+    			canvas.drawText("Welcome", 50, 550, p);
+    		else if(question > 0 && correct !=6)
+    		{
+                p.setTextSize(30);
+    			canvas.drawText("Your previous answer was", 50, 500, p);
+    			canvas.drawText(message, 50, 550, p);
+    		}
     	}
-         
+
     	public void nextQuestion(String ans)
     	{
     		ans = ans.replaceAll(" / ", "X");
     		String[] s = ans.split("X");    		
     		int a = Integer.parseInt(s[0]);
-    		if(correct < 6)
+    		if(a == num)
     		{
-	    		if(a == num)
-	    		{
-	    			correct++;
-	    			makeToast("correct");
-	    		}
-	    		else
-	    		{
-	    			makeToast("incorrect");
-	    		}
+    			correct++;
+    			//makeToast("correct");
+    			message = "correct";
+    		}
+    		else
+    		{
+    			//makeToast("incorrect");
+    			message = "incorrect";
+    		}
     		question++;
     		
 			fractions.randFract();
@@ -282,40 +281,40 @@ public class PokeFling extends Activity {
 			num = fractions.getAnswer();
 			wrongAns.clear();
 			wrongAns = fractions.randomAnswers(3);
-			answer = num +" / 10";   			
-    		}
-    		else
-    		{
-    			makeToast("Done, starting over :)");
-    			correct = 0;
-    			question = 0;
-    		}
-    		
-
-            final Handler backHandler = new Handler();
-            backHandler.postDelayed(new Runnable() {
-                public void run() {
-                	onResetLocation();
-                	flinging = false;
-                }
-            }, 1000);
+			answer = num +" / 10";   
+			
+			if(correct == 6)
+			{
+				//makeToast("done");
+    			message = "You have answered 6 questions correctly and\nyou are now ready for the next stage";
+			}
     	}
       
         @Override
-        protected void onDraw(Canvas canvas) {           
+        protected void onDraw(Canvas canvas) {      
             Matrix m = canvas.getMatrix();      
             cx = canvas.getWidth()/2 - ball.getWidth()/2;
             cy = canvas.getHeight()/2 - ball.getHeight()*2;
+            Log.v( DEBUG_TAG, "canvas y: " + canvas.getHeight()); 
             for(Location l : icons)
             {
             	l.setLocation(canvas.getWidth(), canvas.getHeight());
             	l.draw(canvas);            	
             }            
             Bitmap b = BitmapFactory.decodeResource(getResources(), fPics[num]);
-            canvas.drawBitmap(b, 10, 10, null);            
-            setTexts(canvas);
+            canvas.drawBitmap(b, 10, 10, null);                    
             drawAnswers(canvas);
+            setTexts(canvas);
             canvas.drawBitmap(ball, translate, null);
+            if(correct == 6 )
+            {
+            	p.setColor(Color.WHITE);
+            	canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), p);
+            	p.setTextSize(30);
+            	p.setColor(Color.BLACK);
+    			canvas.drawText(message, 25, canvas.getHeight()/2 - 15, p);
+            	
+            }
         }
 
         @Override
@@ -329,25 +328,28 @@ public class PokeFling extends Activity {
         	public GestureListener(PlayAreaView view)
         	{
         		this.view = view;
+        		view.setLongClickable(true);
         	}
         	
         	
-        	public boolean onDown(MotionEvent e) {        		 
-        		float x = e.getRawX() - view.getLeft();
-    			float y = e.getRawY() - view.getTop();
-     			float tolerance = 50;
+        	public boolean onDown(MotionEvent e) {        
+        		Log.v( DEBUG_TAG, "onDown" );
+        		float x = e.getRawX() - view.ball.getWidth()/2;
+    			float y = e.getRawY() - view.ball.getHeight()*3;
+     			float tolerance = 40;
      			boolean w1 = Math.abs((x - cx)) <= tolerance;
-     			boolean w2 = Math.abs((y - cy)) <= tolerance;
-     			
-     			if(!(w1 && w2 ) && !flinging)
+     			boolean w2 = Math.abs((y/2 - cy)) <= tolerance;
+     			Log.v( DEBUG_TAG, "x: " +x+" y: "+y + " cx: "+cx+ " cy: "+cy);
+     			Log.v( DEBUG_TAG, "touch y: " + e.getRawY() );  
+     			Log.v( DEBUG_TAG, "view y: " +  view.getBottom()); 
+     			Log.v( DEBUG_TAG, "w1: " +w1+" w2: " + w2 );
+     			if(!(w1 || w2 ))
      			{
      				Log.v( DEBUG_TAG, "onDown" );
-     				wiggle = true;
-     				view.wiggle();
-     	          
-     			}
-     			
-        		return true;
+     				view.wiggle(); 
+     				
+     			}     			
+     			return true;
         	}
 
         	public boolean onDoubleTap(MotionEvent e) {
@@ -366,8 +368,7 @@ public class PokeFling extends Activity {
     		}
 
 
-    		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) { 
-    			flinging = true;
+    		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
     			Log.v(DEBUG_TAG, "fling");
     		    final float distanceTimeFactor = 0.4f;
     		    float dx=0,dy=0;
@@ -409,11 +410,7 @@ public class PokeFling extends Activity {
 	    		    }
 
 	    		}
-    		    if(wiggle)
-        			pause();
-    		    view.onResetLocation(true);
-    		    view.onMove(dx, dy);
-    		    
+    		    view.stayOnTarget(dx, dy);
     		    nextQuestion(ans);
     		    
     		    return true;

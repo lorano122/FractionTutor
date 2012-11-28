@@ -29,12 +29,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity 
-            android:name = ".Tutorial"
-            android:label = "@string/title_activity_tutorial" >
+        <activity
+            android:name=".Tutorial"
+            android:label="@string/title_activity_tutorial" >
             <intent-filter>
-                <action android:name = "android.intent.action.MAIN" />
-                <catagory android:name = "android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN" />
+
+                <catagory android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MasterAddition"
+            android:label="@string/title_activity_master_addition" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>

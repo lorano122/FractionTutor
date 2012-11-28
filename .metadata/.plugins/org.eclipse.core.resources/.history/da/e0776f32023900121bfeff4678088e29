@@ -6,6 +6,5 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_poke_fling">PokeFling</string>
     <string name="title_activity_tutorial">Tutorial</string>
-    <string name="title_activity_master_addition">MasterAddition</string>
 
 </resources>

@@ -13322,3 +13322,6 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY com.android.ide.eclipse.adt 2 0 2012-11-28 17:12:02.129
 !MESSAGE activity_fling_score.xml: Couldn't resolve resource @string/hello_world
+
+!ENTRY org.eclipse.ui 4 4 2012-11-28 18:27:07.856
+!MESSAGE Invalid preference page path: XML Syntax

@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.view.Menu;
+import android.view.View;
 import android.widget.TextView;
 
 public class FlingScore extends Activity {
@@ -34,13 +35,13 @@ public class FlingScore extends Activity {
     	out.setText(toDisplay);
     }
     
-    public void playFling()
+    public void playFling(View view)
     {
     	Intent fling = new Intent(this, PokeFling.class);
     	startActivity(fling);
     }
     
-    public void playAddition()
+    public void playAddition(View view)
     {
     	Intent fling = new Intent(this, MainActivity.class);
     	startActivity(fling);

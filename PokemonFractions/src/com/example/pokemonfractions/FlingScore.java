@@ -31,7 +31,7 @@ public class FlingScore extends Activity {
     	TextView out = (TextView)findViewById(R.id.result);
     	Intent intent = getIntent();
     	String result = intent.getExtras().getString("results");
-    	String toDisplay = "Congradulations!\nIt took"+result+"pokeballs\nfor you capture 6 pokemon";
+    	String toDisplay = "Congratulations!\nIt took"+result+"pokeballs\nfor you to capture 6 pokemon";
     	out.setText(toDisplay);
     }
     
@@ -42,6 +42,12 @@ public class FlingScore extends Activity {
     }
     
     public void playAddition(View view)
+    {
+    	Intent fling = new Intent(this, MasterAddition.class);
+    	startActivity(fling);
+    }
+    
+    public void startOver(View view)
     {
     	Intent fling = new Intent(this, MainActivity.class);
     	startActivity(fling);

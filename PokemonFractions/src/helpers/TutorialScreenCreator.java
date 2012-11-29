@@ -30,17 +30,19 @@ public class TutorialScreenCreator {
     	p.setTextSize(30);
     	p.setColor(Color.BLACK);
 		String welcome = "Welcome to Pokemon Fling!";
-    	String bar = "Solve problems by finding the fraction represented by the blue squares in the health bar below ";
+    	String bar = "Solve problems by finding the fraction represented";
+    	String bar2 = "by the blue squares in the health bar below";
     	String inst = "Just fling the pokeball at the pokemon holding the correct answer to capture it";
-    	String con = "The game is over once you have captured 6 Pokemon.";
+    	String con = "The game is over once you have captured 6 Pokemon";
     	String begin = "Tap the pokeball to begin, good luck and have fun!";
 		canvas.drawText(welcome, canvas.getWidth()/2 - welcome.length()*(7),50,  p);
 		canvas.drawText(bar, canvas.getWidth()/2 - bar.length()*(7),150,  p);
-		canvas.drawBitmap(fraction, canvas.getWidth()/2 - 122,238, null);
+		canvas.drawText(bar2, canvas.getWidth()/2 - bar2.length()*(7),190,  p);
+		canvas.drawBitmap(fraction, canvas.getWidth()/2 - fraction.getWidth()/2,258, null);
 		canvas.drawText(inst, canvas.getWidth()/2 - inst.length()*(7),350,  p);
-		canvas.drawText(con, canvas.getWidth()/2 - con.length()*(7),450,  p);
+		canvas.drawText(con, canvas.getWidth()/2 - con.length()*(7)-25,450,  p);
 		canvas.drawText(begin, canvas.getWidth()/2 - begin.length()*(7),490,  p);
-		canvas.drawBitmap(ball, canvas.getWidth()/2 - 25 ,550, null);
+		canvas.drawBitmap(ball, canvas.getWidth()/2 - 25 ,540, null);
 	}
 
 }

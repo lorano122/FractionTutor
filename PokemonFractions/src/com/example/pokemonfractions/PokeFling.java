@@ -312,19 +312,27 @@ public class PokeFling extends Activity {
 			canMove = true;
     	}
       
+
+    	
+    	public void updateFraction(Canvas canvas)
+    	{
+            
+            Bitmap b = BitmapFactory.decodeResource(getResources(), fPics[num]);
+            canvas.drawBitmap(b, 10, 10, null);
+    	}
         @Override
         protected void onDraw(Canvas canvas) {          
             Matrix m = canvas.getMatrix();      
             cx = canvas.getWidth()/2 - ball.getWidth()/2;
             cy = canvas.getHeight()/2 - ball.getHeight();
-            Log.v( DEBUG_TAG, "canvas y: " + canvas.getHeight());            
-            Bitmap b = BitmapFactory.decodeResource(getResources(), fPics[num]);
-            canvas.drawBitmap(b, 10, 10, null);               
+            p.setColor(Color.rgb(174,208,198));
+            canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), p);
             for(Location l : icons)
             {
             	l.setLocation(canvas.getWidth(), canvas.getHeight());
             	l.draw(canvas);            	
             }
+            updateFraction(canvas);
             drawAnswers(canvas);
             setTexts(canvas);
             canvas.drawBitmap(ball, translate, null);

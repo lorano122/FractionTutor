@@ -5,9 +5,9 @@ import java.util.Random;
 
 public class PokeFlingMath {
 	
-	private int fraction;
+	private int fraction=-1;
 	private int total;
-	private int randomAnsIndex;
+	private int randomAnsIndex=-1;
 	
 	public PokeFlingMath(int total)
 	{
@@ -18,9 +18,15 @@ public class PokeFlingMath {
 
 	public void randFract()
 	{
+		int tempFract = fraction;
+		int tempLoc = randomAnsIndex;
 		Random r = new Random();
 		fraction = (int)(r.nextDouble()*(total+1));
+		while(fraction == tempFract)
+			fraction = (int)(r.nextDouble()*(total+1));
 		randomAnsIndex = (int)(r.nextDouble()*4) + 1;
+		while(randomAnsIndex == tempLoc)
+			randomAnsIndex = (int)(r.nextDouble()*4) + 1;
 	}
 
 	public int getAnswer()

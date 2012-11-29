@@ -262,12 +262,6 @@ public class PokeFling extends Activity {
     			canvas.drawText("Your previous answer was", 50, 500, p);
     			canvas.drawText(message, 50, 550, p);
     		}
-    		else if(correct == 6)
-    		{
-    			 p.setTextSize(30);
-     			canvas.drawText("Finished", 50, 500, p);
-     			canvas.drawText(message, 50, 550, p);
-    		}
     	}
 
     	public void nextQuestion(String ans)
@@ -335,7 +329,12 @@ public class PokeFling extends Activity {
         	}
             if(done && correct == 6)
             {
-            	
+            	canMove = false;
+            	p.setColor(Color.WHITE);
+            	canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), p);
+            	p.setColor(Color.BLACK);
+    			String results = "It took " + question + " pokeballs for you to catch 6 pokemon!";
+    			canvas.drawText(results, canvas.getWidth()/2 - results.length()*7, canvas.getHeight()/2, p);
      			moveOn(canvas);
             }
   
@@ -360,8 +359,7 @@ public class PokeFling extends Activity {
         
         public void moveOn(Canvas canvas)
         {
-        	final Intent intent = new Intent(PokeFling.this.getBaseContext(), FlingScore.class);
-        	intent.putExtra("results", " "+question+" ");
+        	final Intent intent = new Intent(PokeFling.this.getBaseContext(), MainActivity.class);
 			final Handler h1 = new Handler();
 			if(moveOn && done)
 			{
@@ -373,7 +371,7 @@ public class PokeFling extends Activity {
 						Log.d(DEBUG_TAG, "moving on");
 						startActivity(intent);
 					}
-				}, 500);
+				}, 5000);
 			}
         }
 			

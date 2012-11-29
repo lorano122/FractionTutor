@@ -361,7 +361,7 @@ public class PokeFling extends Activity {
         public void moveOn(Canvas canvas)
         {
         	final Intent intent = new Intent(PokeFling.this.getBaseContext(), FlingScore.class);
-        	intent.putExtra("results", " "+question+" ");
+        	intent.putExtra("results", correct+"X"+question);
 			final Handler h1 = new Handler();
 			if(moveOn && done)
 			{

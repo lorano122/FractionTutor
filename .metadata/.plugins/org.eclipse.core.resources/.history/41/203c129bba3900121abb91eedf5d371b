@@ -1,0 +1,32 @@
+package com.example.pokemonfractions;
+
+import java.util.ArrayList;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.pm.ActivityInfo;
+import android.view.Menu;
+import android.widget.TextView;
+
+public class FlingScore extends Activity {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_fling_score);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_fling_score, menu);
+        return true;
+    }
+    
+    public void setScoreText()
+    {
+    	TextView red = (TextView)findViewById(R.id);
+//    	Intent intent = getIntent();
+//    	String easyPuzzle = intent.getExtras().getString("results");
+    }
+}

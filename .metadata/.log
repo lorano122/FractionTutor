@@ -1147,3 +1147,15 @@ java.lang.IllegalStateException: startLine (19) does not match endLine (23)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
 	at org.eclipse.equinox.launcher.Main.main(Main.java:1386)
+!SESSION 2012-11-30 15:03:52.909 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.7.0
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2012-11-30 15:03:57.663
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.mylyn.tasks.ui 2 0 2012-11-30 15:04:07.852
+!MESSAGE No search provider was registed. Tasks search is not available.

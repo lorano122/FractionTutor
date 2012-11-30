@@ -1,6 +1,5 @@
 package com.example.pokemonfractions;
 
-import mathClasses.MasterMath;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
@@ -24,9 +23,6 @@ public class MasterAddition extends Activity {
     private long endTime;
     private float totalAnimDx;
     private float totalAnimDy;
-    private MasterMath math;
-    private int ans;
-    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,13 +38,6 @@ public class MasterAddition extends Activity {
         getMenuInflater().inflate(R.menu.activity_master_addition, menu);
         return true;
     }
-    
-    public void onResume()
-    {
-    	super.onResume();
-    }
-    
-    
     private class PlayAreaView extends View {
 
         private GestureDetector gestures;
@@ -59,7 +48,6 @@ public class MasterAddition extends Activity {
         private long endTime;
         private float totalAnimDx;
         private float totalAnimDy;
-        private int ans;
 
         public void onAnimateMove(float dx, float dy, long duration) {
             animateStart = new Matrix(translate);
@@ -116,7 +104,6 @@ public class MasterAddition extends Activity {
             translate = new Matrix();
             gestures = new GestureDetector(MasterAddition.this,
                     new GestureListener(this));
-            math = new MasterMath(6);
            
         }
 
@@ -203,7 +190,10 @@ public class MasterAddition extends Activity {
 		}
 		
 		
-
+	    public void onResume()
+	    {
+	    	
+	    }
 
 
 }

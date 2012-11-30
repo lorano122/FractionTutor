@@ -51,9 +51,4 @@ public class MasterMath {
 	{
 		return " "+ ans+" / "+denom+" ";
 	}
-	
-	public boolean isCorrect(int x)
-	{
-		return x==ans;
-	}
 }

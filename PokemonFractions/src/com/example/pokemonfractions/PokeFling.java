@@ -70,10 +70,7 @@ public class PokeFling extends Activity {
 	 {
 		 super.onStop();
 	 }
-	 public void makeToast(String s)
-	 {
-		 Toast.makeText(this, s, Toast.LENGTH_LONG);
-	 }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_poke_fling, menu);
@@ -376,7 +373,7 @@ public class PokeFling extends Activity {
 						startActivity(intent);
 						
 					}
-				}, 2000);
+				}, 4000);
 			}
         }
 			

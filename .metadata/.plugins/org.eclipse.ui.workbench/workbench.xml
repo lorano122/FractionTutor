@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="29" version="2.0">
+<workbench progressCount="33" version="2.0">
 <workbenchAdvisor/>
 <window height="738" maximized="true" width="1024" x="-216" y="9">
 <fastViewData fastViewLocation="1024"/>
@@ -35,53 +35,68 @@
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
-<part id="1"/>
 <part id="2"/>
+<part id="1"/>
 <part id="3"/>
 <part id="4"/>
 <part id="5"/>
+<part id="6"/>
+<part id="7"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PokeFling.java" partName="PokeFling.java" path="C:/Users/christina/Documents/GitHub/FractionTutor/PokemonFractions/src/com/example/pokemonfractions/PokeFling.java" title="PokeFling.java" tooltip="PokemonFractions/src/com/example/pokemonfractions/PokeFling.java" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MasterAddition.java" partName="MasterAddition.java" path="C:/Users/christina/Documents/GitHub/FractionTutor/PokemonFractions/src/com/example/pokemonfractions/MasterAddition.java" title="MasterAddition.java" tooltip="PokemonFractions/src/com/example/pokemonfractions/MasterAddition.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PokemonFractions/src/com/example/pokemonfractions/MasterAddition.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4903" selectionTopPixel="2025"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MasterMath.java" partName="MasterMath.java" path="C:/Users/christina/Documents/GitHub/FractionTutor/PokemonFractions/src/mathClasses/MasterMath.java" title="MasterMath.java" tooltip="PokemonFractions/src/mathClasses/MasterMath.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PokemonFractions/src/mathClasses/MasterMath.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="647" selectionTopPixel="223"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PokeFling.java" partName="PokeFling.java" path="C:/Users/christina/Documents/GitHub/FractionTutor/PokemonFractions/src/com/example/pokemonfractions/PokeFling.java" title="PokeFling.java" tooltip="PokemonFractions/src/com/example/pokemonfractions/PokeFling.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PokemonFractions/src/com/example/pokemonfractions/PokeFling.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="10285" selectionTopPixel="4275"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="11539" selectionTopPixel="5373"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainActivity.java" partName="MainActivity.java" path="C:/Users/christina/Documents/GitHub/FractionTutor/PokemonFractions/src/com/example/pokemonfractions/MainActivity.java" title="MainActivity.java" tooltip="PokemonFractions/src/com/example/pokemonfractions/MainActivity.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PokemonFractions/src/com/example/pokemonfractions/MainActivity.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="905" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="871" selectionTopPixel="45"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Location.java" partName="Location.java" path="C:/Users/christina/Documents/GitHub/FractionTutor/PokemonFractions/src/helpers/Location.java" title="Location.java" tooltip="PokemonFractions/src/helpers/Location.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PokemonFractions/src/helpers/Location.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="307" selectionTopPixel="0"/>
+</editor>
+<editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_master_score.xml" partName="activity_master_score.xml" path="C:/Users/christina/Documents/GitHub/FractionTutor/PokemonFractions/res/layout/activity_master_score.xml" title="activity_master_score.xml" tooltip="PokemonFractions/res/layout/activity_master_score.xml" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PokemonFractions/res/layout/activity_master_score.xml"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MasterScore.java" partName="MasterScore.java" path="C:/Users/christina/Documents/GitHub/FractionTutor/PokemonFractions/src/com/example/pokemonfractions/MasterScore.java" title="MasterScore.java" tooltip="PokemonFractions/src/com/example/pokemonfractions/MasterScore.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PokemonFractions/src/com/example/pokemonfractions/MasterScore.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="591" selectionTopPixel="208"/>
 </editor>
 <editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_main.xml" partName="activity_main.xml" path="C:/Users/christina/Documents/GitHub/FractionTutor/PokemonFractions/res/layout-land/activity_main.xml" title="activity_main.xml" tooltip="PokemonFractions/res/layout-land/activity_main.xml" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PokemonFractions/res/layout-land/activity_main.xml"/>
 </editor>
-<editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_fling_score.xml" partName="activity_fling_score.xml" path="C:/Users/christina/Documents/GitHub/FractionTutor/PokemonFractions/res/layout/activity_fling_score.xml" title="activity_fling_score.xml" tooltip="PokemonFractions/res/layout/activity_fling_score.xml" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PokemonFractions/res/layout/activity_fling_score.xml"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FlingScore.java" partName="FlingScore.java" path="C:/Users/christina/Documents/GitHub/FractionTutor/PokemonFractions/src/com/example/pokemonfractions/FlingScore.java" title="FlingScore.java" tooltip="PokemonFractions/src/com/example/pokemonfractions/FlingScore.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PokemonFractions/src/com/example/pokemonfractions/FlingScore.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1106" selectionTopPixel="270"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TutorialScreenCreator.java" partName="TutorialScreenCreator.java" path="C:/Users/christina/Documents/GitHub/FractionTutor/PokemonFractions/src/helpers/TutorialScreenCreator.java" title="TutorialScreenCreator.java" tooltip="PokemonFractions/src/helpers/TutorialScreenCreator.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PokemonFractions/src/helpers/TutorialScreenCreator.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="687" selectionTopPixel="240"/>
-</editor>
 </editors>
 <views>
 <view id="org.eclipse.team.ui.GenericHistoryView" partName="History"/>
+<view id="org.eclipse.team.sync.views.SynchronizeView" partName="Synchronize"/>
+<view id="org.eclipse.egit.ui.StagingView" partName="Git Staging"/>
+<view id="org.eclipse.egit.ui.RepositoriesView" partName="Git Repositories">
+<viewState CommonNavigator.LINKING_ENABLED="0"/>
+</view>
+<view id="org.eclipse.egit.ui.ReflogView" partName="Git Reflog"/>
 <view id="com.android.ide.eclipse.ddms.views.LogCatView" partName="LogCat">
 <viewState/>
 </view>
-<view id="org.eclipse.team.sync.views.SynchronizeView" partName="Synchronize"/>
 <view id="org.eclipse.ui.views.PropertySheet" partName="Properties">
 <viewState/>
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings"/>
+<category IMemento.internal.id="Warnings (55 items)"/>
 <category IMemento.internal.id="Errors"/>
-<category IMemento.internal.id="Warnings (44 items)"/>
+<category IMemento.internal.id="Warnings"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="75" org.eclipse.ui.ide.markerType="75" org.eclipse.ui.ide.pathField="100" org.eclipse.ui.ide.resourceField="75" org.eclipse.ui.ide.severityAndDescriptionField="250"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -90,9 +105,6 @@
 <visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
 </viewState>
-</view>
-<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
-<viewState/>
 </view>
 <view id="org.eclipse.jdt.ui.PackageExplorer" partName="Package Explorer">
 <viewState group_libraries="1" layout="2" linkWithEditor="0" rootMode="1" workingSetName="Aggregate for window 1353869066663">
@@ -123,11 +135,9 @@
 </customFilters>
 </viewState>
 </view>
-<view id="org.eclipse.egit.ui.StagingView" partName="Git Staging"/>
-<view id="org.eclipse.egit.ui.RepositoriesView" partName="Git Repositories">
-<viewState CommonNavigator.LINKING_ENABLED="0"/>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
 </view>
-<view id="org.eclipse.egit.ui.ReflogView" partName="Git Reflog"/>
 <view id="org.eclipse.jdt.ui.SourceView" partName="Declaration"/>
 <view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc"/>
 </views>
@@ -333,155 +343,130 @@
 <navigationHistory>
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PokemonFractions/src/com/example/pokemonfractions/PokeFling.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/PokemonFractions/res/layout/activity_fling_score.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/PokemonFractions/res/layout-land/activity_main.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PokemonFractions/src/com/example/pokemonfractions/FlingScore.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PokemonFractions/src/com/example/pokemonfractions/MasterAddition.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PokemonFractions/src/helpers/Location.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PokemonFractions/src/com/example/pokemonfractions/MainActivity.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PokemonFractions/src/helpers/TutorialScreenCreator.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PokemonFractions/src/com/example/pokemonfractions/FlingScore.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/PokemonFractions/res/layout/activity_master_score.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PokemonFractions/src/com/example/pokemonfractions/MasterScore.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/PokemonFractions/res/layout/activity_master_addition.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/PokemonFractions/res/layout/activity_fling_score.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/PokemonFractions/res/layout/activity_main.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/PokemonFractions/res/layout-land/activity_main.xml"/>
 </editors>
-<item historyLabel="FlingScore.java" index="3">
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="3857" y="0"/>
+</item>
+<item historyLabel="MasterAddition.java" index="1">
+<position info="not_deleted" x="4507" y="0"/>
+</item>
+<item historyLabel="MasterAddition.java" index="1">
+<position info="not_deleted" x="5469" y="0"/>
+</item>
+<item historyLabel="MasterAddition.java" index="1">
+<position info="not_deleted" x="4656" y="0"/>
+</item>
+<item historyLabel="MasterAddition.java" index="1">
+<position info="not_deleted" x="5059" y="0"/>
+</item>
+<item historyLabel="MasterAddition.java" index="1">
+<position info="not_deleted" x="2559" y="0"/>
+</item>
+<item historyLabel="Location.java" index="2">
+<position info="not_deleted" x="307" y="0"/>
+</item>
+<item historyLabel="MainActivity.java" index="3">
+<position info="not_deleted" x="779" y="0"/>
+</item>
+<item historyLabel="MasterAddition.java" index="1">
+<position info="not_deleted" x="2559" y="0"/>
+</item>
+<item historyLabel="MasterAddition.java" index="1">
+<position info="not_deleted" x="2559" y="0"/>
+</item>
+<item historyLabel="MasterAddition.java" index="1">
+<position/>
+</item>
+<item historyLabel="MasterAddition.java" index="1">
+<position info="not_deleted" x="2389" y="0"/>
+</item>
+<item historyLabel="MasterAddition.java" index="1">
+<position info="not_deleted" x="2485" y="0"/>
+</item>
+<item historyLabel="MasterAddition.java" index="1">
+<position info="not_deleted" x="2558" y="0"/>
+</item>
+<item historyLabel="MasterAddition.java" index="1">
+<position info="not_deleted" x="2557" y="0"/>
+</item>
+<item historyLabel="MasterAddition.java" index="1">
+<position info="not_deleted" x="4826" y="0"/>
+</item>
+<item historyLabel="MasterAddition.java" index="1">
+<position info="not_deleted" x="4939" y="0"/>
+</item>
+<item historyLabel="FlingScore.java" index="4">
+<position info="not_deleted" x="0" y="1575"/>
+</item>
+<item historyLabel="activity_master_score.xml" index="5"/>
+<item historyLabel="MasterScore.java" index="6">
+<position info="not_deleted" x="1056" y="0"/>
+</item>
+<item historyLabel="MasterAddition.java" index="1">
+<position info="not_deleted" x="4939" y="0"/>
+</item>
+<item historyLabel="MasterAddition.java" index="1">
+<position info="not_deleted" x="6281" y="0"/>
+</item>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="11539" y="0"/>
+</item>
+<item historyLabel="MasterAddition.java" index="1">
+<position info="not_deleted" x="6185" y="0"/>
+</item>
+<item historyLabel="MasterScore.java" index="6">
+<position info="not_deleted" x="1114" y="0"/>
+</item>
+<item historyLabel="activity_master_addition.xml" index="7"/>
+<item historyLabel="MasterScore.java" index="6">
+<position info="not_deleted" x="1114" y="0"/>
+</item>
+<item historyLabel="activity_master_score.xml" index="5"/>
+<item historyLabel="activity_fling_score.xml" index="8"/>
+<item historyLabel="activity_master_score.xml" index="5"/>
+<item historyLabel="activity_fling_score.xml" index="8"/>
+<item historyLabel="activity_master_score.xml" index="5"/>
+<item historyLabel="activity_fling_score.xml" index="8"/>
+<item historyLabel="activity_master_score.xml" index="5"/>
+<item historyLabel="activity_fling_score.xml" index="8"/>
+<item historyLabel="PokeFling.java" index="0">
+<position info="not_deleted" x="11539" y="0"/>
+</item>
+<item historyLabel="activity_master_score.xml" index="5"/>
+<item historyLabel="activity_main.xml" index="9"/>
+<item historyLabel="activity_fling_score.xml" index="8"/>
+<item historyLabel="activity_master_score.xml" index="5"/>
+<item historyLabel="activity_main.xml" index="10"/>
+<item historyLabel="activity_master_score.xml" index="5"/>
+<item historyLabel="MasterAddition.java" index="1">
+<position info="not_deleted" x="5627" y="0"/>
+</item>
+<item historyLabel="activity_fling_score.xml" index="8"/>
+<item historyLabel="MasterAddition.java" index="1">
+<position info="not_deleted" x="5627" y="0"/>
+</item>
+<item historyLabel="activity_master_score.xml" index="5"/>
+<item historyLabel="MasterScore.java" index="6">
+<position info="not_deleted" x="1114" y="0"/>
+</item>
+<item historyLabel="MainActivity.java" index="3">
 <position info="not_deleted" x="871" y="0"/>
 </item>
-<item historyLabel="activity_fling_score.xml" index="1"/>
-<item historyLabel="FlingScore.java" index="3">
-<position info="not_deleted" x="871" y="0"/>
+<item historyLabel="MasterScore.java" index="6">
+<position info="not_deleted" x="591" y="0"/>
 </item>
-<item historyLabel="FlingScore.java" index="3">
-<position/>
-</item>
-<item historyLabel="PokeFling.java" index="0">
-<position info="not_deleted" x="12014" y="0"/>
-</item>
-<item historyLabel="FlingScore.java" index="3">
-<position/>
-</item>
-<item historyLabel="PokeFling.java" index="0">
-<position info="not_deleted" x="11261" y="0"/>
-</item>
-<item historyLabel="FlingScore.java" index="3">
-<position info="not_deleted" x="1120" y="76"/>
-</item>
-<item historyLabel="PokeFling.java" index="0">
-<position info="not_deleted" x="11438" y="0"/>
-</item>
-<item historyLabel="FlingScore.java" index="3">
-<position info="not_deleted" x="1155" y="76"/>
-</item>
-<item historyLabel="PokeFling.java" index="0">
-<position info="not_deleted" x="11438" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="0">
-<position info="not_deleted" x="11455" y="0"/>
-</item>
-<item historyLabel="FlingScore.java" index="3">
-<position info="not_deleted" x="1155" y="76"/>
-</item>
-<item historyLabel="FlingScore.java" index="3">
-<position/>
-</item>
-<item historyLabel="FlingScore.java" index="3">
-<position info="not_deleted" x="1373" y="0"/>
-</item>
-<item historyLabel="MainActivity.java" index="4">
-<position info="not_deleted" x="828" y="77"/>
-</item>
-<item historyLabel="MainActivity.java" index="4">
-<position info="not_deleted" x="905" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="0">
-<position info="not_deleted" x="11455" y="0"/>
-</item>
-<item historyLabel="FlingScore.java" index="3">
-<position info="not_deleted" x="1231" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="0">
-<position info="not_deleted" x="11455" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="0">
-<position info="not_deleted" x="2474" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="0">
-<position info="not_deleted" x="2257" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="0">
-<position info="not_deleted" x="11417" y="0"/>
-</item>
-<item historyLabel="FlingScore.java" index="3">
-<position info="not_deleted" x="1231" y="0"/>
-</item>
-<item historyLabel="FlingScore.java" index="3">
-<position info="not_deleted" x="1169" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="0">
-<position info="not_deleted" x="2191" y="0"/>
-</item>
-<item historyLabel="MainActivity.java" index="4">
-<position info="not_deleted" x="905" y="0"/>
-</item>
-<item historyLabel="FlingScore.java" index="3">
-<position info="not_deleted" x="1346" y="0"/>
-</item>
-<item historyLabel="activity_fling_score.xml" index="1"/>
-<item historyLabel="activity_main.xml" index="2"/>
-<item historyLabel="FlingScore.java" index="3">
-<position info="not_deleted" x="1106" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="0">
-<position/>
-</item>
-<item historyLabel="TutorialScreenCreator.java" index="5">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="TutorialScreenCreator.java" index="5">
-<position info="not_deleted" x="1621" y="0"/>
-</item>
-<item historyLabel="TutorialScreenCreator.java" index="5">
-<position/>
-</item>
-<item historyLabel="TutorialScreenCreator.java" index="5">
-<position/>
-</item>
-<item historyLabel="PokeFling.java" index="0">
-<position info="not_deleted" x="10966" y="0"/>
-</item>
-<item historyLabel="TutorialScreenCreator.java" index="5">
-<position info="not_deleted" x="1195" y="0"/>
-</item>
-<item historyLabel="FlingScore.java" index="3">
-<position info="not_deleted" x="1106" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="0">
-<position info="not_deleted" x="10966" y="0"/>
-</item>
-<item historyLabel="TutorialScreenCreator.java" index="5">
-<position info="not_deleted" x="736" y="0"/>
-</item>
-<item historyLabel="FlingScore.java" index="3">
-<position info="not_deleted" x="1106" y="0"/>
-</item>
-<item historyLabel="TutorialScreenCreator.java" index="5">
-<position info="not_deleted" x="1288" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="0">
-<position info="not_deleted" x="10918" y="0"/>
-</item>
-<item historyLabel="MainActivity.java" index="4">
-<position info="not_deleted" x="905" y="0"/>
-</item>
-<item historyLabel="TutorialScreenCreator.java" index="5">
-<position info="not_deleted" x="411" y="0"/>
-</item>
-<item historyLabel="PokeFling.java" index="0">
-<position info="not_deleted" x="10543" y="0"/>
-</item>
-<item historyLabel="TutorialScreenCreator.java" index="5">
-<position info="not_deleted" x="687" y="0"/>
-</item>
-<item historyLabel="FlingScore.java" index="3">
-<position info="not_deleted" x="1106" y="0"/>
-</item>
-<item active="true" historyLabel="PokeFling.java" index="0">
-<position info="not_deleted" x="10543" y="0"/>
+<item active="true" historyLabel="MasterAddition.java" index="1">
+<position info="not_deleted" x="5627" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -501,50 +486,50 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TutorialScreenCreator.java" tooltip="PokemonFractions/src/helpers/TutorialScreenCreator.java">
-<persistable path="/PokemonFractions/src/helpers/TutorialScreenCreator.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="styles.xml" tooltip="PokemonFractions/res/values/styles.xml">
-<persistable path="/PokemonFractions/res/values/styles.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="android-support-v4.jar" tooltip="PokemonFractions/libs/android-support-v4.jar">
-<persistable path="/PokemonFractions/libs/android-support-v4.jar"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" tooltip="PokemonFractions/AndroidManifest.xml">
-<persistable path="/PokemonFractions/AndroidManifest.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="styles.xml" tooltip="PokemonFractions/res/values-v14/styles.xml">
-<persistable path="/PokemonFractions/res/values-v14/styles.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="styles.xml" tooltip="PokemonFractions/res/values-v11/styles.xml">
-<persistable path="/PokemonFractions/res/values-v11/styles.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Location.java" tooltip="PokemonFractions/src/helpers/Location.java">
-<persistable path="/PokemonFractions/src/helpers/Location.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FlingScore.java" tooltip="PokemonFractions/src/com/example/pokemonfractions/FlingScore.java">
-<persistable path="/PokemonFractions/src/com/example/pokemonfractions/FlingScore.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_main.xml" tooltip="PokemonFractions/res/layout/activity_main.xml">
+<persistable path="/PokemonFractions/res/layout/activity_main.xml"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_fling_score.xml" tooltip="PokemonFractions/res/layout/activity_fling_score.xml">
 <persistable path="/PokemonFractions/res/layout/activity_fling_score.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Tutorial.java" tooltip="PokemonFractions/src/com/example/pokemonfractions/Tutorial.java">
-<persistable path="/PokemonFractions/src/com/example/pokemonfractions/Tutorial.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MasterScore.java" tooltip="PokemonFractions/src/com/example/pokemonfractions/MasterScore.java">
+<persistable path="/PokemonFractions/src/com/example/pokemonfractions/MasterScore.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="strings.xml" tooltip="PokemonFractions/res/values/strings.xml">
-<persistable path="/PokemonFractions/res/values/strings.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_master_score.xml" tooltip="PokemonFractions/res/layout/activity_master_score.xml">
+<persistable path="/PokemonFractions/res/layout/activity_master_score.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_main.xml" tooltip="PokemonFractions/res/layout/activity_main.xml">
-<persistable path="/PokemonFractions/res/layout/activity_main.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MasterAddition.java" tooltip="PokemonFractions/src/com/example/pokemonfractions/MasterAddition.java">
-<persistable path="/PokemonFractions/src/com/example/pokemonfractions/MasterAddition.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Location.java" tooltip="PokemonFractions/src/helpers/Location.java">
+<persistable path="/PokemonFractions/src/helpers/Location.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainActivity.java" tooltip="PokemonFractions/src/com/example/pokemonfractions/MainActivity.java">
 <persistable path="/PokemonFractions/src/com/example/pokemonfractions/MainActivity.java"/>
 </file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_poke_fling.xml" tooltip="PokemonFractions/res/layout/activity_poke_fling.xml">
+<persistable path="/PokemonFractions/res/layout/activity_poke_fling.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_master_addition.xml" tooltip="PokemonFractions/res/layout/activity_master_addition.xml">
+<persistable path="/PokemonFractions/res/layout/activity_master_addition.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FlingScore.java" tooltip="PokemonFractions/src/com/example/pokemonfractions/FlingScore.java">
+<persistable path="/PokemonFractions/src/com/example/pokemonfractions/FlingScore.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Wiggler.java" tooltip="PokemonFractions/src/helpers/Wiggler.java">
+<persistable path="/PokemonFractions/src/helpers/Wiggler.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PokeFling.java" tooltip="PokemonFractions/src/com/example/pokemonfractions/PokeFling.java">
+<persistable path="/PokemonFractions/src/com/example/pokemonfractions/PokeFling.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MasterMath.java" tooltip="PokemonFractions/src/mathClasses/MasterMath.java">
 <persistable path="/PokemonFractions/src/mathClasses/MasterMath.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PokeFlingMath.java" tooltip="PokemonFractions/src/mathClasses/PokeFlingMath.java">
+<persistable path="/PokemonFractions/src/mathClasses/PokeFlingMath.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MasterAddition.java" tooltip="PokemonFractions/src/com/example/pokemonfractions/MasterAddition.java">
+<persistable path="/PokemonFractions/src/com/example/pokemonfractions/MasterAddition.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TutorialScreenCreator.java" tooltip="PokemonFractions/src/helpers/TutorialScreenCreator.java">
+<persistable path="/PokemonFractions/src/helpers/TutorialScreenCreator.java"/>
 </file>
 </mruList>
 </workbench>

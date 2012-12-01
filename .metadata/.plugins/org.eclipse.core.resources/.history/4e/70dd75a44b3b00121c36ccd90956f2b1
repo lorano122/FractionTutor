@@ -1,0 +1,192 @@
+package com.example.pokemonfractions;
+
+import mathClasses.MasterMath;
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Context;
+import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.Menu;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.animation.OvershootInterpolator;
+import android.widget.FrameLayout;
+
+public class MasterAddition extends Activity {
+	private static final String DEBUG_TAG = "Addition";
+    private Matrix animateStart;
+    private OvershootInterpolator animateInterpolator;
+    private long startTime;
+    private long endTime;
+    private float totalAnimDx;
+    private float totalAnimDy;
+    private MasterMath math;
+    private int ans=0,question=0,userAns=0;
+    private float cx=0,cy=0;
+    
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_master_addition);
+	    FrameLayout frame = (FrameLayout) findViewById(R.id.graphics_holder);
+	    PlayAreaView image = new PlayAreaView(this);
+	    this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE);
+	    frame.addView(image);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_master_addition, menu);
+        return true;
+    }
+    
+    public void onResume()
+    {
+    	super.onResume();
+    }
+    
+    
+    private class PlayAreaView extends View {
+
+        private GestureDetector gestures;
+        private Matrix translate;
+        private Matrix animateStart;
+        private OvershootInterpolator animateInterpolator;
+        private long startTime;
+        private long endTime;
+        private float totalAnimDx;
+        private float totalAnimDy;
+        private Bitmap pokeDex;
+
+        private float[] dexLoc = { 1, 0, cx, 0, 1, cy, 0, 0, 1 };
+        
+        public PlayAreaView(Context context) {
+            super(context);
+            translate = new Matrix();
+            gestures = new GestureDetector(MasterAddition.this,
+                    new GestureListener(this));
+            math = new MasterMath(6);
+            pokeDex = BitmapFactory.decodeResource(getResources(), R.drawable.pokedex1);
+            
+           
+        }
+        public void onMove(float dx, float dy) {        	
+            translate.postTranslate(dx, dy);
+            invalidate();
+        }
+
+        public void onResetLocation() {
+            translate.setValues(dexLoc);
+            invalidate();
+        }
+        
+        public void onResetLocation(boolean flag) {
+            if(flag)
+            {
+            	translate.reset();
+            	invalidate();
+            }
+        }
+
+        @Override
+        protected void onDraw(Canvas canvas) {
+            // Log.v(DEBUG_TAG, "onDraw");
+        	cx = 100;
+        	cy = canvas.getHeight() - pokeDex.getHeight();
+        	dexLoc[2] = cx;
+        	dexLoc[5] = cy;
+        	canvas.drawBitmap(pokeDex, translate, null);        	
+            //Log.d(DEBUG_TAG, "Matrix: " + translate.toShortString());
+            //Log.d(DEBUG_TAG, "Canvas: " + m.toShortString());
+        }
+
+        @Override
+        public boolean onTouchEvent(MotionEvent event) {
+            return gestures.onTouchEvent(event);
+        }
+        
+
+
+
+    }
+    
+    private class GestureListener implements GestureDetector.OnGestureListener,GestureDetector.OnDoubleTapListener {
+    	PlayAreaView view;
+    	
+    	public GestureListener(PlayAreaView view)
+    	{
+    		this.view = view;
+    	}
+    	
+    	
+    	public boolean onDown(MotionEvent e) {
+    	    Log.v(DEBUG_TAG, "onDown"); 
+    	    if(question == 0 && userAns == ans )
+    	    {
+    	    	float x = e.getRawX() - view.pokeDex.getWidth()/2;
+				float y = e.getRawY() - view.pokeDex.getHeight()*2;
+				float tolerance = 40;
+				boolean w1 = Math.abs((x - cx)) <= tolerance;
+				boolean w2 = Math.abs((y/2 - cy)) <= tolerance;
+    	    }
+    	    return true;
+    	}
+
+    	
+    	public boolean onDoubleTap(MotionEvent e) {
+    	    Log.v(DEBUG_TAG, "onDoubleTap");
+//    	    view.onResetLocation();
+    	    return true;
+    	}
+
+		public boolean onDoubleTapEvent(MotionEvent e) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		public boolean onSingleTapConfirmed(MotionEvent e) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+
+		public boolean onFling(MotionEvent e1, MotionEvent e2,final float velocityX, final float velocityY) {
+		    Log.v(DEBUG_TAG, "onFling");
+		    return false;
+		}
+
+
+		public void onLongPress(MotionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public boolean onScroll(MotionEvent e1, MotionEvent e2,
+		    float distanceX, float distanceY) {
+		    Log.v(DEBUG_TAG, "onScroll");
+		   
+		    return false;
+		}
+
+		public void onShowPress(MotionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public boolean onSingleTapUp(MotionEvent e) {
+
+			return false;
+		}
+		
+		
+
+
+
+}
+}

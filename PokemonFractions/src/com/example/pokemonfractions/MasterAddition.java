@@ -1,13 +1,20 @@
 package com.example.pokemonfractions;
 
+import java.util.ArrayList;
+
 import mathClasses.MasterMath;
 import android.os.Bundle;
+import android.os.Handler;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
+import android.graphics.Paint;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Menu;
@@ -15,6 +22,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
+
 
 public class MasterAddition extends Activity {
 	private static final String DEBUG_TAG = "Addition";
@@ -25,7 +33,10 @@ public class MasterAddition extends Activity {
     private float totalAnimDx;
     private float totalAnimDy;
     private MasterMath math;
-    private int ans;
+    private int ans=0,question=0,userAns=0,correct=0;
+    private float cx=0,cy=0;
+    private String equation="";
+    private boolean initializing = true;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +46,7 @@ public class MasterAddition extends Activity {
 	    PlayAreaView image = new PlayAreaView(this);
 	    this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE);
 	    frame.addView(image);
+
     }
 
     @Override
@@ -47,7 +59,7 @@ public class MasterAddition extends Activity {
     {
     	super.onResume();
     }
-    
+
     
     private class PlayAreaView extends View {
 
@@ -59,85 +71,141 @@ public class MasterAddition extends Activity {
         private long endTime;
         private float totalAnimDx;
         private float totalAnimDy;
-        private int ans;
-
-        public void onAnimateMove(float dx, float dy, long duration) {
-            animateStart = new Matrix(translate);
-            animateInterpolator = new OvershootInterpolator();
-            startTime = System.currentTimeMillis();
-            endTime = startTime + duration;
-            totalAnimDx = dx;
-            totalAnimDy = dy;
-            post(new Runnable() {
-                public void run() {
-                    onAnimateStep();
-                }
-            });
+        private Bitmap pokeDex;
+        private Paint p;
+        private float[] dexLoc = { 1, 0, cx, 0, 1, cy, 0, 0, 1 };
+        private ArrayList<Integer> score = new ArrayList<Integer>();
+        private ArrayList<Integer> pokemon = new ArrayList<Integer>();
+        private int egg;
+        
+        public PlayAreaView(Context context) {
+            super(context);
+            translate = new Matrix();
+            translate.setValues(dexLoc);
+            gestures = new GestureDetector(MasterAddition.this,
+                    new GestureListener(this));
+            math = new MasterMath(6);
+            pokeDex = BitmapFactory.decodeResource(getResources(), R.drawable.pokedex1);
+            ans = math.getAnswerNum();
+            equation = math.getEquation();
+            p=new Paint();
+            
+           
         }
-
-        private void onAnimateStep() {
-            long curTime = System.currentTimeMillis();
-            float percentTime = (float) (curTime - startTime) / (float) (endTime - startTime);
-            float percentDistance = animateInterpolator.getInterpolation(percentTime);
-            float curDx = percentDistance * totalAnimDx;
-            float curDy = percentDistance * totalAnimDy;
-            translate.set(animateStart);
-            onMove(curDx, curDy);
-
-            //Log.v(DEBUG_TAG, "We're " + percentDistance + " of the way there!");
-            if (percentTime < 1.0f) 
-            {
-                post(new Runnable() {
-                    public void run() {
-                        onAnimateStep();
-                    }
-                });
-            }
-        }
-
-        public void onMove(float dx, float dy) {        	
+        public void onMove(float dx, float dy) {     
+        	Log.v(DEBUG_TAG, "moving");
             translate.postTranslate(dx, dy);
             invalidate();
         }
 
         public void onResetLocation() {
-            translate.reset();
+            translate.setValues(dexLoc);
             invalidate();
         }
-
-        public void onSetLocation(float dx, float dy) {
-            translate.postTranslate(dx, dy);
+        
+        public void onResetLocation(boolean flag) {
+            if(flag)
+            {
+            	translate.reset();
+            	invalidate();
+            }
         }
         
-        
-
-        public PlayAreaView(Context context) {
-            super(context);
-            translate = new Matrix();
-            gestures = new GestureDetector(MasterAddition.this,
-                    new GestureListener(this));
-            math = new MasterMath(6);
-           
+        public void wiggle()
+        {       	 
+ 			final float shift = 25;
+ 			onMove(-shift,0);
+ 			Log.v(DEBUG_TAG, "in wiggle");
+			final Handler backHandler = new Handler();
+			backHandler.postDelayed(new Runnable() {
+             public void run() {
+             	onResetLocation();
+             	onMove(-shift*2,0);
+   	          backHandler.postDelayed(new Runnable() {
+ 	                public void run() {
+ 	                	onResetLocation();
+ 	                	onMove(-shift,0);
+ 	                	Log.v(DEBUG_TAG, ":("); 
+ 	                	}
+ 	            	}, 350);  	       
+             }             
+         }, 350);
+			onResetLocation();
         }
-
+        
+        public void drawEquation(Canvas canvas)
+        {
+        	p.setColor(Color.BLACK);
+        	p.setTextSize(30);
+        	canvas.drawText(equation, (30 +pokeDex.getWidth())/2 - equation.length()*7, (canvas.getHeight()-pokeDex.getHeight()/2), p);
+        }
+        
+        public void nextQuestion()
+        {
+        	if(math.isCorrect(userAns))
+        	{
+        		
+        		//functionality to show pokemon
+        		//score.set(correct, pokemon.get(correct));
+        		correct++;
+        	}
+        	if(correct == 6)
+        	{
+        		//functionality to move on
+        	}
+        	question++;
+        	math.createEquation();
+        	equation = math.getEquation();
+        		
+        }
 
         @Override
         protected void onDraw(Canvas canvas) {
             // Log.v(DEBUG_TAG, "onDraw");
-         
+        	canvas.drawBitmap(pokeDex, translate, null); 
+        	cx = 25;
+        	cy = canvas.getHeight() - pokeDex.getHeight();
+        	if(initializing)
+        	{
+        		dexLoc[2] = cx;
+        		dexLoc[5] = cy;
+        		initializing = false;
+        		onResetLocation();
+        	}
+        	
+        	drawEquation(canvas);
+        	if(correct == 6)
+        	{
+        		//write a message on the canvas about them winning
+        	}
             //Log.d(DEBUG_TAG, "Matrix: " + translate.toShortString());
             //Log.d(DEBUG_TAG, "Canvas: " + m.toShortString());
         }
+        
+        public void moveOn()
+        {
+        	final Intent intent = new Intent(MasterAddition.this.getBaseContext(), MasterScore.class);
+        	intent.putExtra("results", " "+question+" ");
+			final Handler h1 = new Handler();
+			  	h1.postDelayed(new Runnable() 
+				{
+					public void run() 
+					{
+						Log.d(DEBUG_TAG, "moving on");
+						//write a message to canvas
+						recreate();
+						startActivity(intent);
+						
+					}
+				}, 4000);
+			
+        }
+        
 
         @Override
         public boolean onTouchEvent(MotionEvent event) {
             return gestures.onTouchEvent(event);
         }
-        
-
-
-
-    }
     
     private class GestureListener implements GestureDetector.OnGestureListener,GestureDetector.OnDoubleTapListener {
     	PlayAreaView view;
@@ -149,13 +217,24 @@ public class MasterAddition extends Activity {
     	
     	
     	public boolean onDown(MotionEvent e) {
-    	    Log.v(DEBUG_TAG, "onDown");  
+    	    Log.v(DEBUG_TAG, "onDown"); 
+    	    
+    	    //if the user is on the first question and they have filled in the correct amount of the master ball
+    	    //the pokedex wiggles to show them that to answer they click in the pokedex
+    	    if(question == 0 )
+    	    {
+    	    	Log.v(DEBUG_TAG, "start wiggle"); 
+    	    	view.wiggle();
+    	    }
+    	    math.createEquation();
+    	    equation = math.getEquation();
     	    return true;
     	}
 
+    	
     	public boolean onDoubleTap(MotionEvent e) {
     	    Log.v(DEBUG_TAG, "onDoubleTap");
-    	    view.onResetLocation();
+//    	    view.onResetLocation();
     	    return true;
     	}
 
@@ -172,10 +251,6 @@ public class MasterAddition extends Activity {
 
 		public boolean onFling(MotionEvent e1, MotionEvent e2,final float velocityX, final float velocityY) {
 		    Log.v(DEBUG_TAG, "onFling");
-		    final float distanceTimeFactor = 0.4f;
-		    final float totalDx = (distanceTimeFactor * velocityX/2);
-		    final float totalDy = (distanceTimeFactor * velocityY/2);
-		    view.onAnimateMove(totalDx, totalDy,(long) (1000 * distanceTimeFactor));
 		    return true;
 		}
 
@@ -188,7 +263,7 @@ public class MasterAddition extends Activity {
 		public boolean onScroll(MotionEvent e1, MotionEvent e2,
 		    float distanceX, float distanceY) {
 		    Log.v(DEBUG_TAG, "onScroll");
-		    view.onMove(-distanceX, -distanceY);
+		   
 		    return true;
 		}
 
@@ -204,7 +279,7 @@ public class MasterAddition extends Activity {
 		
 		
 
-
+    }
 
 }
 }

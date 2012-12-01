@@ -13,6 +13,7 @@ public class MasterMath {
 	{
 		this.denom = denom;
 		r = new Random();
+		createEquation();
 	}
 	
 	public void createEquation()
@@ -23,6 +24,8 @@ public class MasterMath {
 		while(temp1 == first || temp2 == first)
 			first = (int) (r.nextDouble()*(denom+1));
 		second = (int) (r.nextDouble()*(denom+1));
+		if(first == 0 && second == 0)
+			first = (int) (r.nextDouble()*(denom+1));
 		while(temp2 == second || temp1 == first)
 			second = (int) (r.nextDouble()*(denom+1));
 		while((first + second) > denom)
@@ -34,7 +37,7 @@ public class MasterMath {
 			else
 				second = (int) (r.nextDouble()*(denom+1));
 		}
-		equation = " "+first+" / denom  + " + second +"/ denom";
+		equation = " "+first+"/"+denom  + " + " + second +"/"+denom;
 	}
 	
 	public String getEquation()

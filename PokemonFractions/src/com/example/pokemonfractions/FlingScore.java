@@ -43,13 +43,13 @@ public class FlingScore extends Activity {
     
     public void playAddition(View view)
     {
-    	Intent fling = new Intent(this, MasterAddition.class);
-    	startActivity(fling);
+    	Intent add = new Intent(this, MasterAddition.class);
+    	startActivity(add);
     }
     
     public void startOver(View view)
     {
-    	Intent fling = new Intent(this, MainActivity.class);
-    	startActivity(fling);
+    	Intent back = new Intent(this, MainActivity.class);
+    	startActivity(back);
     }
 }

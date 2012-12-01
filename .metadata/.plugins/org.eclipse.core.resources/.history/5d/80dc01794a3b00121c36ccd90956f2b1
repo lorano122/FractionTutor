@@ -1,0 +1,56 @@
+/*
+ * 
+ * A helper class that is linked to a bitmap
+ * checks whether or not the bitmap should wiggle
+ * wiggles the bitmap if it should
+ */
+
+package helpers;
+
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.os.Handler;
+import android.view.MotionEvent;
+
+public class Wiggler {
+
+	private Canvas canvas;
+	private Paint p;
+	private Bitmap icon;
+	private int tolerance;
+	private MotionEvent event;
+	
+	public Wiggler(PlayAre, Canvas canvas, Paint p,int tolerance)
+	{
+		
+	}
+	
+	public boolean shouldWiggle(MotionEvent e)
+	{
+		return true;
+	}
+	
+	public void wiggle(boolean wiggle)
+	{
+		if(wiggle)
+		{
+			final float shift = ball.getWidth()/4;
+ 			onMove(-shift,0);
+			final Handler backHandler = new Handler();
+			backHandler.postDelayed(new Runnable() {
+             public void run() {
+             	onResetLocation();
+             	onMove(-shift*2,0);
+   	          backHandler.postDelayed(new Runnable() {
+ 	                public void run() {
+ 	                	onResetLocation();
+ 	                	onMove(-shift,0); 
+ 	                	canMove = true;
+ 	                }
+ 	            	}, 150);  	       
+             }             
+         }, 150);
+		}
+	}
+}

@@ -7,5 +7,8 @@
     <string name="title_activity_poke_fling">PokeFling</string>
     <string name="title_activity_tutorial">Tutorial</string>
     <string name="title_activity_master_addition">MasterAddition</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_fling_score">FlingScore</string>
+    <string name="title_activity_master_score">MasterScore</string>
 
 </resources>

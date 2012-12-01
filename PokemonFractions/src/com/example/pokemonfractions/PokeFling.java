@@ -1,6 +1,7 @@
 package com.example.pokemonfractions;
 
 import helpers.Location;
+import helpers.TutorialScreenCreator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -59,15 +60,17 @@ public class PokeFling extends Activity {
         
 	}
 	
+
 	 protected void onResume()
      {
-     	super.onResume();
+     	super.onResume();     	
      }
 
-	 public void makeToast(String s)
+	 protected void onStop()
 	 {
-		 Toast.makeText(this, s, Toast.LENGTH_LONG);
+		 super.onStop();
 	 }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_poke_fling, menu);
@@ -262,6 +265,12 @@ public class PokeFling extends Activity {
     			canvas.drawText("Your previous answer was", 50, 500, p);
     			canvas.drawText(message, 50, 550, p);
     		}
+    		else if(correct == 6)
+    		{
+    			 p.setTextSize(30);
+     			canvas.drawText("Finished", 50, 500, p);
+     			canvas.drawText(message, 50, 350, p);
+    		}
     	}
 
     	public void nextQuestion(String ans)
@@ -300,41 +309,40 @@ public class PokeFling extends Activity {
 			canMove = true;
     	}
       
+
+    	
+    	public void updateFraction(Canvas canvas)
+    	{
+            
+            Bitmap b = BitmapFactory.decodeResource(getResources(), fPics[num]);
+            canvas.drawBitmap(b, 10, 10, null);
+    	}
         @Override
         protected void onDraw(Canvas canvas) {          
             Matrix m = canvas.getMatrix();      
             cx = canvas.getWidth()/2 - ball.getWidth()/2;
             cy = canvas.getHeight()/2 - ball.getHeight();
-            centerArray[2] = cx;
-            centerArray[5] = cy;
-            Log.v( DEBUG_TAG, "canvas y: " + canvas.getHeight()); 
+            p.setColor(Color.rgb(174,208,198));
+            canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), p);
             for(Location l : icons)
             {
             	l.setLocation(canvas.getWidth(), canvas.getHeight());
             	l.draw(canvas);            	
-            }            
-            Bitmap b = BitmapFactory.decodeResource(getResources(), fPics[num]);
-            canvas.drawBitmap(b, 10, 10, null);                    
+            }
+            updateFraction(canvas);
             drawAnswers(canvas);
             setTexts(canvas);
             canvas.drawBitmap(ball, translate, null);
         	if(initializing)
         	{
-        		p.setColor(Color.WHITE);
-            	canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), p);
-            	p.setTextSize(30);
-            	p.setColor(Color.BLACK);
-		    	start(canvas);
+                centerArray[2] = cx;
+                centerArray[5] = cy;
+		    	start(canvas);		    	
 		    	
         	}
             if(done && correct == 6)
             {
-            	canMove = false;
-            	p.setColor(Color.WHITE);
-            	canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), p);
-            	p.setColor(Color.BLACK);
-    			String results = "It took " + question + " pokeballs for you to catch 6 pokemon!";
-    			canvas.drawText(results, canvas.getWidth()/2 - results.length()*7, canvas.getHeight()/2, p);
+            	
      			moveOn(canvas);
             }
   
@@ -342,24 +350,15 @@ public class PokeFling extends Activity {
         
         public void start(Canvas canvas)
         {
-        	String welcome = "Welcome to Pokemon Fling!";
-        	String bar = "Solve problems by finding the fraction represented by the health bar below ";
-        	String inst = "Just fling the pokeball at the pokemon holding the correct answer to capture it";
-        	String con = "The game is over once you have captured 6 Pokemon.";
-        	String begin = "Tap the pokeball to begin, good luck and have fun!";
-			canvas.drawText(welcome, canvas.getWidth()/2 - welcome.length()*(7),50,  p);
-			canvas.drawText(bar, canvas.getWidth()/2 - bar.length()*(7),150,  p);
-			canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.f6), canvas.getWidth()/2 - 122,238, null);
-			canvas.drawText(inst, canvas.getWidth()/2 - inst.length()*(7),350,  p);
-			canvas.drawText(con, canvas.getWidth()/2 - con.length()*(7),450,  p);
-			canvas.drawText(begin, canvas.getWidth()/2 - begin.length()*(7),490,  p);
-			canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.pokeball), canvas.getWidth()/2 - 25 ,550, null);
-			
+        	Bitmap fraction = BitmapFactory.decodeResource(getResources(), R.drawable.f6); 
+        	TutorialScreenCreator t = new TutorialScreenCreator(p,canvas);
+        	t.createFlingScreen(fraction,ball);		
         }
         
         public void moveOn(Canvas canvas)
         {
-        	final Intent intent = new Intent(PokeFling.this.getBaseContext(), MainActivity.class);
+        	final Intent intent = new Intent(PokeFling.this.getBaseContext(), FlingScore.class);
+        	intent.putExtra("results", " "+question+" ");
 			final Handler h1 = new Handler();
 			if(moveOn && done)
 			{
@@ -369,9 +368,12 @@ public class PokeFling extends Activity {
 					public void run() 
 					{
 						Log.d(DEBUG_TAG, "moving on");
+
+						recreate();
 						startActivity(intent);
+						
 					}
-				}, 5000);
+				}, 4000);
 			}
         }
 			

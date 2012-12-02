@@ -174,15 +174,15 @@ public class MasterAddition extends Activity {
         {
         	MasterLocation m = new MasterLocation(egg,1000,5);
        	 pokemon.add(m);
-       	 m = new MasterLocation(egg,1000,110);
+       	 m = new MasterLocation(egg,1000,120);
        	 pokemon.add(m);
-       	 m = new MasterLocation(egg,1000,215);
+       	 m = new MasterLocation(egg,1000,220);
        	 pokemon.add(m);
        	 m = new MasterLocation(egg,1000,320);
        	 pokemon.add(m);
-       	 m = new MasterLocation(egg,1000,425);
+       	 m = new MasterLocation(egg,1000,420);
        	 pokemon.add(m);
-       	 m = new MasterLocation(egg,1000,530);
+       	 m = new MasterLocation(egg,1000,520);
        	 pokemon.add(m);
         }
         
@@ -294,7 +294,8 @@ public class MasterAddition extends Activity {
         	Bitmap ballPiece = BitmapFactory.decodeResource( getResources(), R.drawable.sixth6 );
         	TutorialScreenCreator t = new TutorialScreenCreator(p,Canvas);
         	t.createAdditionScreen(ballPiece, ball);	
-        }         
+        }
+         
         public void moveOn()
         {
         	final Intent intent = new Intent(MasterAddition.this.getBaseContext(), MasterScore.class);

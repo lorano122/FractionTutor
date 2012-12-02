@@ -176,13 +176,13 @@ public class MasterAddition extends Activity {
        	 pokemon.add(m);
        	 m = new MasterLocation(egg,1000,110);
        	 pokemon.add(m);
-       	 m = new MasterLocation(egg,1000,215);
+       	 m = new MasterLocation(egg,1000,220);
        	 pokemon.add(m);
-       	 m = new MasterLocation(egg,1000,320);
+       	 m = new MasterLocation(egg,1000,310);
        	 pokemon.add(m);
-       	 m = new MasterLocation(egg,1000,425);
+       	 m = new MasterLocation(egg,1000,420);
        	 pokemon.add(m);
-       	 m = new MasterLocation(egg,1000,530);
+       	 m = new MasterLocation(egg,1000,520);
        	 pokemon.add(m);
         }
         

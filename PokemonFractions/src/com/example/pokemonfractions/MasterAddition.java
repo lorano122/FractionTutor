@@ -193,7 +193,6 @@ public class MasterAddition extends Activity {
         	{
         		dexLoc[2] = cxDex;
         		dexLoc[5] = cyDex;
-        		start( canvas );
         		initializing = false;
         		onResetLocation();
         	}
@@ -209,13 +208,6 @@ public class MasterAddition extends Activity {
         	}
             //Log.d(DEBUG_TAG, "Matrix: " + translate.toShortString());
             //Log.d(DEBUG_TAG, "Canvas: " + m.toShortString());
-        }
-        
-        public void start( Canvas Canvas ) {
-        	Bitmap ball = BitmapFactory.decodeResource( getResources(), R.drawable.pokeball );
-        	Bitmap ballPiece = BitmapFactory.decodeResource( getResources(), R.drawable.sixth6 );
-        	TutorialScreenCreator t = new TutorialScreenCreator(p,Canvas);
-        	t.createAdditionScreen(ballPiece, ball);	
         }
          
         public void moveOn()

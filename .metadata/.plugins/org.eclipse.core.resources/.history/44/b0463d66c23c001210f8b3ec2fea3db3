@@ -1,0 +1,25 @@
+package helpers;
+
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+
+public class MasterLocation {
+	
+	private float x,y;
+	private Bitmap icon;
+	private int index;
+	
+	public MasterLocation(Bitmap icon, int index)
+	{
+		this.icon = icon;
+		this.index = index;
+	}
+	
+	
+	public void setLocation(Canvas canvas)
+	{
+		
+	}
+
+}

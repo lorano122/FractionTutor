@@ -1,6 +1,6 @@
 package com.example.pokemonfractions;
 
-import helpers.Location;
+import helpers.FlingLocation;
 import helpers.TutorialScreenCreator;
 
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class PokeFling extends Activity {
 	private static final String DEBUG_TAG = "Fling";
 
     private PokeFlingMath fractions = new PokeFlingMath(10);
-    private ArrayList<Location> icons = new ArrayList<Location>();
+    private ArrayList<FlingLocation> icons = new ArrayList<FlingLocation>();
     private ArrayList<String> wrongAns = fractions.randomAnswers(3);
     private int num = fractions.getAnswer();
     private String answer = num +" / 10";
@@ -110,7 +110,7 @@ public class PokeFling extends Activity {
         	for(int i = 0; i < 4; i++)
         	{
         		Bitmap b = BitmapFactory.decodeResource(getResources(), icon[i]);
-        		Location l = new Location(b,i+1);
+        		FlingLocation l = new FlingLocation(b,i+1);
         		Log.d(DEBUG_TAG, "creating locations");
         		icons.add(l);
         	}       
@@ -239,7 +239,7 @@ public class PokeFling extends Activity {
             p.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
     		int i = 0;
     		p.setColor(Color.BLACK);
-    		for(Location l : icons)
+    		for(FlingLocation l : icons)
     		{
     			float x = l.getX()-25;
     			float y = l.getY()-30;
@@ -324,7 +324,7 @@ public class PokeFling extends Activity {
             cy = canvas.getHeight()/2 - ball.getHeight();
             p.setColor(Color.rgb(174,208,198));
             canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), p);
-            for(Location l : icons)
+            for(FlingLocation l : icons)
             {
             	l.setLocation(canvas.getWidth(), canvas.getHeight());
             	l.draw(canvas);            	

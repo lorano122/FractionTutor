@@ -1,5 +1,7 @@
 package com.example.pokemonfractions;
 
+import helpers.TutorialScreenCreator;
+
 import java.util.ArrayList;
 
 import mathClasses.MasterMath;
@@ -34,7 +36,8 @@ public class MasterAddition extends Activity {
     private float totalAnimDy;
     private MasterMath math;
     private int ans=0,question=0,userAns=0,correct=0;
-    private float cx=0,cy=0;
+    private float cxDex=0,cyDex=0;
+    //private float cxS1 = 0, cyS1 = 0;
     private String equation="";
     private boolean initializing = true;
     
@@ -71,9 +74,11 @@ public class MasterAddition extends Activity {
         private long endTime;
         private float totalAnimDx;
         private float totalAnimDy;
-        private Bitmap pokeDex;
+        private Bitmap pokeDex, fifth1, fifth2, fifth3, fifth4, fifth5, sixth1, sixth2, sixth3, sixth4,
+        sixth5, sixth6;
         private Paint p;
-        private float[] dexLoc = { 1, 0, cx, 0, 1, cy, 0, 0, 1 };
+        private float[] dexLoc = { 1, 0, cxDex, 0, 1, cyDex, 0, 0, 1 };
+        //private float[] sixth1Loc = { 1, 0, cxS1, 0, 1, cyS1, 0, 0, 1 };
         private ArrayList<Integer> score = new ArrayList<Integer>();
         private ArrayList<Integer> pokemon = new ArrayList<Integer>();
         private int egg;
@@ -89,7 +94,17 @@ public class MasterAddition extends Activity {
             ans = math.getAnswerNum();
             equation = math.getEquation();
             p=new Paint();
-            
+            fifth1 = BitmapFactory.decodeResource(getResources(), R.drawable.fifth1);
+            fifth2 = BitmapFactory.decodeResource(getResources(), R.drawable.fifth2);
+            fifth3 = BitmapFactory.decodeResource(getResources(), R.drawable.fifth3);
+            fifth4 = BitmapFactory.decodeResource(getResources(), R.drawable.fifth4);
+            fifth5 = BitmapFactory.decodeResource(getResources(), R.drawable.fifth5);
+            sixth1 = BitmapFactory.decodeResource(getResources(), R.drawable.sixth1);
+            sixth2 = BitmapFactory.decodeResource(getResources(), R.drawable.sixth2);
+            sixth3 = BitmapFactory.decodeResource(getResources(), R.drawable.sixth3);
+            sixth4 = BitmapFactory.decodeResource(getResources(), R.drawable.sixth4);
+            sixth5 = BitmapFactory.decodeResource(getResources(), R.drawable.sixth5);
+            sixth6 = BitmapFactory.decodeResource(getResources(), R.drawable.sixth6);
            
         }
         public void onMove(float dx, float dy) {     
@@ -162,16 +177,28 @@ public class MasterAddition extends Activity {
         @Override
         protected void onDraw(Canvas canvas) {
             // Log.v(DEBUG_TAG, "onDraw");
-        	canvas.drawBitmap(pokeDex, translate, null); 
-        	cx = 25;
-        	cy = canvas.getHeight() - pokeDex.getHeight();
+        	canvas.drawBitmap(pokeDex, translate, null);
+        	//canvas.drawBitmap( sixth1, translate, null ); 
+        	//canvas.drawBitmap( sixth2, translate, null );
+        	//canvas.drawBitmap( sixth3, translate, null );
+        	//canvas.drawBitmap( sixth4, translate, null );
+        	//canvas.drawBitmap( sixth5, translate, null );
+        	//canvas.drawBitmap( sixth6, translate, null );
+        
+        	cxDex = 25;
+        	cyDex = canvas.getHeight() - pokeDex.getHeight();
+        	//cxS1 = 50;
+        	//cyS1 = 50;
         	if(initializing)
         	{
-        		dexLoc[2] = cx;
-        		dexLoc[5] = cy;
+        		dexLoc[2] = cxDex;
+        		dexLoc[5] = cyDex;
+        		start( canvas );
         		initializing = false;
         		onResetLocation();
         	}
+        	
+        	
         	
         	drawEquation(canvas);
         	if(correct == 6)
@@ -182,6 +209,13 @@ public class MasterAddition extends Activity {
             //Log.d(DEBUG_TAG, "Canvas: " + m.toShortString());
         }
         
+        public void start( Canvas Canvas ) {
+        	Bitmap ball = BitmapFactory.decodeResource( getResources(), R.drawable.pokeball );
+        	Bitmap ballPiece = BitmapFactory.decodeResource( getResources(), R.drawable.sixth6 );
+        	TutorialScreenCreator t = new TutorialScreenCreator(p,Canvas);
+        	t.createAdditionScreen(ballPiece, ball);	
+        }
+         
         public void moveOn()
         {
         	final Intent intent = new Intent(MasterAddition.this.getBaseContext(), MasterScore.class);
@@ -200,6 +234,7 @@ public class MasterAddition extends Activity {
 				}, 4000);
 			
         }
+        
         
 
         @Override
@@ -244,7 +279,7 @@ public class MasterAddition extends Activity {
 		}
 
 		public boolean onSingleTapConfirmed(MotionEvent e) {
-			// TODO Auto-generated method stub
+			
 			return false;
 		}
 

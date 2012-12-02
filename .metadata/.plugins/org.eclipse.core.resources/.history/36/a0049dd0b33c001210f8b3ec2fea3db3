@@ -151,7 +151,7 @@ public class MasterAddition extends Activity {
         	}
         	if(correct == 6)
         	{
-        		moveOn();
+        		//functionality to move on
         	}
         	question++;
         	math.createEquation();
@@ -176,9 +176,7 @@ public class MasterAddition extends Activity {
         	drawEquation(canvas);
         	if(correct == 6)
         	{
-        		p.setColor(Color.BLACK);
-        		p.setTextSize(30);
-        		canvas.drawText("You have finished the game", 100, 100, p);
+        		//write a message on the canvas about them winning
         	}
             //Log.d(DEBUG_TAG, "Matrix: " + translate.toShortString());
             //Log.d(DEBUG_TAG, "Canvas: " + m.toShortString());

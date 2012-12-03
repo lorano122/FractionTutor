@@ -392,8 +392,7 @@ public class MasterAddition extends Activity {
         	    } 
         	    //return true;
         	}
-            //return gestures.onTouchEvent(event);
-        	return true;
+            return gestures.onTouchEvent(event);
         }
     
     private class GestureListener implements GestureDetector.OnGestureListener,GestureDetector.OnDoubleTapListener {

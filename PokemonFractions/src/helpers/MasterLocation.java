@@ -28,4 +28,13 @@ public class MasterLocation {
 		icon = b;
 	}
 
+	
+	public boolean wasClicked(float x, float y)
+	{
+		boolean wasClicked = false;
+		float tolerance = 40;
+		if(Math.abs(this.x - x) <= tolerance && Math.abs(this.y - y) <= tolerance)
+			wasClicked = true;
+		return wasClicked;
+	}
 }

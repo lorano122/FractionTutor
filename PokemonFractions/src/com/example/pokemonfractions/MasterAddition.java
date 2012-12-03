@@ -84,8 +84,7 @@ public class MasterAddition extends Activity {
         private long endTime;
         private float totalAnimDx;
         private float totalAnimDy;
-        private Bitmap pokeDex, sixth1, sixth1M, sixth2, sixth2M, sixth3, sixth3M, sixth4, sixth4M, sixth5, sixth5M, sixth6, sixth6M, 
-        egg,mew,mew2,art,mol,zap,lug;
+        private Bitmap pokeDex, sixth1, sixth2, sixth3,sixth4,sixth5,sixth6, egg,mew,mew2,art,mol,zap,lug;
         private Paint p;
         private float[] dexLoc = { 1, 0, cxDex, 0, 1, cyDex, 0, 0, 1 };
 
@@ -102,17 +101,11 @@ public class MasterAddition extends Activity {
             equation = math.getEquation();
             p=new Paint();
             sixth1 = BitmapFactory.decodeResource(getResources(), R.drawable.sixth1);
-            sixth1M = sixth1.copy(Bitmap.Config.ARGB_8888, true);
             sixth2 = BitmapFactory.decodeResource(getResources(), R.drawable.sixth2);
-            sixth2M = sixth2.copy(Bitmap.Config.ARGB_8888, true);
             sixth3 = BitmapFactory.decodeResource(getResources(), R.drawable.sixth3);
-            sixth3M = sixth3.copy(Bitmap.Config.ARGB_8888, true);
             sixth4 = BitmapFactory.decodeResource(getResources(), R.drawable.sixth4);
-            sixth4M = sixth4.copy(Bitmap.Config.ARGB_8888, true);
             sixth5 = BitmapFactory.decodeResource(getResources(), R.drawable.sixth5);
-            sixth5M = sixth5.copy(Bitmap.Config.ARGB_8888, true);
             sixth6 = BitmapFactory.decodeResource(getResources(), R.drawable.sixth6);
-            sixth6M = sixth6.copy(Bitmap.Config.ARGB_8888, true);
             egg = BitmapFactory.decodeResource(getResources(), R.drawable.egg_insert);
             setPieceLocations();
         	setPokeLocations();
@@ -129,13 +122,6 @@ public class MasterAddition extends Activity {
             invalidate();
         }
         
-        public void onResetLocation(boolean flag) {
-            if(flag)
-            {
-            	translate.reset();
-            	invalidate();
-            }
-        }
         
         public void wiggle()
         {       	 
@@ -197,20 +183,21 @@ public class MasterAddition extends Activity {
         //sets the locations for the fraction pieces
         public void setPieceLocations()
         {
-        	MasterLocation m = new MasterLocation(sixth1M,524-sixth1M.getWidth(),168);
+        	MasterLocation m = new MasterLocation(sixth1,524-sixth1.getWidth(),168);
         	pokeBall.add(m);
-        	m = new MasterLocation(sixth2M,526,168);
+        	m = new MasterLocation(sixth2,526,168);
         	pokeBall.add(m);
-        	m = new MasterLocation(sixth3M,528,225);
+        	m = new MasterLocation(sixth3,528,225);
         	pokeBall.add(m);
-        	m = new MasterLocation(sixth4M, 524,281);
+        	m = new MasterLocation(sixth4, 524,281);
         	pokeBall.add(m);
-        	m = new MasterLocation(sixth5M, 524-sixth5M.getWidth(),281);
+        	m = new MasterLocation(sixth5, 524-sixth5.getWidth(),281);
         	pokeBall.add(m);
-        	m = new MasterLocation(sixth6M, 520-sixth6M.getWidth(),225);
+        	m = new MasterLocation(sixth6, 520-sixth6.getWidth(),225);
         	pokeBall.add(m);
         }
         
+
         //draws the answer counter
         public void drawPokemon(Canvas canvas)
         {
@@ -284,7 +271,7 @@ public class MasterAddition extends Activity {
             p.setColor(Color.rgb(174,208,198));
             canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), p);
         	canvas.drawBitmap(pokeDex, translate, null);        	
-        	drawPieces(canvas);        	
+        	drawPieces(canvas); 
         	drawEquation(canvas);
         	drawPokemon(canvas);
         	if(correct == 6)
@@ -324,58 +311,58 @@ public class MasterAddition extends Activity {
         	switch( action ) {
         	case MotionEvent.ACTION_DOWN:
         		Log.v(DEBUG_TAG, "onDown");
-        	    if ( x >= 524-sixth1M.getWidth() && x < (524-sixth1M.getWidth() + sixth1M.getWidth())
-                        && y >= 168 && y < (168 + sixth1M.getHeight())) {
+        	    if ( x >= 524-sixth1.getWidth() && x < (524-sixth1.getWidth() + sixth1.getWidth())
+                        && y >= 168 && y < (168 + sixth1.getHeight())) {
         	    	Log.v(DEBUG_TAG, "sixth1");
-        	    	if ( sixth1M.sameAs( sixth1 ) ) {
+        	    	if ( sixth1.sameAs( sixth1 ) ) {
         				setBall[0] = false;
         			} else {
         				setBall[0] = true; 
         			}
                 }
-        	    if ( x >= 526 && x < (526 + sixth2M.getWidth())
-                        && y >= 168 && y < (168 + sixth2M.getHeight())) {
+        	    if ( x >= 526 && x < (526 + sixth2.getWidth())
+                        && y >= 168 && y < (168 + sixth2.getHeight())) {
         	    	Log.v(DEBUG_TAG, "sixth2");
-        	    	if ( sixth2M.sameAs( sixth2 ) ) {
-        				sixth2M.eraseColor( Color.TRANSPARENT );
+        	    	if ( sixth2.sameAs( sixth2 ) ) {
+        				sixth2.eraseColor( Color.TRANSPARENT );
         			} else {
-        				sixth2M = sixth2.copy(Bitmap.Config.ARGB_8888, true); 
+        				sixth2 = sixth2.copy(Bitmap.Config.ARGB_8888, true); 
         			}
                 }
-        	    if ( x >= 528 && x < (528 + sixth3M.getWidth())
-                        && y >= 225 && y < (225 + sixth3M.getHeight())) {
+        	    if ( x >= 528 && x < (528 + sixth3.getWidth())
+                        && y >= 225 && y < (225 + sixth3.getHeight())) {
         	    	Log.v(DEBUG_TAG, "sixth3");
-        	    	if ( sixth3M.sameAs( sixth3 ) ) {
-        				sixth3M.eraseColor( Color.TRANSPARENT );
+        	    	if ( sixth3.sameAs( sixth3 ) ) {
+        				sixth3.eraseColor( Color.TRANSPARENT );
         			} else {
-        				sixth3M = sixth3.copy(Bitmap.Config.ARGB_8888, true); 
+        				sixth3 = sixth3.copy(Bitmap.Config.ARGB_8888, true); 
         			}
                 }
-        	    if ( x >= 524 && x < (524 + sixth4M.getWidth())
-                        && y >= 281 && y < (281 + sixth4M.getHeight())) {
+        	    if ( x >= 524 && x < (524 + sixth4.getWidth())
+                        && y >= 281 && y < (281 + sixth4.getHeight())) {
         	    	Log.v(DEBUG_TAG, "sixth4");
-        	    	if ( sixth4M.sameAs( sixth4 ) ) {
-        				sixth4M.eraseColor( Color.TRANSPARENT );
+        	    	if ( sixth4.sameAs( sixth4 ) ) {
+        				sixth4.eraseColor( Color.TRANSPARENT );
         			} else {
-        				sixth4M = sixth4.copy(Bitmap.Config.ARGB_8888, true); 
+        				sixth4 = sixth4.copy(Bitmap.Config.ARGB_8888, true); 
         			}
                 }
-        	    if ( x >= 524-sixth5M.getWidth() && x < (524-sixth5M.getWidth() + sixth5M.getWidth())
-                        && y >= 281 && y < (281 + sixth5M.getHeight())) {
+        	    if ( x >= 524-sixth5.getWidth() && x < (524-sixth5.getWidth() + sixth5.getWidth())
+                        && y >= 281 && y < (281 + sixth5.getHeight())) {
         	    	Log.v(DEBUG_TAG, "sixth5");
-        	    	if ( sixth5M.sameAs( sixth5 ) ) {
-        				sixth5M.eraseColor( Color.TRANSPARENT );
+        	    	if ( sixth5.sameAs( sixth5 ) ) {
+        				sixth5.eraseColor( Color.TRANSPARENT );
         			} else {
-        				sixth5M = sixth5.copy(Bitmap.Config.ARGB_8888, true); 
+        				sixth5 = sixth5.copy(Bitmap.Config.ARGB_8888, true); 
         			}
                 }
-        	    if ( x >= 520-sixth6M.getWidth() && x < (520-sixth6M.getWidth() + sixth6M.getWidth())
-                        && y >= 225 && y < (225 + sixth6M.getHeight())) {
+        	    if ( x >= 520-sixth6.getWidth() && x < (520-sixth6.getWidth() + sixth6.getWidth())
+                        && y >= 225 && y < (225 + sixth6.getHeight())) {
         	    	Log.v(DEBUG_TAG, "sixth6");
-        	    	if ( sixth6M.sameAs( sixth6 ) ) {
-        				sixth6M.eraseColor( Color.TRANSPARENT );
+        	    	if ( sixth6.sameAs( sixth6 ) ) {
+        				sixth6.eraseColor( Color.TRANSPARENT );
         			} else {
-        				sixth6M = sixth6.copy(Bitmap.Config.ARGB_8888, true); 
+        				sixth6 = sixth6.copy(Bitmap.Config.ARGB_8888, true); 
         			}
                 }
         	    if ( x >= 25 && x < (25 + pokeDex.getWidth())

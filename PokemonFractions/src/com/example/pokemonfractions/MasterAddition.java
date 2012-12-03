@@ -235,7 +235,7 @@ public class MasterAddition extends Activity {
         	}
         	canvas.drawBitmap(full, canvas.getWidth()/2 - full.getWidth(),canvas.getHeight() - full.getHeight()*2, p);
 
-        }
+        } 
         
         public void drawEquation(Canvas canvas)
         {

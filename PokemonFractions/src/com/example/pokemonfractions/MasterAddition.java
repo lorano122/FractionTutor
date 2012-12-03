@@ -328,9 +328,9 @@ public class MasterAddition extends Activity {
                         && y >= 168 && y < (168 + sixth1M.getHeight())) {
         	    	Log.v(DEBUG_TAG, "sixth1");
         	    	if ( sixth1M.sameAs( sixth1 ) ) {
-        				sixth1M.eraseColor( Color.TRANSPARENT );
+        				setBall[0] = false;
         			} else {
-        				sixth1M = sixth1.copy(Bitmap.Config.ARGB_8888, true); 
+        				setBall[0] = true; 
         			}
                 }
         	    if ( x >= 526 && x < (526 + sixth2M.getWidth())
@@ -379,17 +379,17 @@ public class MasterAddition extends Activity {
         			}
                 }
         	    if ( x >= 25 && x < (25 + pokeDex.getWidth())
-                        && y >= pokeDex.getHeight() && y < (pokeDex.getHeight() + pokeDex.getHeight())) {
+                        && y >= cyDex && y < (cyDex + pokeDex.getHeight())) {
         	    	Log.v( DEBUG_TAG, "pokedex" );
-        	    	nextQuestion();
-        	    }
-        	    initializing = false;
-        	    if(question == 0 )
-        	    {
-        	    	Log.v(DEBUG_TAG, "start wiggle"); 
-        	    	//view.wiggle();
         	    	initializing = false;
-        	    } 
+            	    if(question == 0 )
+            	    {
+            	    	Log.v(DEBUG_TAG, "start wiggle"); 
+            	    	wiggle();
+            	    	initializing = false;
+            	    }
+        	    	nextQuestion(); 
+        	    }
         	    //return true;
         	}
             return gestures.onTouchEvent(event);
@@ -404,15 +404,15 @@ public class MasterAddition extends Activity {
     	
     	
     	public boolean onDown(MotionEvent e) {
-    	    Log.v(DEBUG_TAG, "onDown");
+    	    /*Log.v(DEBUG_TAG, "onDown");
     	    initializing = false;
     	    if(question == 0 )
     	    {
     	    	Log.v(DEBUG_TAG, "start wiggle"); 
     	    	view.wiggle();
     	    	initializing = false;
-    	    }
-    	    return true;
+    	    }*/
+    	    return false;
     	}
 
     	

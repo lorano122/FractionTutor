@@ -23,7 +23,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.graphics.Region;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Menu;
@@ -84,8 +83,7 @@ public class MasterAddition extends Activity {
         private long endTime;
         private float totalAnimDx;
         private float totalAnimDy;
-        private Bitmap pokeDex, sixth1, sixth1M, sixth2, sixth2M, sixth3, sixth3M, sixth4, sixth4M, sixth5, sixth5M, sixth6, sixth6M, 
-        egg,mew,mew2,art,mol,zap,lug;
+        private Bitmap pokeDex, sixth1, sixth2, sixth3, sixth4,sixth5, sixth6,egg,mew,mew2,art,mol,zap,lug;
         private Paint p;
         private float[] dexLoc = { 1, 0, cxDex, 0, 1, cyDex, 0, 0, 1 };
 
@@ -102,17 +100,11 @@ public class MasterAddition extends Activity {
             equation = math.getEquation();
             p=new Paint();
             sixth1 = BitmapFactory.decodeResource(getResources(), R.drawable.sixth1);
-            sixth1M = sixth1.copy(Bitmap.Config.ARGB_8888, true);
             sixth2 = BitmapFactory.decodeResource(getResources(), R.drawable.sixth2);
-            sixth2M = sixth2.copy(Bitmap.Config.ARGB_8888, true);
             sixth3 = BitmapFactory.decodeResource(getResources(), R.drawable.sixth3);
-            sixth3M = sixth3.copy(Bitmap.Config.ARGB_8888, true);
             sixth4 = BitmapFactory.decodeResource(getResources(), R.drawable.sixth4);
-            sixth4M = sixth4.copy(Bitmap.Config.ARGB_8888, true);
             sixth5 = BitmapFactory.decodeResource(getResources(), R.drawable.sixth5);
-            sixth5M = sixth5.copy(Bitmap.Config.ARGB_8888, true);
             sixth6 = BitmapFactory.decodeResource(getResources(), R.drawable.sixth6);
-            sixth6M = sixth6.copy(Bitmap.Config.ARGB_8888, true);
             egg = BitmapFactory.decodeResource(getResources(), R.drawable.egg_insert);
             setPieceLocations();
         	setPokeLocations();
@@ -182,32 +174,32 @@ public class MasterAddition extends Activity {
         {
         	MasterLocation m = new MasterLocation(egg,1000,5);
        	 pokemon.add(m);
-       	 m = new MasterLocation(egg,1000,110);
+       	 m = new MasterLocation(egg,1000,120);
        	 pokemon.add(m);
-       	 m = new MasterLocation(egg,1000,215);
+       	 m = new MasterLocation(egg,1000,220);
        	 pokemon.add(m);
        	 m = new MasterLocation(egg,1000,320);
        	 pokemon.add(m);
-       	 m = new MasterLocation(egg,1000,425);
+       	 m = new MasterLocation(egg,1000,420);
        	 pokemon.add(m);
-       	 m = new MasterLocation(egg,1000,530);
+       	 m = new MasterLocation(egg,1000,520);
        	 pokemon.add(m);
         }
         
         //sets the locations for the fraction pieces
         public void setPieceLocations()
         {
-        	MasterLocation m = new MasterLocation(sixth1M,524-sixth1M.getWidth(),168);
+        	MasterLocation m = new MasterLocation(sixth1,524-sixth1.getWidth(),168);
         	pokeBall.add(m);
-        	m = new MasterLocation(sixth2M,526,168);
+        	m = new MasterLocation(sixth2,526,168);
         	pokeBall.add(m);
-        	m = new MasterLocation(sixth3M,528,225);
+        	m = new MasterLocation(sixth3,528,225);
         	pokeBall.add(m);
-        	m = new MasterLocation(sixth4M, 524,281);
+        	m = new MasterLocation(sixth4, 524,281);
         	pokeBall.add(m);
-        	m = new MasterLocation(sixth5M, 524-sixth5M.getWidth(),281);
+        	m = new MasterLocation(sixth5, 524-sixth5.getWidth(),281);
         	pokeBall.add(m);
-        	m = new MasterLocation(sixth6M, 520-sixth6M.getWidth(),225);
+        	m = new MasterLocation(sixth6, 520-sixth6.getWidth(),225);
         	pokeBall.add(m);
         }
         
@@ -277,7 +269,7 @@ public class MasterAddition extends Activity {
         		setPieceLocations();
         		dexLoc[2] = cxDex;
         		dexLoc[5] = cyDex;
-        		initializing = false;     		
+        		start( canvas );        		
         		onResetLocation();
         	}
         	
@@ -297,6 +289,13 @@ public class MasterAddition extends Activity {
             //Log.d(DEBUG_TAG, "Canvas: " + m.toShortString());
         }
         
+        public void start( Canvas Canvas ) {
+        	Bitmap ball = BitmapFactory.decodeResource( getResources(), R.drawable.pokeball );
+        	Bitmap ballPiece = BitmapFactory.decodeResource( getResources(), R.drawable.sixth6 );
+        	TutorialScreenCreator t = new TutorialScreenCreator(p,Canvas);
+        	t.createAdditionScreen(ballPiece, ball);	
+        }
+         
         public void moveOn()
         {
         	final Intent intent = new Intent(MasterAddition.this.getBaseContext(), MasterScore.class);
@@ -318,86 +317,12 @@ public class MasterAddition extends Activity {
 
         @Override
         public boolean onTouchEvent(MotionEvent event) {
-        	int action = event.getAction();
-        	float x = event.getX();
-        	float y = event.getY();
-        	switch( action ) {
-        	case MotionEvent.ACTION_DOWN:
-        		Log.v(DEBUG_TAG, "onDown");
-        	    if ( x >= 524-sixth1M.getWidth() && x < (524-sixth1M.getWidth() + sixth1M.getWidth())
-                        && y >= 168 && y < (168 + sixth1M.getHeight())) {
-        	    	Log.v(DEBUG_TAG, "sixth1");
-        	    	if ( sixth1M.sameAs( sixth1 ) ) {
-        				sixth1M.eraseColor( Color.TRANSPARENT );
-        			} else {
-        				sixth1M = sixth1.copy(Bitmap.Config.ARGB_8888, true); 
-        			}
-                }
-        	    if ( x >= 526 && x < (526 + sixth2M.getWidth())
-                        && y >= 168 && y < (168 + sixth2M.getHeight())) {
-        	    	Log.v(DEBUG_TAG, "sixth2");
-        	    	if ( sixth2M.sameAs( sixth2 ) ) {
-        				sixth2M.eraseColor( Color.TRANSPARENT );
-        			} else {
-        				sixth2M = sixth2.copy(Bitmap.Config.ARGB_8888, true); 
-        			}
-                }
-        	    if ( x >= 528 && x < (528 + sixth3M.getWidth())
-                        && y >= 225 && y < (225 + sixth3M.getHeight())) {
-        	    	Log.v(DEBUG_TAG, "sixth3");
-        	    	if ( sixth3M.sameAs( sixth3 ) ) {
-        				sixth3M.eraseColor( Color.TRANSPARENT );
-        			} else {
-        				sixth3M = sixth3.copy(Bitmap.Config.ARGB_8888, true); 
-        			}
-                }
-        	    if ( x >= 524 && x < (524 + sixth4M.getWidth())
-                        && y >= 281 && y < (281 + sixth4M.getHeight())) {
-        	    	Log.v(DEBUG_TAG, "sixth4");
-        	    	if ( sixth4M.sameAs( sixth4 ) ) {
-        				sixth4M.eraseColor( Color.TRANSPARENT );
-        			} else {
-        				sixth4M = sixth4.copy(Bitmap.Config.ARGB_8888, true); 
-        			}
-                }
-        	    if ( x >= 524-sixth5M.getWidth() && x < (524-sixth5M.getWidth() + sixth5M.getWidth())
-                        && y >= 281 && y < (281 + sixth5M.getHeight())) {
-        	    	Log.v(DEBUG_TAG, "sixth5");
-        	    	if ( sixth5M.sameAs( sixth5 ) ) {
-        				sixth5M.eraseColor( Color.TRANSPARENT );
-        			} else {
-        				sixth5M = sixth5.copy(Bitmap.Config.ARGB_8888, true); 
-        			}
-                }
-        	    if ( x >= 520-sixth6M.getWidth() && x < (520-sixth6M.getWidth() + sixth6M.getWidth())
-                        && y >= 225 && y < (225 + sixth6M.getHeight())) {
-        	    	Log.v(DEBUG_TAG, "sixth6");
-        	    	if ( sixth6M.sameAs( sixth6 ) ) {
-        				sixth6M.eraseColor( Color.TRANSPARENT );
-        			} else {
-        				sixth6M = sixth6.copy(Bitmap.Config.ARGB_8888, true); 
-        			}
-                }
-        	    if ( x >= 25 && x < (25 + pokeDex.getWidth())
-                        && y >= pokeDex.getHeight() && y < (pokeDex.getHeight() + pokeDex.getHeight())) {
-        	    	Log.v( DEBUG_TAG, "pokedex" );
-        	    	nextQuestion();
-        	    }
-        	    initializing = false;
-        	    if(question == 0 )
-        	    {
-        	    	Log.v(DEBUG_TAG, "start wiggle"); 
-        	    	//view.wiggle();
-        	    	initializing = false;
-        	    } 
-        	    //return true;
-        	}
-            //return gestures.onTouchEvent(event);
-        	return true;
+            return gestures.onTouchEvent(event);
         }
     
     private class GestureListener implements GestureDetector.OnGestureListener,GestureDetector.OnDoubleTapListener {
     	PlayAreaView view;
+    	
     	public GestureListener(PlayAreaView view)
     	{
     		this.view = view;
@@ -405,14 +330,16 @@ public class MasterAddition extends Activity {
     	
     	
     	public boolean onDown(MotionEvent e) {
-    	    Log.v(DEBUG_TAG, "onDown");
+    	    Log.v(DEBUG_TAG, "onDown"); 
     	    initializing = false;
+    	    //if the user is on the first question and they have filled in the correct amount of the master ball
+    	    //the pokedex wiggles to show them that to answer they click in the pokedex
     	    if(question == 0 )
     	    {
     	    	Log.v(DEBUG_TAG, "start wiggle"); 
     	    	view.wiggle();
     	    	initializing = false;
-    	    }
+    	    } 
     	    return true;
     	}
 
@@ -429,17 +356,7 @@ public class MasterAddition extends Activity {
 		}
 
 		public boolean onSingleTapConfirmed(MotionEvent e) {
-			/*Log.v( DEBUG_TAG, "onSingle");
-			if ( sixth1M.sameAs( sixth1 ) ) {
-				sixth1M.eraseColor( Color.TRANSPARENT );
-			} else {
-				sixth1M = sixth1.copy(Bitmap.Config.ARGB_8888, true); 
-			}
-			if ( sixth2M.sameAs( sixth2 ) ) {
-				sixth2M.eraseColor( Color.TRANSPARENT );
-			} else {
-				sixth2M = sixth2.copy(Bitmap.Config.ARGB_8888, true); 
-			}*/
+			
 			return false;
 		}
 

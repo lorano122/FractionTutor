@@ -391,7 +391,7 @@ public class MasterAddition extends Activity {
             	if(question == 0 )
             	{
             		Log.v(DEBUG_TAG, "start wiggle"); 
-//            	    view.wiggle();
+            	    view.wiggle();
             	    initializing = false;
             	}
             	nextQuestion(); 

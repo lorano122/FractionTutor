@@ -316,7 +316,10 @@ public class MasterAddition extends Activity {
 
         @Override
         public boolean onTouchEvent(MotionEvent event) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4573455ada5150d626c20f5cfdc075eabf8388d8
             return gestures.onTouchEvent(event);
         }
     
@@ -333,7 +336,7 @@ public class MasterAddition extends Activity {
         	if ( x >= 524-sixth1.getWidth() && x < (524-sixth1.getWidth() + sixth1.getWidth())
         			&& y >= 168 && y < (168 + sixth1.getHeight())) {
         		Log.v(DEBUG_TAG, "sixth1");	
-        	    if ( sixth1.sameAs( sixth1 ) ) {
+        	    if ( setBall[0] ) {
         			setBall[0] = false;
         		} else {
         			setBall[0] = true; 
@@ -342,7 +345,7 @@ public class MasterAddition extends Activity {
         	if ( x >= 526 && x < (526 + sixth2.getWidth()) 
         			&& y >= 168 && y < (168 + sixth2.getHeight())) {
         		Log.v(DEBUG_TAG, "sixth2");
-        	    if ( sixth2.sameAs( sixth2 ) ) {
+        	    if ( setBall[1] ) {
         			setBall[1] = false;
         		} else {
         			setBall[1] = true;
@@ -351,7 +354,7 @@ public class MasterAddition extends Activity {
         	if ( x >= 528 && x < (528 + sixth3.getWidth())
                     && y >= 225 && y < (225 + sixth3.getHeight())) {
         	    Log.v(DEBUG_TAG, "sixth3");
-        	    if ( sixth3.sameAs( sixth3 ) ) {
+        	    if ( setBall[2] ) {
         			setBall[2] = false;
         		} else {
         			setBall[2] = true;
@@ -360,7 +363,7 @@ public class MasterAddition extends Activity {
         	if ( x >= 524 && x < (524 + sixth4.getWidth())
                     && y >= 281 && y < (281 + sixth4.getHeight())) {
         	    Log.v(DEBUG_TAG, "sixth4");
-        	    if ( sixth4.sameAs( sixth4 ) ) {
+        	    if ( setBall[3] ) {
         			setBall[3] = false;
         		} else {
         			setBall[3] = true;
@@ -369,7 +372,7 @@ public class MasterAddition extends Activity {
         	if ( x >= 524-sixth5.getWidth() && x < (524-sixth5.getWidth() + sixth5.getWidth())
                     && y >= 281 && y < (281 + sixth5.getHeight())) {
         	    Log.v(DEBUG_TAG, "sixth5");
-        	    if ( sixth5.sameAs( sixth5 ) ) {
+        	    if ( setBall[4] ) {
         			setBall[4] = false;
         		} else {
         			setBall[4] = true;
@@ -378,12 +381,13 @@ public class MasterAddition extends Activity {
         	if ( x >= 520-sixth6.getWidth() && x < (520-sixth6.getWidth() + sixth6.getWidth())
                     && y >= 225 && y < (225 + sixth6.getHeight())) {
         	    Log.v(DEBUG_TAG, "sixth6");
-        	    if ( sixth6.sameAs( sixth6 ) ) {
+        	    if ( setBall[5] ) {
         			setBall[5] = false;
         		} else {
         			setBall[5] = true;
          		}
             }
+<<<<<<< HEAD
         	if ( x >= 25 && x < (25 + pokeDex.getWidth())
                     && y >= cyDex && y < (cyDex + pokeDex.getHeight())) {
         	    Log.v( DEBUG_TAG, "pokedex" );
@@ -398,6 +402,14 @@ public class MasterAddition extends Activity {
         	}
         	return true;
         }
+=======
+    	
+    		initializing = false;
+    	    return true;
+    	}
+
+    	
+>>>>>>> 4573455ada5150d626c20f5cfdc075eabf8388d8
     	public boolean onDoubleTap(MotionEvent e) {
     	    Log.v(DEBUG_TAG, "onDoubleTap");
 //    	    view.onResetLocation();

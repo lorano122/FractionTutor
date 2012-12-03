@@ -6,8 +6,6 @@
 package com.example.pokemonfractions;
 
 import helpers.MasterLocation;
-import helpers.TutorialScreenCreator;
-
 import java.util.ArrayList;
 
 import mathClasses.MasterMath;
@@ -23,24 +21,16 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.graphics.Region;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
 
 
 public class MasterAddition extends Activity {
 	private static final String DEBUG_TAG = "Addition";
-    private Matrix animateStart;
-    private OvershootInterpolator animateInterpolator;
-    private long startTime;
-    private long endTime;
-    private float totalAnimDx;
-    private float totalAnimDy;
     private MasterMath math;
     private int ans=0,question=0,userAns=0,correct=0;
     private float cxDex=0,cyDex=0;
@@ -78,12 +68,6 @@ public class MasterAddition extends Activity {
 
         private GestureDetector gestures;
         private Matrix translate;
-        private Matrix animateStart;
-        private OvershootInterpolator animateInterpolator;
-        private long startTime;
-        private long endTime;
-        private float totalAnimDx;
-        private float totalAnimDy;
         private Bitmap pokeDex, sixth1, sixth2, sixth3,sixth4,sixth5,sixth6, egg,mew,mew2,art,mol,zap,lug;
         private Paint p;
         private float[] dexLoc = { 1, 0, cxDex, 0, 1, cyDex, 0, 0, 1 };
@@ -323,7 +307,7 @@ public class MasterAddition extends Activity {
         	if ( x >= 524-sixth1.getWidth() && x < (524-sixth1.getWidth() + sixth1.getWidth())
         			&& y >= 168 && y < (168 + sixth1.getHeight())) {
         		Log.v(DEBUG_TAG, "sixth1");	
-        	    if ( sixth1.sameAs( sixth1 ) ) {
+        	    if ( setBall[0] ) {
         			setBall[0] = false;
         		} else {
         			setBall[0] = true; 
@@ -332,7 +316,7 @@ public class MasterAddition extends Activity {
         	if ( x >= 526 && x < (526 + sixth2.getWidth()) 
         			&& y >= 168 && y < (168 + sixth2.getHeight())) {
         		Log.v(DEBUG_TAG, "sixth2");
-        	    if ( sixth2.sameAs( sixth2 ) ) {
+        	    if ( setBall[1] ) {
         			setBall[1] = false;
         		} else {
         			setBall[1] = true;
@@ -341,7 +325,7 @@ public class MasterAddition extends Activity {
         	if ( x >= 528 && x < (528 + sixth3.getWidth())
                     && y >= 225 && y < (225 + sixth3.getHeight())) {
         	    Log.v(DEBUG_TAG, "sixth3");
-        	    if ( sixth3.sameAs( sixth3 ) ) {
+        	    if ( setBall[2] ) {
         			setBall[2] = false;
         		} else {
         			setBall[2] = true;
@@ -350,7 +334,7 @@ public class MasterAddition extends Activity {
         	if ( x >= 524 && x < (524 + sixth4.getWidth())
                     && y >= 281 && y < (281 + sixth4.getHeight())) {
         	    Log.v(DEBUG_TAG, "sixth4");
-        	    if ( sixth4.sameAs( sixth4 ) ) {
+        	    if ( setBall[3] ) {
         			setBall[3] = false;
         		} else {
         			setBall[3] = true;
@@ -359,7 +343,7 @@ public class MasterAddition extends Activity {
         	if ( x >= 524-sixth5.getWidth() && x < (524-sixth5.getWidth() + sixth5.getWidth())
                     && y >= 281 && y < (281 + sixth5.getHeight())) {
         	    Log.v(DEBUG_TAG, "sixth5");
-        	    if ( sixth5.sameAs( sixth5 ) ) {
+        	    if ( setBall[4] ) {
         			setBall[4] = false;
         		} else {
         			setBall[4] = true;
@@ -368,24 +352,12 @@ public class MasterAddition extends Activity {
         	if ( x >= 520-sixth6.getWidth() && x < (520-sixth6.getWidth() + sixth6.getWidth())
                     && y >= 225 && y < (225 + sixth6.getHeight())) {
         	    Log.v(DEBUG_TAG, "sixth6");
-        	    if ( sixth6.sameAs( sixth6 ) ) {
+        	    if ( setBall[5] ) {
         			setBall[5] = false;
         		} else {
         			setBall[5] = true;
          		}
             }
-        	if ( x >= 25 && x < (25 + pokeDex.getWidth())
-                    && y >= cyDex && y < (cyDex + pokeDex.getHeight())) {
-        	    Log.v( DEBUG_TAG, "pokedex" );
-        	    initializing = false;
-            	if(question == 0 )
-            	{
-            		Log.v(DEBUG_TAG, "start wiggle"); 
-            	    view.wiggle();
-            	    initializing = false;
-            	}
-            	nextQuestion(); 
-        	}
         	return true;
         }
     	

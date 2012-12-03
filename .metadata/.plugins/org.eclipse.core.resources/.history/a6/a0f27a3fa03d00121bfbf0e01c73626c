@@ -259,7 +259,15 @@ public class MasterAddition extends Activity {
             // Log.v(DEBUG_TAG, "onDraw");        	
         	cxDex = 25;
         	cyDex = canvas.getHeight() - pokeDex.getHeight();
-       
+        	if(initializing)
+        	{
+        		setPieceLocations();
+        		dexLoc[2] = cxDex;
+        		dexLoc[5] = cyDex; 		
+        		onResetLocation();
+        		start(canvas);
+        		
+        	}        
         	if(question == 0)
         	{
         		top = "Welcome!";
@@ -280,14 +288,6 @@ public class MasterAddition extends Activity {
         		p.setTextSize(30);
         		canvas.drawText("You have finished the game", 100, 100, p);
         	}
-        	if(initializing)
-        	{
-        		setPieceLocations();
-        		dexLoc[2] = cxDex;
-        		dexLoc[5] = cyDex; 		
-        		onResetLocation();
-        		start(canvas);        		
-        	} 
         }
      
         public void start(Canvas canvas)

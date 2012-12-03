@@ -62,8 +62,8 @@ public class TutorialScreenCreator {
 		canvas.drawText(welcome, canvas.getWidth()/2 - welcome.length()*(10),50,  p);
 		canvas.drawText(exp1, canvas.getWidth()/2 - exp1.length()*(7),150,  p);
 		canvas.drawText(exp2, canvas.getWidth()/2 - exp2.length()*(7),190,  p);
-		canvas.drawBitmap(fraction, (float) (canvas.getWidth()*(3.0/4) + fraction.getWidth()/2 - 27+50),206, null);
-		canvas.drawBitmap(full, (float) (canvas.getWidth()*(3.0/4)) +50, 200,p);
+		canvas.drawBitmap(fraction, (float) (canvas.getWidth()*(3.0/4) + fraction.getWidth()/2 - 27),206, null);
+		canvas.drawBitmap(full, (float) (canvas.getWidth()*(3.0/4)), 200,p);
 		canvas.drawText(inst, canvas.getWidth()/2 - inst.length()*(7),250,  p);
 		canvas.drawText(con, canvas.getWidth()/2 - con.length()*(7),350,  p);
 		canvas.drawText(begin, canvas.getWidth()/2 - begin.length()*(7),390,  p);

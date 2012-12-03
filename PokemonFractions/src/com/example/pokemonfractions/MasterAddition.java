@@ -337,45 +337,45 @@ public class MasterAddition extends Activity {
                         && y >= 168 && y < (168 + sixth2M.getHeight())) {
         	    	Log.v(DEBUG_TAG, "sixth2");
         	    	if ( sixth2M.sameAs( sixth2 ) ) {
-        				sixth2M.eraseColor( Color.TRANSPARENT );
+        				
         			} else {
-        				sixth2M = sixth2.copy(Bitmap.Config.ARGB_8888, true); 
+        				
         			}
                 }
         	    if ( x >= 528 && x < (528 + sixth3M.getWidth())
                         && y >= 225 && y < (225 + sixth3M.getHeight())) {
         	    	Log.v(DEBUG_TAG, "sixth3");
         	    	if ( sixth3M.sameAs( sixth3 ) ) {
-        				sixth3M.eraseColor( Color.TRANSPARENT );
+        				
         			} else {
-        				sixth3M = sixth3.copy(Bitmap.Config.ARGB_8888, true); 
+        				 
         			}
                 }
         	    if ( x >= 524 && x < (524 + sixth4M.getWidth())
                         && y >= 281 && y < (281 + sixth4M.getHeight())) {
         	    	Log.v(DEBUG_TAG, "sixth4");
         	    	if ( sixth4M.sameAs( sixth4 ) ) {
-        				sixth4M.eraseColor( Color.TRANSPARENT );
+        				
         			} else {
-        				sixth4M = sixth4.copy(Bitmap.Config.ARGB_8888, true); 
+        				
         			}
                 }
         	    if ( x >= 524-sixth5M.getWidth() && x < (524-sixth5M.getWidth() + sixth5M.getWidth())
                         && y >= 281 && y < (281 + sixth5M.getHeight())) {
         	    	Log.v(DEBUG_TAG, "sixth5");
         	    	if ( sixth5M.sameAs( sixth5 ) ) {
-        				sixth5M.eraseColor( Color.TRANSPARENT );
+        				
         			} else {
-        				sixth5M = sixth5.copy(Bitmap.Config.ARGB_8888, true); 
+        				 
         			}
                 }
         	    if ( x >= 520-sixth6M.getWidth() && x < (520-sixth6M.getWidth() + sixth6M.getWidth())
                         && y >= 225 && y < (225 + sixth6M.getHeight())) {
         	    	Log.v(DEBUG_TAG, "sixth6");
         	    	if ( sixth6M.sameAs( sixth6 ) ) {
-        				sixth6M.eraseColor( Color.TRANSPARENT );
+        				
         			} else {
-        				sixth6M = sixth6.copy(Bitmap.Config.ARGB_8888, true); 
+        				
         			}
                 }
         	    if ( x >= 25 && x < (25 + pokeDex.getWidth())

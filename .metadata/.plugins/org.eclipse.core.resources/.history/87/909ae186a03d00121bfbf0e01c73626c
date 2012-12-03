@@ -58,17 +58,18 @@ public class TutorialScreenCreator {
     	String inst = "Just fill in the circle to create the correct fraction of the master ball";
     	String con = "The game is over when you have hatched 6 eggs";
     	String begin = "Tap the master ball to begin, good luck and have fun!";
-    	String explination = "here is an example of 1/6";
+    	String explination = "here is an example of 5/6";
 		canvas.drawText(welcome, canvas.getWidth()/2 - welcome.length()*(10),50,  p);
-		canvas.drawText(exp1, canvas.getWidth()/2 - exp1.length()*(7),150,  p);
-		canvas.drawText(exp2, canvas.getWidth()/2 - exp2.length()*(7),190,  p);
-		canvas.drawBitmap(fraction, (float) (canvas.getWidth()*(3.0/4) + fraction.getWidth()/2 - 27+50),206, null);
-		canvas.drawBitmap(full, (float) (canvas.getWidth()*(3.0/4)) +50, 200,p);
-		canvas.drawText(inst, canvas.getWidth()/2 - inst.length()*(7),250,  p);
-		canvas.drawText(con, canvas.getWidth()/2 - con.length()*(7),350,  p);
-		canvas.drawText(begin, canvas.getWidth()/2 - begin.length()*(7),390,  p);
+		canvas.drawText(exp1, canvas.getWidth()/2 - exp1.length()*(10),150,  p);
+		canvas.drawText(exp2, canvas.getWidth()/2 - exp2.length()*(10),190,  p);
+		canvas.drawBitmap(fraction, canvas.getWidth()/4 - fraction.getWidth()/2,400, null);
+		canvas.drawBitmap(full, canvas.getWidth()/4, 400,p);
+		canvas.drawText(inst, canvas.getWidth()/2 - inst.length()*(10),250,  p);
+		canvas.drawText(con, canvas.getWidth()/2 - con.length()*(10),350,  p);
+		canvas.drawText(begin, canvas.getWidth()/2 - begin.length()*(10),390,  p);
+		canvas.drawBitmap(fraction, canvas.getWidth()/2 - fraction.getWidth()/2,410, null);
 		p.setTextSize(20);
-		canvas.drawText(explination, (float) (canvas.getWidth()*(3.0/4) ),475,  p);
+		canvas.drawText(explination, canvas.getWidth()/2 - explination.length()*(10),390,  p);
 		canvas.drawBitmap(ball, canvas.getWidth()/2 - 25 ,540, null);
 	}
 

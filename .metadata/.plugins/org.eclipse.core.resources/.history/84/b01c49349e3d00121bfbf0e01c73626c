@@ -6,8 +6,6 @@
 package com.example.pokemonfractions;
 
 import helpers.MasterLocation;
-import helpers.TutorialScreenCreator;
-
 import java.util.ArrayList;
 
 import mathClasses.MasterMath;
@@ -73,7 +71,6 @@ public class MasterAddition extends Activity {
         private Bitmap pokeDex, sixth1, sixth2, sixth3,sixth4,sixth5,sixth6, egg,mew,mew2,art,mol,zap,lug;
         private Paint p;
         private float[] dexLoc = { 1, 0, cxDex, 0, 1, cyDex, 0, 0, 1 };
-        private String top="",bottom="";
 
         
         public PlayAreaView(Context context) {
@@ -222,8 +219,7 @@ public class MasterAddition extends Activity {
         {
         	p.setColor(Color.BLACK);
         	p.setTextSize(30);
-        	canvas.drawText(top, 30, 30, p);
-        	canvas.drawText(bottom, 30, 70, p);
+        	canvas.drawText("TEST TEST TEST", 30, 30, p);
         }
         
         //call this when the user clicks in the pokedex
@@ -232,19 +228,11 @@ public class MasterAddition extends Activity {
         	if(math.isCorrect(userAns))
         	{
         		pokemon.get(correct).setIcon(legendary.get(correct));
-        		top = "Correct!";
-        		bottom = "";
         		correct++;
-        	}
-        	else
-        	{
-        		top = "Incorrect";
-        		bottom = math.getEquation()+ " = "+math.getAnswerString(); 
+
         	}
         	if(correct == 6)
         	{
-        		top = "You have answered 6 questions correctly";
-        		bottom = "";
         		moveOn();
         	}
         	question++;
@@ -259,13 +247,14 @@ public class MasterAddition extends Activity {
             // Log.v(DEBUG_TAG, "onDraw");        	
         	cxDex = 25;
         	cyDex = canvas.getHeight() - pokeDex.getHeight();
-       
-        	if(question == 0)
+        	if(initializing)
         	{
-        		top = "Welcome!";
-        		bottom = "";
-        		
-        	}
+        		setPieceLocations();
+        		dexLoc[2] = cxDex;
+        		dexLoc[5] = cyDex;
+        		initializing = false;     		
+        		onResetLocation();
+        	}        	
             p.setColor(Color.rgb(174,208,198));
             canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), p);
         	canvas.drawBitmap(pokeDex, translate, null);        	
@@ -273,28 +262,14 @@ public class MasterAddition extends Activity {
         	drawEquation(canvas);
         	drawPokemon(canvas);
         	giveFeedBack(canvas);
-
         	if(correct == 6)
         	{
         		p.setColor(Color.BLACK);
         		p.setTextSize(30);
         		canvas.drawText("You have finished the game", 100, 100, p);
         	}
-        	if(initializing)
-        	{
-        		setPieceLocations();
-        		dexLoc[2] = cxDex;
-        		dexLoc[5] = cyDex; 		
-        		onResetLocation();
-        		start(canvas);        		
-        	} 
         }
-     
-        public void start(Canvas canvas)
-        {
-        	TutorialScreenCreator s = new TutorialScreenCreator(p,canvas);
-        	s.createAdditionScreen(BitmapFactory.decodeResource( getResources(), R.drawable.sixths_lines), sixth1, BitmapFactory.decodeResource( getResources(), R.drawable.pokeball));
-        }
+        
         public void moveOn()
         {
         	final Intent intent = new Intent(MasterAddition.this.getBaseContext(), MasterScore.class);
@@ -316,6 +291,80 @@ public class MasterAddition extends Activity {
 
         @Override
         public boolean onTouchEvent(MotionEvent event) {
+        	int action = event.getAction();
+        	float x = event.getX();
+        	float y = event.getY();
+        	switch( action ) {
+        	case MotionEvent.ACTION_DOWN:
+        		Log.v(DEBUG_TAG, "onDown");
+        	    if ( x >= 524-sixth1.getWidth() && x < (524-sixth1.getWidth() + sixth1.getWidth())
+                        && y >= 168 && y < (168 + sixth1.getHeight())) {
+        	    	Log.v(DEBUG_TAG, "sixth1");
+        	    	if ( sixth1.sameAs( sixth1 ) ) {
+        				setBall[0] = false;
+        			} else {
+        				setBall[0] = true; 
+        			}
+                }
+        	    if ( x >= 526 && x < (526 + sixth2.getWidth())
+                        && y >= 168 && y < (168 + sixth2.getHeight())) {
+        	    	Log.v(DEBUG_TAG, "sixth2");
+        	    	if ( sixth2.sameAs( sixth2 ) ) {
+        				sixth2.eraseColor( Color.TRANSPARENT );
+        			} else {
+        				sixth2 = sixth2.copy(Bitmap.Config.ARGB_8888, true); 
+        			}
+                }
+        	    if ( x >= 528 && x < (528 + sixth3.getWidth())
+                        && y >= 225 && y < (225 + sixth3.getHeight())) {
+        	    	Log.v(DEBUG_TAG, "sixth3");
+        	    	if ( sixth3.sameAs( sixth3 ) ) {
+        				sixth3.eraseColor( Color.TRANSPARENT );
+        			} else {
+        				sixth3 = sixth3.copy(Bitmap.Config.ARGB_8888, true); 
+        			}
+                }
+        	    if ( x >= 524 && x < (524 + sixth4.getWidth())
+                        && y >= 281 && y < (281 + sixth4.getHeight())) {
+        	    	Log.v(DEBUG_TAG, "sixth4");
+        	    	if ( sixth4.sameAs( sixth4 ) ) {
+        				sixth4.eraseColor( Color.TRANSPARENT );
+        			} else {
+        				sixth4 = sixth4.copy(Bitmap.Config.ARGB_8888, true); 
+        			}
+                }
+        	    if ( x >= 524-sixth5.getWidth() && x < (524-sixth5.getWidth() + sixth5.getWidth())
+                        && y >= 281 && y < (281 + sixth5.getHeight())) {
+        	    	Log.v(DEBUG_TAG, "sixth5");
+        	    	if ( sixth5.sameAs( sixth5 ) ) {
+        				sixth5.eraseColor( Color.TRANSPARENT );
+        			} else {
+        				sixth5 = sixth5.copy(Bitmap.Config.ARGB_8888, true); 
+        			}
+                }
+        	    if ( x >= 520-sixth6.getWidth() && x < (520-sixth6.getWidth() + sixth6.getWidth())
+                        && y >= 225 && y < (225 + sixth6.getHeight())) {
+        	    	Log.v(DEBUG_TAG, "sixth6");
+        	    	if ( sixth6.sameAs( sixth6 ) ) {
+        				sixth6.eraseColor( Color.TRANSPARENT );
+        			} else {
+        				sixth6 = sixth6.copy(Bitmap.Config.ARGB_8888, true); 
+        			}
+                }
+        	    if ( x >= 25 && x < (25 + pokeDex.getWidth())
+                        && y >= cyDex && y < (cyDex + pokeDex.getHeight())) {
+        	    	Log.v( DEBUG_TAG, "pokedex" );
+        	    	initializing = false;
+            	    if(question == 0 )
+            	    {
+            	    	Log.v(DEBUG_TAG, "start wiggle"); 
+            	    	wiggle();
+            	    	initializing = false;
+            	    }
+        	    	nextQuestion(); 
+        	    }
+        	    //return true;
+        	}
             return gestures.onTouchEvent(event);
         }
     
@@ -326,66 +375,9 @@ public class MasterAddition extends Activity {
     	
     	
     	public boolean onDown(MotionEvent e) {
-        	float x = e.getX();
-        	float y = e.getY();
-        	Log.v(DEBUG_TAG, "onDown");
-        	if ( x >= 524-sixth1.getWidth() && x < (524-sixth1.getWidth() + sixth1.getWidth())
-        			&& y >= 168 && y < (168 + sixth1.getHeight())) {
-        		Log.v(DEBUG_TAG, "sixth1");	
-        	    if ( setBall[0] ) {
-        			setBall[0] = false;
-        		} else {
-        			setBall[0] = true; 
-        		}
-            }
-        	if ( x >= 526 && x < (526 + sixth2.getWidth()) 
-        			&& y >= 168 && y < (168 + sixth2.getHeight())) {
-        		Log.v(DEBUG_TAG, "sixth2");
-        	    if ( setBall[1] ) {
-        			setBall[1] = false;
-        		} else {
-        			setBall[1] = true;
-         		}
-            }
-        	if ( x >= 528 && x < (528 + sixth3.getWidth())
-                    && y >= 225 && y < (225 + sixth3.getHeight())) {
-        	    Log.v(DEBUG_TAG, "sixth3");
-        	    if ( setBall[2] ) {
-        			setBall[2] = false;
-        		} else {
-        			setBall[2] = true;
-        		}
-            }
-        	if ( x >= 524 && x < (524 + sixth4.getWidth())
-                    && y >= 281 && y < (281 + sixth4.getHeight())) {
-        	    Log.v(DEBUG_TAG, "sixth4");
-        	    if ( setBall[3] ) {
-        			setBall[3] = false;
-        		} else {
-        			setBall[3] = true;
-        		}
-            }
-        	if ( x >= 524-sixth5.getWidth() && x < (524-sixth5.getWidth() + sixth5.getWidth())
-                    && y >= 281 && y < (281 + sixth5.getHeight())) {
-        	    Log.v(DEBUG_TAG, "sixth5");
-        	    if ( setBall[4] ) {
-        			setBall[4] = false;
-        		} else {
-        			setBall[4] = true;
-        		}
-            }
-        	if ( x >= 520-sixth6.getWidth() && x < (520-sixth6.getWidth() + sixth6.getWidth())
-                    && y >= 225 && y < (225 + sixth6.getHeight())) {
-        	    Log.v(DEBUG_TAG, "sixth6");
-        	    if ( setBall[5] ) {
-        			setBall[5] = false;
-        		} else {
-        			setBall[5] = true;
-         		}
-            }
     	
-    		initializing = false;
-    	    return true;
+    		
+    	    return false;
     	}
 
     	
@@ -434,7 +426,7 @@ public class MasterAddition extends Activity {
 		    return true;
 		}
 
-		public void onShowPress(MotionEvent e) { 
+		public void onShowPress(MotionEvent e) {
 			// TODO Auto-generated method stub
 			
 		}

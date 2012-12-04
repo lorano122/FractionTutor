@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
     
     public void moveOn(View view)
     {
-    	Intent fling = new Intent(this, MasterAddition.class);
+    	Intent fling = new Intent(this, PokeFling.class);
     	startActivity(fling);
     }
     

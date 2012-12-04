@@ -56,8 +56,8 @@ public class TutorialScreenCreator {
     	String exp1 = "Create visual representations of fractions to solve the equation";
     	String exp2 = "The equation is displayed in the pokedex";
     	String inst = "Just fill in the circle to create the correct fraction of the master ball";
-    	String con = "The game is over when you have hatched 6 eggs";
-    	String begin = "Tap the master ball to begin, good luck and have fun!";
+    	String con = "To submit your answer, click the pokedex";
+    	String begin = "Tap the pokeball to begin, good luck and have fun!";
     	String explination = "here is an example of 1/6";
 		canvas.drawText(welcome, canvas.getWidth()/2 - welcome.length()*(10),50,  p);
 		canvas.drawText(exp1, canvas.getWidth()/2 - exp1.length()*(7),150,  p);

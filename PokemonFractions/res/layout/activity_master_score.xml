@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/flingwin"
     android:orientation="horizontal"  >
 
 	 <Button
@@ -21,5 +22,14 @@
 	     android:background="#D3D3D3"
 	     android:onClick="playAddition"
 	     android:text="Play Master Addition" />
+
+	 <TextView
+	     android:id="@+id/result"
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content"
+	     android:layout_alignParentLeft="true"
+	     android:layout_alignParentTop="true"
+	     android:text="TextView"
+	     android:textSize="30sp" />
 	 
 </RelativeLayout>

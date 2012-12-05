@@ -40,7 +40,7 @@ public class MasterAddition extends Activity {
     private String equation="";
     private boolean initializing = true;
     private ArrayList<MasterLocation> pokeBall = new ArrayList<MasterLocation>();
-    private boolean[] setBall = {false,false,false,false,false,false};
+    private boolean[] setBall = {true,true,true,true,true,true};
     private ArrayList<MasterLocation> pokemon = new ArrayList<MasterLocation>();
     private ArrayList<Bitmap> legendary = new ArrayList<Bitmap>();
     
